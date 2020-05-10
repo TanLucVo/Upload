@@ -8,18 +8,8 @@
 </head>
 
 <body>
-    <?php
-        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
-        $pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-        if (empty($user) || empty($pass)) {
-            echo 1;
-        } else {
-            echo "$user va $pass";
-        }
 
-
-    ?>
-    <form action="./" method="post">
+    <form action="../" method="post">
         <input type="text" name="user" id="user">
         <input type="text" name="pass" id="pass">
         <input type="submit" value="submit">
