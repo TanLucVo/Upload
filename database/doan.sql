@@ -39,8 +39,6 @@ CREATE TABLE `item` (
 
 INSERT INTO `item` (`username`, `url`) VALUES
 ('chonluc', 'http://localhost:8080/?id=001'),
-('anhnguyen233', 'http://localhost:8080/?id=002'),
-('chonluc', 'http://localhost:8080/?id=001'),
 ('anhnguyen233', 'http://localhost:8080/?id=002');
 
 -- --------------------------------------------------------
