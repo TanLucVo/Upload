@@ -66,19 +66,26 @@ if (isset($_SESSION['name'])) {
 
             });
             $(".delete").click(function() {
-                var item = this.parentNode.parentNode;
-                var a = $(this).attr('href');
-                var parent = $("tr").has(this)[0].querySelector(".link");
-                var Name = $("tr").find($("tr").find(parent))[0]['text'];
-                $.post("http://localhost:8888/upload/Upload/views/delete.php", {
-                        name: Name,
-                        path: "<?= $dir_path ?>"
-                    },
-                    function(data, status) {
-                        if (status) {
-                            item.remove();
-                        }
-                    });
+                $('#myModal1').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+                $("#delete").click(function() {
+                    var item = this.parentNode.parentNode;
+                    var a = $(this).attr('href');
+                    var parent = $("tr").has(this)[0].querySelector(".link");
+                    var Name = $("tr").find($("tr").find(parent))[0]['text'];
+                    $.post("http://localhost:8888/upload/Upload/views/delete.php", {
+                            name: Name,
+                            path: "<?= $dir_path ?>"
+                        },
+                        function(data, status) {
+                            if (status) {
+                                item.remove();
+                            }
+                        });
+                })
+
             });
 
         });
@@ -200,6 +207,27 @@ if (isset($_SESSION['name'])) {
         </div>
     </div>
     <!-- Rename dialog -->
+    <!-- Delete dialog -->
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Đổi tên thư mục</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete dialog -->
 
 
 
