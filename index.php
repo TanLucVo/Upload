@@ -33,8 +33,16 @@ if (isset($_SESSION['name'])) {
     } else {
         $dir_path = $root;
     }
+    $mess = '';
     if ($create && $folder) {
-        mkdir($dir_path.'/'.$folder);
+
+        if(file_exists($dir_path . '/' . $folder)){
+            $mess = 'ton tai';
+        }else{
+            mkdir($dir_path . '/' . $folder);
+            header('Location: ./');
+        }
+        
     }
     $dir_path = $dir_path;
     $files = scandir($dir_path);
@@ -132,7 +140,7 @@ if (isset($_SESSION['name'])) {
             <input type="text" name="folderName">
             <input type="submit" value="New folder" name="create">
         </form>
-
+        <p class="message"><?= $mess?></p>
         <br>
 
         <form action="upload.php" method="post" enctype="multipart/form-data">
