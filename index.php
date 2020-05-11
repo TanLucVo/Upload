@@ -18,6 +18,7 @@ if (isset($_SESSION['name'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -58,16 +59,13 @@ if (isset($_SESSION['name'])) {
             padding: 10px;
         }
     </style>
-
     <script>
         $(document).ready(function() {
             $(".rename").click(function() {
-
-                $('#myModal').modal({
-                    backdrop: 'static',
-                    keyboard: false
+                $("#myModal").modal({
+                    backdrop: "static",
+                    keyboard: false,
                 });
-
             });
 
             $(".rename").click(function() {
@@ -75,64 +73,64 @@ if (isset($_SESSION['name'])) {
 
                 var newName;
                 var item = this.parentNode.parentNode;
-                var a = $(this).attr('href');
+                var a = $(this).attr("href");
                 var parent = $("tr").has(this)[0].querySelector(".link");
-                var Name = $("tr").find($("tr").find(parent))[0]['text'];
+                var Name = $("tr").find($("tr").find(parent))[0]["text"];
 
                 $("#save").click(function() {
                     newName = $("#newname").val();
-                    console.log(allName)
+                    console.log(allName);
                     if (allName.search(newName) != -1) {
                         console.log("trung");
                         $(".message").text("Name exist");
                         return;
                     }
 
-                    $.post("http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
+                    $.post(
+                        "http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
                             name: Name,
                             path: "<?= $dir_path ?>",
-                            newname: newName
+                            newname: newName,
                         },
                         function(data, status) {
                             console.log(status);
                             if (status) {
-                                $("tr").find($("tr").find(parent))[0]['text'] = newName;
+                                $("tr").find($("tr").find(parent))[0]["text"] = newName;
                                 $(".newName").val("");
                             }
-                        });
-                })
-
-            })
+                        }
+                    );
+                });
+            });
 
             $(".delete").click(function() {
                 var item = this.parentNode.parentNode;
-                var a = $(this).attr('href');
+                var a = $(this).attr("href");
                 var parent = $("tr").has(this)[0].querySelector(".link");
-                var Name = $("tr").find($("tr").find(parent))[0]['text'];
-                $('#myModal1').modal({
-                    backdrop: 'static',
-                    keyboard: false
+                var Name = $("tr").find($("tr").find(parent))[0]["text"];
+                console.log(Name);
+                $("#myModal1").modal({
+                    backdrop: "static",
+                    keyboard: false,
                 });
-                $('#delete').click(function() {
-                    $.post("http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
+                $("#delete").click(function() {
+                    $.post(
+                        "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
                             name: Name,
-                            path: "<?= $dir_path ?>"
+                            path: "<?= $dir_path ?>",
                         },
                         function(data, status) {
                             if (status) {
                                 item.remove();
+                                console.log("<?= $dir_path ?>");
                             }
-                        });
-                })
+                        }
+                    );
+                });
             });
-
-
-
-
         });
     </script>
     <a href="./views/logout.php">Đăng xuất</a>
-
     <br>
     <div style="width: 300px; margin: auto; margin-bottom: 50px">
         <form method="post">
@@ -144,7 +142,7 @@ if (isset($_SESSION['name'])) {
 
         <form action="./views/addfile.php" method="post" enctype="multipart/form-data">
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="hidden" name="path" value="<?= $dir_path.'/' ?>">
+            <input type="hidden" name="path" value="<?= $dir_path . '/' ?>">
             <input type="submit" value="Upload" name="submit">
         </form>
 
@@ -252,7 +250,6 @@ if (isset($_SESSION['name'])) {
     <!-- Delete dialog -->
     <div class=" modal fade" id="myModal1" role="dialog">
                         <div class="modal-dialog">
-
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -270,8 +267,6 @@ if (isset($_SESSION['name'])) {
                         </div>
                 </div>
                 <!-- Delete dialog -->
-
-
 
 </body>
 

@@ -24,7 +24,10 @@ if (!isset($_POST['name']) || !isset($_POST['path'])) {
     $path = $_POST['path'];
 
     try{
-        if(delete_directory($path.'/'.$name)){
+        if (!is_dir($path . '/' . $name)){
+            unlink($path . '/' . $name);
+        }
+        else if(delete_directory($path.'/'.$name)){
             echo json_encode(array('status' => true, 'data' => 'delete success'));
         }else{  
             echo json_encode(array('status' => true, 'data' => "Can't delete"));
