@@ -40,7 +40,8 @@ if (isset($_SESSION['name'])) {
             $mess = 'ton tai';
         } else {
             mkdir($dir_path . '/' . $folder);
-            header('Location: ./');
+            unset($_POST);
+            header("Location: ./");
         }
     }
     $files = scandir($dir_path);
