@@ -34,7 +34,7 @@ if (isset($_SESSION['name'])) {
         $dir_path = $root;
     }
     if ($create && $folder) {
-        mkdir($folder);
+        mkdir($dir_path.'/'.$folder);
     }
     $dir_path = $dir_path;
     $files = scandir($dir_path);
