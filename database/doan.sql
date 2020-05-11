@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `item` (
-  `username` varchar(50) NOT NULL,
+  `userid` varchar(50) NOT NULL,
   `url` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -37,9 +37,9 @@ CREATE TABLE `item` (
 -- Đang đổ dữ liệu cho bảng `item`
 --
 
-INSERT INTO `item` (`username`, `url`) VALUES
-('chonluc', 'http://localhost:8080/index.php?id=001'),
-('anhnguyen233', 'http://localhost:8080/index.php?id=002');
+INSERT INTO `item` (`userid`, `url`) VALUES
+('001', 'http://localhost:8080/001'),
+('001', 'http://localhost:8080/002');
 
 -- --------------------------------------------------------
 
