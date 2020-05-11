@@ -22,7 +22,7 @@ if (isset($_SESSION['name'])) {
 
 <body>
     <?php
-    $root = $_SERVER['DOCUMENT_ROOT'] ;
+    $root = $_SERVER['DOCUMENT_ROOT']. '/Upload/Upload/files/'. $_SESSION['user'];
     $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
@@ -36,7 +36,7 @@ if (isset($_SESSION['name'])) {
     if ($create && $folder) {
         mkdir($folder);
     }
-    $dir_path = $dir_path . '/Upload/Upload/files/'. $_SESSION['user'];
+    $dir_path = $dir_path;
     $files = scandir($dir_path);
     echo $dir_path;
     ?>
@@ -54,8 +54,6 @@ if (isset($_SESSION['name'])) {
 
     <script>
         $(document).ready(function() {
-
-
             $(".rename").click(function() {
 
                 $('#myModal').modal({
@@ -64,16 +62,51 @@ if (isset($_SESSION['name'])) {
                 });
 
             });
+
+            $(".rename").click(function() {
+                var allName = $(".link").text();
+
+                var newName;
+                var item = this.parentNode.parentNode;
+                var a = $(this).attr('href');
+                var parent = $("tr").has(this)[0].querySelector(".link");
+                var Name = $("tr").find($("tr").find(parent))[0]['text'];
+
+                $("#save").click(function() {
+                    newName = $("#newname").val();
+                    console.log(allName)
+                    if (allName.search(newName) != -1) {
+                        console.log("trung");
+                        $(".message").text("Name exist");
+                        return;
+                    }
+
+                    $.post("http://localhost:8888/upload/Upload/views/rename.php", {
+                            name: Name,
+                            path: "<?= $dir_path ?>",
+                            newname: newName
+                        },
+                        function(data, status) {
+                            console.log(status);
+                            if (status) {
+                                $("tr").find($("tr").find(parent))[0]['text'] = newName;
+                                $(".newName").val("");
+                            }
+                        });
+                })
+
+            })
+
             $(".delete").click(function() {
+                var item = this.parentNode.parentNode;
+                var a = $(this).attr('href');
+                var parent = $("tr").has(this)[0].querySelector(".link");
+                var Name = $("tr").find($("tr").find(parent))[0]['text'];
                 $('#myModal1').modal({
                     backdrop: 'static',
                     keyboard: false
                 });
-                $("#delete").click(function() {
-                    var item = this.parentNode.parentNode;
-                    var a = $(this).attr('href');
-                    var parent = $("tr").has(this)[0].querySelector(".link");
-                    var Name = $("tr").find($("tr").find(parent))[0]['text'];
+                $('#delete').click(function() {
                     $.post("http://localhost:8888/upload/Upload/views/delete.php", {
                             name: Name,
                             path: "<?= $dir_path ?>"
@@ -84,8 +117,10 @@ if (isset($_SESSION['name'])) {
                             }
                         });
                 })
-
             });
+
+
+
 
         });
     </script>
@@ -196,37 +231,37 @@ if (isset($_SESSION['name'])) {
                 </div>
                 <div class="modal-body">
                     <p>Nhập tên mới.</p>
-                    <input type="text">
+                    <input type="text" id="newname">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Lưu</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='save'">Lưu</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Rename dialog -->
     <!-- Delete dialog -->
-    <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
+    <div class=" modal fade" id="myModal1" role="dialog">
+                        <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Đổi tên thư mục</h4>
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Đổi tên thư mục</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Bạn có chắc chắn muốn xóa ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Xóa</button>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                <div class="modal-body">
-                    <p>Bạn có chắc chắn muốn xóa ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Xóa</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Delete dialog -->
+                <!-- Delete dialog -->
 
 
 
