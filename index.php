@@ -22,7 +22,7 @@ if (isset($_SESSION['name'])) {
 
 <body>
     <?php
-    $root = $_SERVER['DOCUMENT_ROOT']. '/BuffaloDrive/Upload/files/'. $_SESSION['user'];
+    $root = 'D:/files/' . $_SESSION['user'];
     $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
@@ -36,15 +36,13 @@ if (isset($_SESSION['name'])) {
     $mess = '';
     if ($create && $folder) {
 
-        if(file_exists($dir_path . '/' . $folder)){
+        if (file_exists($dir_path . '/' . $folder)) {
             $mess = 'ton tai';
-        }else{
+        } else {
             mkdir($dir_path . '/' . $folder);
             header('Location: ./');
         }
-        
     }
-    $dir_path = $dir_path;
     $files = scandir($dir_path);
     echo $dir_path;
     ?>
@@ -140,11 +138,12 @@ if (isset($_SESSION['name'])) {
             <input type="text" name="folderName">
             <input type="submit" value="New folder" name="create">
         </form>
-        <p class="message"><?= $mess?></p>
+        <p class="message"><?= $mess ?></p>
         <br>
 
-        <form action="upload.php" method="post" enctype="multipart/form-data">
+        <form action="./views/addfile.php" method="post" enctype="multipart/form-data">
             <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="hidden" name="path" value="<?= $dir_path.'/' ?>">
             <input type="submit" value="Upload" name="submit">
         </form>
 
