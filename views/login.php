@@ -3,13 +3,17 @@
     session_start();
     require_once('../config.php');
     $mess='';
+    if (isset($_SESSION['user'])) {
+        header('Location: ../');
+    }
     if(isset($_POST['user']) && $_POST['pass']){
         $result = login($_POST['user'], $_POST['pass'],$conn);
         if($result == null){
             $mess = 'Sai mk';
         }
         else{
-            $_SESSION['name'] = $_POST['user'];
+            $_SESSION['user'] = $result['username'];
+            $_SESSION['name'] = $result['name'];
             header('Location: ../');
         }
     }

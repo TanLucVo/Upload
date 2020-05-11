@@ -8,7 +8,7 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                return  $row['name'];
+                return  $row;
             }
         } else {
             return null;
