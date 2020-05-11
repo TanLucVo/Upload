@@ -1,1 +1,1 @@
-Loi dep trai
+Loi dep trai là ta
