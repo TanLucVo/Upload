@@ -22,13 +22,12 @@ if (isset($_SESSION['name'])) {
 
 <body>
     <?php
-    $root = $_SERVER['DOCUMENT_ROOT'] . "";
+    $root = $_SERVER['DOCUMENT_ROOT'] ;
     $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
     $url = $_SERVER['REQUEST_URI'];
     $back = 'http://localhost:8888' . '' . substr($url, 0, strrpos($url, '/'));
-
     if ($dirName) {
         $dir_path = $root . '/' . $dirName;
     } else {
@@ -37,9 +36,9 @@ if (isset($_SESSION['name'])) {
     if ($create && $folder) {
         mkdir($folder);
     }
+    $dir_path = $dir_path . '/Upload/Upload/files/'. $_SESSION['user'];
     $files = scandir($dir_path);
     echo $dir_path;
-    echo "123123";
     ?>
     <style>
         tr.header {
@@ -90,7 +89,7 @@ if (isset($_SESSION['name'])) {
 
         });
     </script>
-
+    <a href="./views/logout.php">Đăng xuất</a>
 
     <br>
     <div style="width: 300px; margin: auto; margin-bottom: 50px">
