@@ -47,6 +47,7 @@ if (isset($_SESSION['name'])) {
     $dir_path = $dir_path;
     $files = scandir($dir_path);
     echo $dir_path;
+    echo ' ';
     ?>
     <style>
         tr.header {
