@@ -22,7 +22,7 @@ if (isset($_SESSION['name'])) {
 
 <body>
     <?php
-    $root = $_SERVER['DOCUMENT_ROOT']. '/Upload/Upload/files/'. $_SESSION['user'];
+    $root = $_SERVER['DOCUMENT_ROOT']. '/BuffaloDrive/Upload/files/'. $_SESSION['user'];
     $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
@@ -89,7 +89,7 @@ if (isset($_SESSION['name'])) {
                         return;
                     }
 
-                    $.post("http://localhost:8888/upload/Upload/views/rename.php", {
+                    $.post("http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
                             name: Name,
                             path: "<?= $dir_path ?>",
                             newname: newName
@@ -115,7 +115,7 @@ if (isset($_SESSION['name'])) {
                     keyboard: false
                 });
                 $('#delete').click(function() {
-                    $.post("http://localhost:8888/upload/Upload/views/delete.php", {
+                    $.post("http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
                             name: Name,
                             path: "<?= $dir_path ?>"
                         },
