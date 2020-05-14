@@ -23,7 +23,7 @@ if (isset($_SESSION['name'])) {
 
 <body>
     <?php
-    $root = 'D:/files/' . $_SESSION['user'];
+    $root = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/" . $_SESSION['user'];
     $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
@@ -108,12 +108,12 @@ if (isset($_SESSION['name'])) {
                 var a = $(this).attr("href");
                 var parent = $("tr").has(this)[0].querySelector(".link");
                 var Name = $("tr").find($("tr").find(parent))[0]["text"];
-                console.log(Name);
                 $("#myModal1").modal({
                     backdrop: "static",
                     keyboard: false,
                 });
                 $("#delete").click(function() {
+                    
                     $.post(
                         "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
                             name: Name,
@@ -122,7 +122,6 @@ if (isset($_SESSION['name'])) {
                         function(data, status) {
                             if (status) {
                                 item.remove();
-                                console.log("<?= $dir_path ?>");
                             }
                         }
                     );
