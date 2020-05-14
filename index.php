@@ -183,7 +183,7 @@ if (isset($_SESSION['name'])) {
             if ($isDir) {
                 $dirLink = "?dir=$dirLink";
             } else {
-                $dirLink = $dir_path . '/' . $dirLink;
+                $dirLink = $dir_path . '/' . $file;
                 $dirLink = str_replace('C:/xampp/htdocs/','http://localhost:8888/',$dirLink);
                 
             }
