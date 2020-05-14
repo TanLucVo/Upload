@@ -36,7 +36,7 @@
 			</div>
 
 			<div class="form-control w3layouts"> 
-				<input type="text" id="username" name="username" placeholder="Username" title="Please enter your Username" required="">
+				<input type="text" id="username" name="username" placeholder="User Name" title="Please enter your User Name" required="">
 			</div>
 
 			<div class="form-control w3layouts">	
