@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+body{
+    background-color: #F5F5F5;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.descrip{
+    width: 30%;
+    float: left;
+    background-color: white;
+    margin-right: 1%;
+}   
+img{
+    width: 100%;
+}
+.main-desc{
+    width: 90%;
+    margin: 0 auto;
+}
+.content{
+
+    width: 69%;
+    float: right;
+    background-color: white;
+}
+.main-content{
+    width: 90%;
+    margin: 0 auto;
+}
+input[type="text"], textarea{
+    width: 100%;
+    margin-bottom: 20px;
+}
+input[type="submit"]{
+    padding : 15px;
+    background-color: #346ABB;
+    color: white;
+    border: none;
+}
+.footer{
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
+    background-color: #1A1A1A;
+    color: #627175;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+}
+.sticky {
+    position: fixed;
+    top: 0px;
+    width : calc((100% - 16px)*0.3);
+}
+
+
+@media screen and (max-width: 850px) {
+    .descrip{
+        width: 35%;
+    }
+    .content{
+        width: 64%;
+    }
+    .sticky {
+        width : calc((100% - 16px)*0.35);
+    }
+}
+@media screen and (max-width: 650px) {
+
+    .descrip{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .content{
+        width: 100%;
+    }
+
+
+}
+table, th, td {
+    border: 1px solid #9A9A9A ;
+    border-collapse: collapse;
+}
+
+.collapsible {
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+}
+
+.content-collapse{
+    display: none;
+    background-color: #f1f1f1;
+}
+
+button{
+    background: none;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    outline: none;
+}
+.active{
+    background-color: gray; 
+}
+.entries{
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+tr:first-child{
+    border-bottom: 2px solid black;
+}
+button:nth-child(n):not([disabled]):not(.active):hover{
+    background-color:cornflowerblue;
+}
+.collapsible td:first-child{
+    width: 20%;
+}

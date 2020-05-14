@@ -145,7 +145,7 @@ if (isset($_SESSION['name'])) {
         <br>
 
         <form action="./views/addfile.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
             <input type="hidden" name="path" value="<?= $dir_path . '/' ?>">
             <input type="submit" value="Upload" name="submit">
         </form>
@@ -183,7 +183,9 @@ if (isset($_SESSION['name'])) {
             if ($isDir) {
                 $dirLink = "?dir=$dirLink";
             } else {
-                $dirLink = 'http://localhost:8888/' . $dirLink;
+                $dirLink = $dir_path . '/' . $dirLink;
+                $dirLink = str_replace('C:/xampp/htdocs/','http://localhost:8888/',$dirLink);
+                
             }
 
             if (!$isDir) {
