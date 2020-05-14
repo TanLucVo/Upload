@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 11, 2020 lúc 04:45 AM
+-- Thời gian đã tạo: Th5 14, 2020 lúc 08:39 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `doan`
+-- Cơ sở dữ liệu: `upload`
 --
 
 -- --------------------------------------------------------
@@ -50,15 +50,18 @@ INSERT INTO `item` (`userid`, `url`) VALUES
 CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
   `pass` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`username`, `pass`, `name`) VALUES
-('admin', '123456', 'Chủ tịch');
+INSERT INTO `user` (`username`, `pass`, `name`, `email`) VALUES
+('admin', '123456', 'Chủ tịch', 'chutich@gmail.com'),
+('user1', '123456', 'useename1', 'user1@gmail.com'),
+('user2', '123456', 'username2', 'user2@gmail.com');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
