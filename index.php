@@ -214,7 +214,7 @@ if (isset($_SESSION['name'])) {
         ?>
             <tr>
                 <td><img src=<?= $icon ?>></td>
-                <td><a href="<?= $dirLink ?>" class="link"><?= $file ?></a></td>
+                <td><a href="<?= $dirLink ?>" class="link" download='<?=$file?>'><?= $file ?></a></td>
                 <td><?= $type ?></td>
                 <td><?= $time ?></td>
                 <td><?= $size ?></td>
