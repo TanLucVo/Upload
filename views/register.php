@@ -1,7 +1,7 @@
 <?php
 	if (isset($_POST["register"])) {
         //lấy thông tin từ các form bằng phương thức POST
-		$name = $_POST["firstname"] + $_POST["lastname"];
+		$name = $_POST["firstname"].$_POST["lastname"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$email = $_POST["email"];
