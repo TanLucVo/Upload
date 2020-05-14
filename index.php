@@ -44,7 +44,7 @@ if (isset($_SESSION['name'])) {
             $mess = 'ton tai';
         } else {
             mkdir($dir_path . '/' . $folder);
-            addFile($dir_path . '/' . $folder,$_SESSION['user'], $conn);
+            addFile($dir_path . '/' . $folder, $_SESSION['user'], $conn);
             unset($_POST);
             header("Location: ./");
         }
@@ -101,6 +101,7 @@ if (isset($_SESSION['name'])) {
                             if (status) {
                                 $("tr").find($("tr").find(parent))[0]["text"] = newName;
                                 $(".newName").val("");
+                                $(".message").text("");
                             }
                         }
                     );
@@ -117,7 +118,7 @@ if (isset($_SESSION['name'])) {
                     keyboard: false,
                 });
                 $("#delete").click(function() {
-                    
+
                     $.post(
                         "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
                             name: Name,

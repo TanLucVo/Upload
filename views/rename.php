@@ -1,5 +1,6 @@
 <?php
-
+    require_once '../function.php';
+    require_once '../config.php';
     if (!isset($_POST['name']) || !isset($_POST['path']) || !isset($_POST['newname'])) {
         die(json_encode(array('status' => false, 'data' => 'Parameters not valid')));
     }
@@ -10,6 +11,8 @@
 
     try{
         if(rename($path.'/'.$name,$path.'/'.$newName)){
+            $id = idByLink($path . '/' . $name, $conn);
+            renameFile($path . '/' . $newName, $id, $conn);
             echo json_encode(array('status' => true, 'data' => 'rename success'));
         }else{  
             echo json_encode(array('status' => true, 'data' => "Can't rename"));
