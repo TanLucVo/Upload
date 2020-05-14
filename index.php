@@ -1,10 +1,13 @@
 <?php
+require_once './function.php';
+require_once './config.php';
 session_start();
 if (!isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
     header('Location: ./views/login.php');
 }
 if (isset($_SESSION['name'])) {
-    echo $_SESSION['name'];
+    $name = $_SESSION['name'];
 }
 ?>
 
@@ -41,6 +44,7 @@ if (isset($_SESSION['name'])) {
             $mess = 'ton tai';
         } else {
             mkdir($dir_path . '/' . $folder);
+            addFile($dir_path . '/' . $folder,$_SESSION['user'], $conn);
             unset($_POST);
             header("Location: ./");
         }
