@@ -16,7 +16,7 @@
 <!-- /fonts -->
 <!-- css -->
 <link href="Content/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
-<link href="Content/Styles/style.css" rel='stylesheet' type='text/css' media="all" />
+<link href="Content/Styles/signup.css" rel='stylesheet' type='text/css' media="all" />
 <!-- /css -->
 </head>
 <body>
@@ -29,6 +29,10 @@
 		<form action="signup.php" method="post">
 			<div class="form-control w3layouts"> 
 				<input type="text" id="firstname" name="firstname" placeholder="First Name" title="Please enter your First Name" required="">
+			</div>
+
+			<div class="form-control w3layouts"> 
+				<input type="text" id="lastname" name="lastname" placeholder="Last Name" title="Please enter your Last Name" required="">
 			</div>
 
 			<div class="form-control w3layouts"> 
