@@ -27,19 +27,19 @@
 	</div>
 	<div class="content-agile2">
 		<form action="signup.php" method="post">
-			<div class="form-control w3layouts"> 
+			<div class="form-control"> 
 				<input type="text" id="firstname" name="firstname" placeholder="First Name" title="Please enter your First Name" required="">
 			</div>
 
-			<div class="form-control w3layouts"> 
+			<div class="form-control"> 
 				<input type="text" id="lastname" name="lastname" placeholder="Last Name" title="Please enter your Last Name" required="">
 			</div>
 
-			<div class="form-control w3layouts"> 
+			<div class="form-control"> 
 				<input type="text" id="username" name="username" placeholder="User Name" title="Please enter your User Name" required="">
 			</div>
 
-			<div class="form-control w3layouts">	
+			<div class="form-control">	
 				<input type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="">
 			</div>
 
