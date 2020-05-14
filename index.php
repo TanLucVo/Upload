@@ -21,7 +21,7 @@ if (isset($_SESSION['name'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="./Content/Scripts/main.js"></script>
 </head>
 
 <body>
@@ -83,9 +83,7 @@ if (isset($_SESSION['name'])) {
 
                 $("#save").click(function() {
                     newName = $("#newname").val();
-                    console.log(allName);
                     if (allName.search(newName) != -1) {
-                        console.log("trung");
                         $(".message").text("Name exist");
                         return;
                     }
@@ -184,8 +182,7 @@ if (isset($_SESSION['name'])) {
                 $dirLink = "?dir=$dirLink";
             } else {
                 $dirLink = $dir_path . '/' . $file;
-                $dirLink = str_replace('C:/xampp/htdocs/','http://localhost:8888/',$dirLink);
-                
+                $dirLink = str_replace('C:/xampp/htdocs/', 'http://localhost:8888/', $dirLink);
             }
 
             if (!$isDir) {

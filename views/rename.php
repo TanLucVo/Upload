@@ -13,7 +13,9 @@
         if(rename($path.'/'.$name,$path.'/'.$newName)){
             $id = idByLink($path . '/' . $name, $conn);
             renameFile($path . '/' . $newName, $id, $conn);
-            echo json_encode(array('status' => true, 'data' => 'rename success'));
+            header('Location: ' . $_SERVER['REQUEST_URI']);
+
+        
         }else{  
             echo json_encode(array('status' => true, 'data' => "Can't rename"));
         }

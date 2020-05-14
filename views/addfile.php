@@ -35,6 +35,7 @@ try {
                 if (move_uploaded_file($file_tmpname, $filepath)) {
                     echo "{$file_name} successfully uploaded <br />";
                     addFile($filepath, $_SESSION['user'], $conn);
+                    
                 } else {
                     echo "Error uploading {$file_name} <br />";
                 }
