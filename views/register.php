@@ -13,7 +13,7 @@
                     ('$username','$password','$name','$email')";
 			// thực thi câu $sql với biến conn lấy từ file config.php
 			mysqli_query($conn,$sql);
-			echo "chúc mừng bạn đã đăng ký thành công";
+			header('Location: ./views/login.php');
 		}
 	}
 ?>
