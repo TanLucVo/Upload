@@ -34,7 +34,7 @@ if (isset($_POST['user']) && $_POST['pass']) {
         <p><?= $mess ?></p>
         <input type="submit" value="submit">
     </form>
-    <a href="http://localhost:8888/BuffaloDrive/Upload/signup.php"></a>
+    <a href="http://localhost:8888/BuffaloDrive/Upload/signup.php">Đăng ký</a>
 </body>
 
 </html>
