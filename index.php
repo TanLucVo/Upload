@@ -38,6 +38,9 @@ if (isset($_SESSION['name'])) {
         $dir_path = $root;
     }
     $mess = '';
+    if (!file_exists($root)) {
+        mkdir($root);
+    }
     if ($create && $folder) {
 
         if (file_exists($dir_path . '/' . $folder)) {
