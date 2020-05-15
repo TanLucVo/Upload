@@ -62,5 +62,28 @@
         $stmt->bind_param('si', $link, $id);
         $stmt->execute();
     }
+    function register($username,$password,$name,$email, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("INSERT INTO user(username,pass,name,email) VALUES (?,?,?,?)");
+        $stmt->bind_param('ssss', $username, $password, $name, $email);
+        $stmt->execute();
+    }
+    function checkUser($username, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? ");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result(); // get the mysqli result
+        if ($result->num_rows > 0) {
+            // output data of each row
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 ?>

@@ -2,11 +2,11 @@
 require_once './function.php';
 require_once './config.php';
 session_start();
-if (!isset($_SESSION['user'])) {
-    $user = $_SESSION['user'];
+if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     header('Location: ./views/login.php');
 }
-if (isset($_SESSION['name'])) {
+else{
+    $user = $_SESSION['user'];
     $name = $_SESSION['name'];
 }
 ?>
