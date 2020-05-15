@@ -11,6 +11,4 @@ $(document).ready(function(){
             link.attr("download", newName);
         })
     })
-   
-
 })
