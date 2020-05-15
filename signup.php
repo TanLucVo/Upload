@@ -22,7 +22,7 @@
 <!-- /fonts -->
 <!-- css -->
 <link href="Content/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
-<link href="Content/Styles/signup.css" rel='stylesheet' type='text/css' media="all" />
+<link href="Content/Styles/register.css" rel='stylesheet' type='text/css' media="all" />
 <!-- /css -->
 </head>
 <body>
