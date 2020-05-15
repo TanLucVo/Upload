@@ -1,0 +1,23 @@
+nav{
+    background-color: none !important;
+    border: 1px solid #dadce0;
+    border-width: 1px 0px 1px 0px;
+    height: 64px;
+    padding: 50px;
+    min-height: 28px;
+}
+.search{
+    min-width: 70%;
+    width: 60%;
+}
+.search input{
+    width: 90% !important;
+    height: 50px;
+    background-color: rgba(0,0,0,.1);
+}
+.navbar-brand{
+    width: 15%;
+}
+.navbar-nav{
+    width: 25%;
+}
