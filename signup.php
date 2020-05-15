@@ -1,6 +1,12 @@
 <?php
 	require_once 'config.php';
-	require_once 'views/register.php';
+	session_start();
+	if(isset($_SESSION['mess'])){
+		$mess= $_SESSION['mess'];
+	}else{
+		$mess='';
+	}
+	unset($_SESSION['mess']);
 ?>
 <!doctype html>
 <html>
@@ -26,7 +32,7 @@
 		<h2 class="agileits1">Buffalo-Drive</h2>
 	</div>
 	<div class="content-agile2">
-		<form action="signup.php" method="post">
+		<form action="./views/register.php" method="post">
 			<div class="form-control"> 
 				<input type="text" id="firstname" name="firstname" placeholder="First Name" title="Please enter your First Name" required="">
 			</div>
@@ -50,7 +56,7 @@
 			<div class="form-control agileinfo">	
 				<input type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="password2" required="">
 			</div>			
-			
+			<p><?= $mess ?></p>
 			<input type="submit" class="register" name="register" value="Register">
 		</form>
 		<script type="text/javascript">
