@@ -58,6 +58,7 @@
 			</div>			
 			<p><?= $mess ?></p>
 			<input type="submit" class="register" name="register" value="Register">
+			<a class="cancel" href="http://localhost:8888/BuffaloDrive/Upload/views/login.php">Cancel</a>
 		</form>
 		<script type="text/javascript">
 			window.onload = function () {

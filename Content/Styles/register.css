@@ -28,6 +28,29 @@ table {
 }
 
 /* start editing from here */
+/* Login */
+.form-check {
+    margin-left: 36px;
+    color: white;
+}
+a.forgot {
+    margin-right: 36px;
+    color: white;
+    float: right;
+}
+div.content-agile2 {
+    margin-top: 70px;
+}
+div.form-register-check {
+    margin: 50px auto;
+    display: flex;
+}
+a.check-register {
+    color: white;
+    margin: auto;
+}
+/* Login */
+
 a {
 	text-decoration:none;
 }
@@ -198,6 +221,30 @@ input.register:hover {
 	color: #fff;
     background-color:#3970b0;
 }
+a.cancel {
+    width: 335px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 30px auto;
+    display: block;
+    text-align: center;
+    font-size: 17px;
+    font-weight: normal;
+    color: black;
+    background-color:#fff;
+    border-color: transparent;
+	font-family: 'Raleway', sans-serif;
+	transition:all 0.5s ease-in-out;
+	-webkit-transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	-ms-transition:all 0.5s ease-in-out;
+	cursor:pointer;
+}
+a.cancel:hover {
+	color: black;
+    background-color:#F6F6F6;
+}
 p.wthree {
     font-size: 16px;
     font-weight: normal;
@@ -289,6 +336,9 @@ input#firstname, input#lastname, input#username, input#email, input#password1, i
 input.register {
     width: 295px;
 }
+a.cancel {
+    width: 295px;
+}
 p.agileits2 {
     font-size: 14px;
     line-height: 30px;
@@ -359,6 +409,10 @@ input.register {
     width: 260px;
 	height:45px;
 }
+a.cancel {
+    width: 260px;
+	height:45px;
+}
 p.wthree {
     font-size: 14px;
     padding: 0 15px 20px;
@@ -408,6 +462,11 @@ input#firstname, input#lastname, input#username, input#email, input#password1, i
     margin: 0 auto;
 }
 input.register {
+    width: 230px;
+    height: 40px;
+	font-size:15px;
+}
+a.cancel {
     width: 230px;
     height: 40px;
 	font-size:15px;

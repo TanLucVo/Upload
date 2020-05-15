@@ -33,28 +33,6 @@ if (isset($_POST['user']) && $_POST['pass']) {
 <link href="../Content/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../Content/Styles/register.css" rel='stylesheet' type='text/css' media="all" />
 <!-- /css -->
-<style>
-	.form-check {
-		margin-left: 36px;
-		color: white;
-	}
-	a.forgot {
-		margin-right: 36px;
-		color: white;
-		float: right;
-	}
-	div.content-agile2 {
-		margin-top: 70px;
-    }
-    div.form-register-check {
-        margin: 50px auto;
-        display: flex;
-    }
-    a.check-register {
-        color: white;
-        margin: auto;
-    }
-</style>
 </head>
 <body>
 <h1 class="w3ls">Login Form</h1>
