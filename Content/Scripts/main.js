@@ -11,4 +11,8 @@ $(document).ready(function(){
             link.attr("download", newName);
         })
     })
+    //template
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
 })
