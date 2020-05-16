@@ -205,3 +205,13 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/* Design upload table */
+tr.infor_upload:hover {
+    cursor: pointer;
+    color: black;
+    background-color: #AFAFAF;
+    padding-bottom: 2px;
+}
+#MyTable {
+
+}
