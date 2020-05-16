@@ -12,11 +12,13 @@
 		$email = $_POST["email"];
 		//Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
 		if (!checkUser($username, $conn)) {
-			$mess =  "Tên đăng nhập đã tồn tại";
+			$mess =  "Username already exists, please enter it again.";
 			$_SESSION['mess'] = $mess;
 			unset($_POST);
 			header('Location: ./register.php');
 		}else{
+			$mess =  "You have successfully registered an account.";
+			$_SESSION['mess'] = $mess;
 			unset($_POST);
 			register($username,$password,$name,$email, $conn);
 			
@@ -69,6 +71,7 @@
 			</div>			
 			<input type="submit" class="register" name="register" value="Register">
 			<a class="cancel" href="http://localhost:8888/BuffaloDrive/Upload/views/login.php">Cancel</a>
+			<p><?= $mess ?></p>
 		</form>
 		<script type="text/javascript">
 			window.onload = function () {
