@@ -15,10 +15,4 @@ $(document).ready(function(){
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
-    //Index
-    $('.infor_upload').click(function () {
-        $('.infor_upload').css({
-            "background-color":"#AFAFAF"
-        });
-    });
 })

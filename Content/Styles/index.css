@@ -167,7 +167,7 @@ body{
 }
 @media only screen and (max-width: 1400px) and (min-width: 991px){
     .search {
-        margin-left: -120px;
+        margin-left: -125px;
     }
 }
 .searchTerm {
@@ -219,3 +219,4 @@ tr.infor_upload:hover {
     cursor: pointer;
     background-color: #AFAFAF;
 }
+/* Design upload table */
