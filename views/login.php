@@ -1,27 +1,27 @@
 <?php
-include('../function.php');
-session_start();
-require_once('../config.php');
-$mess = '';
-if (isset($_SESSION['user'])) {
-    header('Location: ../');
-}
-if (isset($_POST['user']) && $_POST['pass']) {
-    $result = login($_POST['user'], $_POST['pass'], $conn);
-    if ($result == null) {
-        $mess = 'Sai mk';
-    } else {
-        $_SESSION['user'] = $result['username'];
-        $_SESSION['name'] = $result['name'];
-        header('Location: ../');
-    }
-}
-if(isset($_SESSION['mess'])){
-	$mess= $_SESSION['mess'];
-}else{
-	$mess='';
-}
-unset($_SESSION['mess']);
+	include('../function.php');
+	session_start();
+	require_once('../config.php');
+	$mess = '';
+	if (isset($_SESSION['user'])) {
+		header('Location: ../');
+	}
+	if (isset($_POST['user']) && $_POST['pass']) {
+		$result = login($_POST['user'], $_POST['pass'], $conn);
+		if ($result == null) {
+			$mess = 'Sai mk';
+		} else {
+			$_SESSION['user'] = $result['username'];
+			$_SESSION['name'] = $result['name'];
+			header('Location: ../');
+		}
+	}
+	if(isset($_SESSION['mess'])){
+		$mess= $_SESSION['mess'];
+	}else{
+		$mess='';
+	}
+	unset($_SESSION['mess']);
 ?>
 <!doctype html>
 <html>
@@ -43,7 +43,6 @@ unset($_SESSION['mess']);
 	</div>
 	<div class="content-agile2">
 		<form action="" method="post">
-			<p class="notification"><?= $mess ?></p>
 			<div class="form-control"> 
 				<input type="text" id="username" name="user" placeholder="User Name" title="Please enter your User Name" required="">
 			</div>
@@ -61,7 +60,9 @@ unset($_SESSION['mess']);
             <div class="form-register-check">
                 <a class="check-register" href="http://localhost:8888/BuffaloDrive/Upload/views/register.php" >You don't have account?</a>
 			</div>
+			<p class="notification"><?= $mess ?></p>
 		</form>
+		
     </div>
 	<div class="clear"></div>
 </div>
