@@ -13,7 +13,7 @@
 		//Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
 		if (!checkUser($username, $conn)) {
 			$mess =  "Tên đăng nhập đã tồn tại";
-			// $_SESSION['mess'] = $mess;
+			$_SESSION['mess'] = $mess;
 			unset($_POST);
 			header('Location: ./register.php');
 		}else{
