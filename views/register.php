@@ -25,9 +25,9 @@
 		}
 	}
 	if(isset($_SESSION['mess'])){
-		$mess= $_SESSION['mess'];
+		$mess = $_SESSION['mess'];
 	}else{
-		$mess='';
+		$mess = '';
 	}
 	unset($_SESSION['mess']);
 ?>
