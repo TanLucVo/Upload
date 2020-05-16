@@ -210,7 +210,11 @@ td, tr {
     height: 40px;
 }
 tr.infor_upload {
-    border-top: 1px solid #DADCE0;
+    border-top: 2px solid #DADCE0;
+    border-bottom: 2px solid #DADCE0;
+}
+td.name_upload {
+    padding-left: 15px;
 }
 #MyTable {
     overflow: auto;
@@ -218,6 +222,9 @@ tr.infor_upload {
 tr.infor_upload:hover {
     cursor: pointer;
     background-color: #AFAFAF;
+}
+.infor_upload_toggle {
+    background-color: LightGray;
 }
 /* Design upload table */
 /* Name user */
@@ -227,3 +234,7 @@ h2.name_user {
 .title_menu {
     margin-left: 10px;
 }
+th.order_name {
+    cursor: pointer;
+}
+/* Name user */

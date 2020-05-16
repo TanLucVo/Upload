@@ -15,4 +15,7 @@ $(document).ready(function(){
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
+    $('tr.infor_upload').click(function () {
+        $(this).toggleClass('infor_upload_toggle');
+    });
 });
