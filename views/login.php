@@ -43,6 +43,7 @@ unset($_SESSION['mess']);
 	</div>
 	<div class="content-agile2">
 		<form action="" method="post">
+			<p class="notification"><?= $mess ?></p>
 			<div class="form-control"> 
 				<input type="text" id="username" name="user" placeholder="User Name" title="Please enter your User Name" required="">
 			</div>
@@ -59,9 +60,6 @@ unset($_SESSION['mess']);
             </div>
             <div class="form-register-check">
                 <a class="check-register" href="http://localhost:8888/BuffaloDrive/Upload/views/register.php" >You don't have account?</a>
-			</div>
-			<div>
-				<p><?= $mess ?></p>
 			</div>
 		</form>
     </div>

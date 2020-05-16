@@ -10,7 +10,6 @@
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$email = $_POST["email"];
-		//Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
 		if (!checkUser($username, $conn)) {
 			$mess =  "Username already exists, please enter it again.";
 			$_SESSION['mess'] = $mess;
@@ -25,6 +24,12 @@
 			header('Location: ./login.php');
 		}
 	}
+	if(isset($_SESSION['mess'])){
+		$mess= $_SESSION['mess'];
+	}else{
+		$mess='';
+	}
+	unset($_SESSION['mess']);
 ?>
 <!doctype html>
 <html>
@@ -45,7 +50,7 @@
 		<h2 class="agileits1">Buffalo-Drive</h2>
 	</div>
 	<div class="content-agile2">
-		<form action="./views/register.php" method="post">
+		<form action="./register.php" method="post">
 			<div class="form-control"> 
 				<input type="text" id="firstname" name="firstname" placeholder="First Name" title="Please enter your First Name" required="">
 			</div>
@@ -71,7 +76,7 @@
 			</div>			
 			<input type="submit" class="register" name="register" value="Register">
 			<a class="cancel" href="http://localhost:8888/BuffaloDrive/Upload/views/login.php">Cancel</a>
-			<p><?= $mess ?></p>
+			<p class="notification"><?= $mess ?></p>
 		</form>
 		<script type="text/javascript">
 			window.onload = function () {

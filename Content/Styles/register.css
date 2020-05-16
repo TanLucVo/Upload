@@ -50,7 +50,17 @@ a.check-register {
     margin: auto;
 }
 /* Login */
-
+/* notification */
+p.notification {
+	color: black;
+	text-align: center;
+	padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    /* opacity: 0;
+    transition: all ease 2s; */
+}
+/* notification */
 a {
 	text-decoration:none;
 }
