@@ -220,3 +220,10 @@ tr.infor_upload:hover {
     background-color: #AFAFAF;
 }
 /* Design upload table */
+/* Name user */
+h2.name_user {
+    text-align: center;
+}
+.title_menu {
+    margin-left: 10px;
+}
