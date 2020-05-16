@@ -41,11 +41,7 @@ a:focus {
     border-bottom: 1px dashed #ddd;
     margin: 40px 0;
 }
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-
+/* Sidebar side */
 .wrapper {
     display: flex;
     width: 100%;
@@ -136,22 +132,14 @@ a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
 }
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
+/* Content style */
 #content {
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
 }
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-
+/* Responsive */
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
@@ -162,4 +150,58 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+/* Search */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+    background: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+    /* margin-left: -140px; */
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+@media only screen and (max-width: 1400px) and (min-width: 991px){
+    .search {
+        margin-left: -120px;
+    }
+}
+.searchTerm {
+    width: 100%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 15px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.searchTerm:focus{
+    color: #00B4CC;
+}
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Resize the wrap to see the search bar change! */
+.wrap{
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
