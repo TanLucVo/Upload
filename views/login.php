@@ -16,6 +16,12 @@ if (isset($_POST['user']) && $_POST['pass']) {
         header('Location: ../');
     }
 }
+if(isset($_SESSION['mess'])){
+	$mess= $_SESSION['mess'];
+}else{
+	$mess='';
+}
+unset($_SESSION['mess']);
 ?>
 <!doctype html>
 <html>
@@ -52,8 +58,11 @@ if (isset($_POST['user']) && $_POST['pass']) {
 				<a href="" class="forgot">Forgot password?</a>
             </div>
             <div class="form-register-check">
-                <a class="check-register" href="http://localhost:8888/BuffaloDrive/Upload/signup.php" >You don't have account?</a>
-            </div>
+                <a class="check-register" href="http://localhost:8888/BuffaloDrive/Upload/views/register.php" >You don't have account?</a>
+			</div>
+			<div>
+				<p><?= $mess ?></p>
+			</div>
 		</form>
     </div>
 	<div class="clear"></div>
