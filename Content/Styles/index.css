@@ -165,11 +165,13 @@ body{
     position: relative;
     display: flex;
 }
+/* Responsive Search */
 @media only screen and (max-width: 1400px) and (min-width: 991px){
     .search {
         margin-left: -125px;
     }
 }
+/* Responsive Search */
 .searchTerm {
     width: 100%;
     border: 3px solid #00B4CC;
@@ -205,6 +207,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/* index.php */
 /* Design upload table */
 td, tr {
     height: 40px;
@@ -238,3 +241,21 @@ th.order_name {
     cursor: pointer;
 }
 /* Name user */
+/* index.php */
+
+/* profile.php */
+input.edit_resume {
+    padding: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: #17A2B8;
+}
+input.edit_resume:hover {
+    background-color: #117A8B;
+}
+span.title_profile {
+    font-size: 20px;
+    font-weight: bold;
+}
+/* profile.php */
