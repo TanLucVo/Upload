@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buffalo Drive</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="Content/Styles/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
@@ -17,6 +17,25 @@
     <script src="Content/Scripts/main.js"></script>
 </head>
 <body>
+    <!-- Rename - Delete -->
+    <script>
+        $(document).ready(function() {
+            $(".rename").click(function() {
+                $("#myModal").modal({
+                    backdrop: "static",
+                    keyboard: false,
+                });
+            });
+
+            $(".delete").click(function() {
+                $("#myModal1").modal({
+                    backdrop: "static",
+                    keyboard: false,
+                });
+            });
+        });
+    </script>
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -107,27 +126,95 @@
                     <th>Owner</th>
                     <th>Last modified</th>
                     <th>Size</th>
+                    <th>Action</th>
                 </tr>
                 <tr class="infor_upload">
                     <td class="name_upload"><span class="fa fa-folder"></span> loi</td>
                     <td class="owner_upload">Me</td>
                     <td class="time_upload">15/05/2020</td>
                     <td class="size_upload">--</td>
+                    <td><a href="#" class="rename">Rename</a> | <a href="#" class="delete">Delete</a></td>
                 </tr>
                 <tr class="infor_upload">
                     <td class="name_upload"><span class="fa fa-folder"></span> sex</td>
                     <td class="owner_upload">Chon Luc</td>
                     <td class="time_upload">15/05/2020</td>
                     <td class="size_upload">--</td>
+                    <td><a href="#" class="rename">Rename</a> | <a href="#" class="delete">Delete</a></td>
                 </tr>
                 <tr class="infor_upload">
                     <td class="name_upload"><span class="fa fa-file"></span> document.txt</td>
                     <td class="owner_upload">Me</td>
                     <td class="time_upload">16/05/2020</td>
                     <td class="size_upload">35 KB</td>
+                    <td><a href="#" class="rename">Rename</a> | <a href="#" class="delete">Delete</a></td>
                 </tr>
             </table>
         </div>
     </div>
+
+    <!-- Rename dialog -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Đổi tên thư mục</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Nhập tên mới.</p>
+                    <input type="text" id="newname">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='save'">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Rename dialog -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Rename folder</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Enter a new name.</p>
+                    <input type="text" id="newname">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='save'">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Rename dialog -->
+    <!-- Delete dialog -->
+    <div class=" modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete folder</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete dialog -->
 </body>
 </html>

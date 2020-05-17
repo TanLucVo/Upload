@@ -256,24 +256,24 @@ else{
     <!-- Rename dialog -->
     <!-- Delete dialog -->
     <div class=" modal fade" id="myModal1" role="dialog">
-                        <div class="modal-dialog">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Đổi tên thư mục</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Bạn có chắc chắn muốn xóa ?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Xóa</button>
-                                </div>
-                            </div>
-                        </div>
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Đổi tên thư mục</h4>
                 </div>
-                <!-- Delete dialog -->
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete dialog -->
 
 </body>
 
