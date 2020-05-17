@@ -18,7 +18,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="./Content/Scripts/main.js"></script>
@@ -68,8 +68,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         } else {
             mkdir($dir_path . '/' . $folder);
             addFile($dir_path . '/' . $folder, $_SESSION['user'], $conn);
-            unset($_POST);
-            header("Location: ./");
+            header('Location: ' . $_SERVER['REQUEST_URI']);
         }
     }
     $files = scandir($dir_path);
@@ -95,6 +94,12 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             });
             $("#newfile").click(function() {
                 $("#addFile").modal({
+                    backdrop: "static",
+                    keyboard: false,
+                });
+            });
+            $("#newfolder").click(function() {
+                $("#addFolder").modal({
                     backdrop: "static",
                     keyboard: false,
                 });
@@ -135,6 +140,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             });
 
             $(".delete").click(function() {
+                console.log('<?= $dir_path ?>');
                 var item = this.parentNode.parentNode;
                 var a = $(this).attr("href");
                 var parent = $("tr").has(this)[0].querySelector(".link");
@@ -144,7 +150,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                     keyboard: false,
                 });
                 $("#delete").click(function() {
-
                     $.post(
                         "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
                             name: Name,
@@ -173,7 +178,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             <div class="collapse multi-collapse" id='multiCollapse'>
                 <a class="dropdown-item" href="#" id='newfile'>New File</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">New Folder</a>
+                <a class="dropdown-item" href="#" id='newfolder'>New Folder</a>
             </div>
             <div class="recent d-flex">
                 <svg class="a-s-fa-Ha-pa" width="1em" height="1em" viewBox="0 0 24 24" fill="#000000" focusable="false">
@@ -210,169 +215,8 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
         </div>
         <div class="col-9">
-            <hr>
-            <div class="current-page">
-                <h5>My Driver</h5>
-            </div>
-            <hr>
-            <div style="width: 300px; margin: auto; margin-bottom: 50px">
-                <form method="post">
-                    <input type="text" name="folderName">
-                    <input type="submit" value="New folder" name="create">
-                </form>
-                <p class="message"><?= $mess ?></p>
-                <br>
-
-
-
-            </div>
-
-
-
-            <table border="1" cellpadding="15" cellspacing="10" style="text-align: center; margin: auto; border-collapse: collapse">
-                <tr>
-                    <td colspan="6">
-                        <a href="<?= $back ?>"><button>Back</button></a>
-                    </td>
-                </tr>
-                <tr class="header">
-                    <td>Icon</td>
-                    <td>File name</td>
-                    <td>Type</td>
-                    <td>Last modified</td>
-                    <td>File size</td>
-                    <td>Action</td>
-                </tr>
-                <?php
-                foreach ($files as $file) {
-                    if (substr($file, 0, 1) === '.') {
-                        continue;
-                    }
-                    $path = $dir_path . '/' . $file;
-                    $isDir = is_dir($path);
-                    $ext = pathinfo($path, PATHINFO_EXTENSION);
-                    $time = date('d/m/yy', filemtime($path));
-                    $size = '-';
-                    $dirLink = str_replace($root, '', $path);
-                    $dirLink = substr($dirLink, 1);
-                    if ($isDir) {
-                        $dirLink = "?dir=$dirLink";
-                    } else {
-                        $dirLink = $dir_path . '/' . $file;
-                        $dirLink = str_replace('C:/xampp/htdocs/', 'http://localhost:8888/', $dirLink);
-                    }
-
-                    if (!$isDir) {
-                        $size = filesize($path);
-                        if ($size > 1000000) {
-                            $size = round($size / 1000000.0, 1) . ' MB';
-                        } else if ($size > 1000) {
-                            $size = round($size / 1000.0, 1) . ' KB';
-                        } else {
-                            $size = $size . ' Bytes';
-                        }
-                    }
-                    if ($isDir) {
-                        $type = 'Directory';
-                        $icon = './Content/Images/Folder-icon.png';
-                    } else if ($ext == 'html') {
-                        $type = 'HTML Document';
-                        $icon = './Content/Images/text-x-tex-icon.png';
-                    } else if ($ext == 'gif') {
-                        $type = 'Dynamic Image';
-                        $icon = './Content/Images/document-compress-icon.png';
-                    } else if ($ext == 'png') {
-                        $type = 'PNG Image';
-                        $icon = './Content/Images/mp4-icon.png';
-                    } else {
-                        $type = 'Unknown File';
-                        $icon = './Content/Images/document-compress-icon.png';
-                    }
-                ?>
-                    <tr>
-                        <td><img src=<?= $icon ?>></td>
-                        <td><a href="<?= $dirLink ?>" class="link" download='<?= $file ?>'><?= $file ?></a></td>
-                        <td><?= $type ?></td>
-                        <td><?= $time ?></td>
-                        <td><?= $size ?></td>
-                        <td><a href="#" class="rename">Rename</a> | <a href="#" class="delete">Delete</a></td>
-                    </tr>
-
-                <?php
-
-                }
-                ?>
-            </table>
-
-
-            <!-- Rename dialog -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Đổi tên thư mục</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                        </div>
-                        <div class="modal-body">
-                            <p>Nhập tên mới.</p>
-                            <input type="text" id="newname">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal" id='save'">Lưu</button>
-                </div>
-            </div>
+            <?php require_once './views/userpage.php'?>
         </div>
-    </div>
-    <!-- Delete dialog -->
-    <div class=" modal fade" id="myModal1" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Đổi tên thư mục</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Bạn có chắc chắn muốn xóa ?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                            <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Xóa</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <!-- Delete dialog -->
-                    </div>
-                </div>
-                <!-- Add file dialog -->
-                <div class="modal fade" id="addFile" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <h4 class="modal-title">New File</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="./views/addfile.php" method="post" enctype="multipart/form-data">
-                                    <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
-                                    <input type="hidden" name="path" value="<?= $dir_path . '/' ?>">
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                        <input class='btn btn-success' type="submit" value="Upload" name="submit">
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
 
 </body>
 
