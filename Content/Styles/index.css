@@ -198,7 +198,11 @@ body{
     cursor: pointer;
     font-size: 20px;
 }
-
+/* Modal dialog */
+h4.modal-title {
+    padding-right: 200px;
+}
+/* Modal dialog */
 /* Resize the wrap to see the search bar change! */
 .wrap{
     width: 30%;
@@ -210,7 +214,7 @@ body{
 /* index.php */
 /* Design upload table */
 td, tr {
-    height: 40px;
+    height: 50px;
 }
 tr.infor_upload {
     border-top: 2px solid #DADCE0;
@@ -228,6 +232,19 @@ tr.infor_upload:hover {
 }
 .infor_upload_toggle {
     background-color: LightGray;
+}
+a.back {
+    margin-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #17A2B8;
+    color: white;
+    border-radius: 4px;
+}
+a.back:hover {
+    background-color: #117A8B;
 }
 /* Design upload table */
 /* Name user */

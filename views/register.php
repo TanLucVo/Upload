@@ -75,7 +75,7 @@
 				<input type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="password2" required="">
 			</div>			
 			<input type="submit" class="register" name="register" value="Register">
-			<a class="cancel" href="http://localhost:8888/BuffaloDrive/Upload/views/login.php">Cancel</a>
+			<a class="cancel" href="./login.php">Cancel</a>
 			<p class="notification"><?= $mess ?></p>
 		</form>
 		<script type="text/javascript">
