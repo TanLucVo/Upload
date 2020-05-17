@@ -27,6 +27,40 @@
                 });
             });
 
+            $(".rename").click(function() {
+                var allName = $(".link").text();
+
+                var newName;
+                var item = this.parentNode.parentNode;
+                var a = $(this).attr("href");
+                var parent = $("tr").has(this)[0].querySelector(".link");
+                var Name = $("tr").find($("tr").find(parent))[0]["text"];
+
+                $("#save").click(function() {
+                    newName = $("#newname").val();
+                    if (allName.search(newName) != -1) {
+                        $(".message").text("Name exist");
+                        return;
+                    }
+
+                    $.post(
+                        "http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
+                            name: Name,
+                            path: "<?= $dir_path ?>",
+                            newname: newName,
+                        },
+                        function(data, status) {
+                            console.log(status);
+                            if (status) {
+                                $("tr").find($("tr").find(parent))[0]["text"] = newName;
+                                $(".newName").val("");
+                                $(".message").text("");
+                            }
+                        }
+                    );
+                });
+            });
+
             $(".delete").click(function() {
                 $("#myModal1").modal({
                     backdrop: "static",
