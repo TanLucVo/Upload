@@ -18,4 +18,6 @@ $(document).ready(function(){
     $('tr.infor_upload').click(function () {
         $(this).toggleClass('infor_upload_toggle');
     });
+    
+
 });
