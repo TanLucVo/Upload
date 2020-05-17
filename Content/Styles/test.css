@@ -1,0 +1,97 @@
+nav{
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 20px;
+    
+}
+.infor{
+    right: 10px;
+    max-height: 60px;
+    margin-bottom: 0 !important;
+    border: 1px solid rgba(0,0,0,.1);
+    padding : 5px;
+    border-radius: 10px;
+}
+.infor p, .infor a{
+    margin-bottom: 0;
+    margin: auto 10px;
+    width: 50%;
+}
+.infor img{
+    width: 50px ;
+    height: 50px ;
+    border-radius: 100px;
+}
+.search{
+    width : 80%;
+}
+.search input{
+    height: 46px;
+    width: 40% !important;
+    margin: auto;
+}
+.left{
+    min-width: 250px;
+}
+.new svg{
+    font-size: 30px;
+    margin-bottom: 0;
+    margin: auto 10px;
+    width: 30%;
+}
+.new{
+    font-family:"Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    width: 140px;
+    height: 60px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 50px;
+    color: #3c4043;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: .15px;
+    line-height: 22px;
+    box-shadow: 3px 3px 5px #aaaaaa;
+    margin: 10px;
+}
+.new:hover{
+    box-shadow: 3px 3px 10px #aaaaaa;
+}
+.new p{
+    width: 70%;
+    margin-bottom: 0;
+    margin: auto 10px;
+    width: 50%;
+}
+@media only screen and (max-width: 992px) {
+    .search{
+        width: 100%;
+    }
+    .search input {
+        width: 100% !important;
+        margin: auto;
+    }
+}
+.recent,.my-drive, .trash, .stored{
+    font-family:"Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    width: 240px;
+    height: 60px;
+    color: #3c4043;
+    font-weight: 550;
+    font-size: 16px;
+    letter-spacing: .15px;
+    line-height: 22px;
+    margin: 10px;
+}
+.recent svg, .my-drive svg, .trash svg, .stored svg{
+    font-size: 30px;
+    margin-bottom: 0;
+    margin: auto 10px;
+    width: 30%;
+}
+.recent p, .my-drive p, .trash p, .stored>p{
+    width: 70%;
+    margin-bottom: 0;
+    margin: auto 10px;
+    width: 50%;
+}

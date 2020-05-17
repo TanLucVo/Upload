@@ -258,4 +258,7 @@ span.title_profile {
     font-size: 20px;
     font-weight: bold;
 }
+table a{
+    color: #007bff;
+}
 /* profile.php */
