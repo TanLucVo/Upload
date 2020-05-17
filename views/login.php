@@ -58,7 +58,7 @@
 				<a href="" class="forgot">Forgot password?</a>
             </div>
             <div class="form-register-check">
-                <a class="check-register" href="http://localhost:8888/BuffaloDrive/Upload/views/register.php" >You don't have account?</a>
+                <a class="check-register" href="./register.php" >You don't have account?</a>
 			</div>
 			<p class="notification"><?= $mess ?></p>
 		</form>
