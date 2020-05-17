@@ -233,6 +233,19 @@ tr.infor_upload:hover {
 .infor_upload_toggle {
     background-color: LightGray;
 }
+a.back {
+    margin-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #17A2B8;
+    color: white;
+    border-radius: 4px;
+}
+a.back:hover {
+    background-color: #117A8B;
+}
 /* Design upload table */
 /* Name user */
 h2.name_user {
