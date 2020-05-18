@@ -115,11 +115,29 @@ $(document).ready(function(){
     });
     
     $('.download').click(function () {
-        var link = $('.custom-menu').data()['link'];
-        link = link.replace('C:/xampp/htdocs','http://localhost:8888');
-        var name =$('.custom-menu').data()['file'].find('a').text();
-        $(this).find('a').attr('href',link);
-        $(this).find('a').attr('download', name);
+        var file = $('.custom-menu').data()['file'];
+        if(file.hasClass('folder')){
+            $.post(
+                "http://localhost:8888/BuffaloDrive/Upload/views/downfolder.php", {
+                    path: $('.custom-menu').data()['link'],
+                    name: 'qwe'
+                },
+                function (data, status) {
+                    if (status) {
+                        location.reload();
+                        window.open("http://localhost:8888/BuffaloDrive/Upload/views/downfolder.php");
+                    }
+                }
+            );
+        }
+        // else{
+        //     var link = $('.custom-menu').data()['link'];
+        //     link = link.replace('C:/xampp/htdocs', 'http://localhost:8888');
+        //     var name = $('.custom-menu').data()['file'].find('a').text();
+        //     $(this).find('a').attr('href', link);
+        //     $(this).find('a').attr('download', name);
+        // }
+        
     })
     // If the document is clicked somewhere
     $('.folder, .file-item').bind("mousedown", function (e) {

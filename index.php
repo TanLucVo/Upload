@@ -1,12 +1,17 @@
 <?php
 require_once './function.php';
 require_once './config.php';
+
 session_start();
 if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     header('Location: ./views/login.php');
 } else {
     $user = $_SESSION['user'];
     $name = $_SESSION['name'];
+}
+if(isset($_SESSION['filedownload'])){
+    readfile($_SESSION['filedownload']);
+    unset($_SESSION['filedownload']);
 }
 ?>
 
@@ -132,9 +137,10 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <ul class='custom-menu'>
         <li class="delete" data-action="Delete">Delete</li>
         <li class="rename" data-action="Rename">Rename</li>
-        <li class="download" data-action="Download"><a href="#" download="#" target="_blank">Download</a></li>
+        <li class="download" data-action="Download"><a href="#">Download</a></li>
         <li class="share" data-action="Share">Share this file</li>
     </ul>
+    <?php print_r($_SESSION) ?>
 </body>
 
 </html>
