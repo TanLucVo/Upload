@@ -22,7 +22,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="./Content/Scripts/userpage.js"></script>
+    <script src="./Content/Scripts/main.js"></script>
     <link rel="stylesheet" href="./Content/Styles/main.css">
 </head>
 
@@ -137,9 +137,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                                 var path = $('.custom-menu').data()['file'];
                                 path.find('a').text(newName);
                                 location.reload();
-                                // $("tr").find($("tr").find(parent))[0]["text"] = newName;
-                                // $(".newName").val("");
-                                // $(".message").text("");
                             }
                         }
                     );
@@ -226,7 +223,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <ul class='custom-menu'>
         <li class="delete" data-action="Delete">Delete</li>
         <li class="rename" data-action="Rename">Rename</li>
-        <li data-action="third">Third thing</li>
+        <li class="download" data-action="Download"><a href="#" >Download</a></li>
     </ul>
 </body>
 

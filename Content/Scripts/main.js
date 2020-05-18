@@ -26,8 +26,13 @@ $(document).ready(function(){
         });
         
     });
-
-
+    
+    $('.download').click(function () {
+        $(this).attr({
+            target: '_blank',
+            href: 'http://localhost/directory/file.pdf'
+        });
+    })
     // If the document is clicked somewhere
     $('.folder, .file-item').bind("mousedown", function (e) {
         // If the clicked element is not the menu
