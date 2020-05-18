@@ -17,13 +17,13 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="./Content/Scripts/main.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./Content/Styles/test.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" ></script>
+    <script src="./Content/Scripts/main1.js"></script>
+    <link rel="stylesheet" href="./Content/Styles/main.css">
 </head>
 
 <body>
@@ -247,7 +247,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                             <td><?= $type ?></td>
                             <td><?= $time ?></td>
                             <td><?= $size ?></td>
-                            <td><a href="#" class="rename">Rename</a> | <a href="#" class="delete">Delete</a></td> onclick="location.href='<?= $dirLink ?>'"
+                            <td><a href="#" class="rename">Rename</a> | <a href="#" class="delete">Delete</a></td> 
                         </tr>-->
                         <div class="folder col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex align-items-center">
                             <svg x="0px" y="0px" focusable="false" viewBox="0 0 24 24" height="24px" width="24px" fill="#5f6368">
@@ -256,7 +256,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                                     <path d="M0 0h24v24H0z" fill="none"></path>
                                 </g>
                             </svg>
-                            <p><a href="<?= $dirLink ?>"><?= $file ?></a></p>
+                            <p><a href="<?= $dirLink ?>" class="linkfile"><?= $file ?></a></p>
                         </div>
                     <?php
 
