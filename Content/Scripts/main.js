@@ -1,4 +1,91 @@
 $(document).ready(function(){
+    $(".rename").click(function () {
+        $("#myModal").modal({
+            backdrop: "static",
+            keyboard: false,
+        });
+    });
+    $("#newfile").click(function () {
+        $("#addFile").modal({
+            backdrop: "static",
+            keyboard: false,
+        });
+    });
+    $("#newfolder").click(function () {
+        $("#addFolder").modal({
+            backdrop: "static",
+            keyboard: false,
+        });
+    });
+
+    $(".rename").click(function () {
+        var path = $('.custom-menu').data()['link'];
+        name = path.substring(path.lastIndexOf("/") + 1, path.length)
+        path = path.substring(0, path.lastIndexOf("/"));
+        $('#newname').val(name)
+        var nameItem = $('.card-title').map(function () {
+            return $.trim($(this).text());
+        }).get();
+        var nameFolder = $('.folder').map(function () {
+            return $.trim($(this).text());
+        }).get();
+        $("#save").click(function () {
+            newName = $("#newname").val();
+            if (nameItem.includes(newName) || nameFolder.includes(newName)) {
+                alert('name esitsx');
+                return;
+            }
+
+            $.post(
+                "http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
+                name: name,
+                path: path,
+                newname: newName,
+            },
+                function (data, status) {
+                    console.log(status);
+                    if (status) {
+                        var path = $('.custom-menu').data()['file'];
+                        path.find('a').text(newName);
+                        location.reload();
+                    }
+                }
+            );
+        });
+    });
+
+    $(".delete").click(function () {
+
+        var item = $('.custom-menu').data()['file'];
+        $("#myModal1").modal({
+            backdrop: "static",
+            keyboard: false,
+        });
+        $("#delete").click(function () {
+            $.post(
+                "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
+                path: $('.custom-menu').data()['link'],
+            },
+                function (data, status) {
+                    if (status) {
+                        item.remove();
+                    }
+                }
+            );
+        });
+    });
+    $('.share').click(function () {
+        $.post(
+            "http://localhost:8888/BuffaloDrive/Upload/views/sharefile.php", {
+            path: $('.custom-menu').data()['link'],
+        },
+            function (data, status) {
+                if (status) {
+                    console.log(1);
+                }
+            }
+        );
+    })
     $('.folder').click(function(){
         var link = $(this).find('a').attr("href");
         console.log(link)
@@ -28,10 +115,11 @@ $(document).ready(function(){
     });
     
     $('.download').click(function () {
-        $(this).attr({
-            target: '_blank',
-            href: 'http://localhost/directory/file.pdf'
-        });
+        var link = $('.custom-menu').data()['link'];
+        link = link.replace('C:/xampp/htdocs','http://localhost:8888');
+        var name =$('.custom-menu').data()['file'].find('a').text();
+        $(this).find('a').attr('href',link);
+        $(this).find('a').attr('download', name);
     })
     // If the document is clicked somewhere
     $('.folder, .file-item').bind("mousedown", function (e) {

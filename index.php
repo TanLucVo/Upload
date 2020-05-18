@@ -74,97 +74,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     }
     $files = scandir($dir_path);
     ?>
-    <style>
-        tr.header {
-            font-weight: bold;
-            color: white;
-            background-color: deepskyblue;
-        }
-
-        td {
-            padding: 10px;
-        }
-    </style>
-    <script>
-        $(document).ready(function() {
-            $(".rename").click(function() {
-                $("#myModal").modal({
-                    backdrop: "static",
-                    keyboard: false,
-                });
-            });
-            $("#newfile").click(function() {
-                $("#addFile").modal({
-                    backdrop: "static",
-                    keyboard: false,
-                });
-            });
-            $("#newfolder").click(function() {
-                $("#addFolder").modal({
-                    backdrop: "static",
-                    keyboard: false,
-                });
-            });
-
-            $(".rename").click(function() {
-                var path = $('.custom-menu').data()['link'];
-                name = path.substring(path.lastIndexOf("/") + 1, path.length)
-                path = path.substring(0, path.lastIndexOf("/"));
-                $('#newname').val(name)
-
-                var nameItem = $('.card-title').map(function() {
-                    return $.trim($(this).text());
-                }).get();
-                var nameFolder = $('.folder').map(function() {
-                    return $.trim($(this).text());
-                }).get();
-                $("#save").click(function() {
-                    newName = $("#newname").val();
-                    if (nameItem.includes(newName) || nameFolder.includes(newName)) {
-                        alert('name esitsx');
-                        return;
-                    }
-
-                    $.post(
-                        "http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
-                            name: name,
-                            path: "<?= $dir_path ?>",
-                            newname: newName,
-                        },
-                        function(data, status) {
-                            console.log(status);
-                            if (status) {
-                                var path = $('.custom-menu').data()['file'];
-                                path.find('a').text(newName);
-                                location.reload();
-                            }
-                        }
-                    );
-                });
-            });
-
-            $(".delete").click(function() {
-
-                var item = $('.custom-menu').data()['file'];
-                $("#myModal1").modal({
-                    backdrop: "static",
-                    keyboard: false,
-                });
-                $("#delete").click(function() {
-                    $.post(
-                        "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
-                            path: $('.custom-menu').data()['link'],
-                        },
-                        function(data, status) {
-                            if (status) {
-                                item.remove();
-                            }
-                        }
-                    );
-                });
-            });
-        });
-    </script>
     <div>
         <div class="row">
             <div class="sticky col-lg-3 col-sm-5 left" id="left">
@@ -223,7 +132,8 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <ul class='custom-menu'>
         <li class="delete" data-action="Delete">Delete</li>
         <li class="rename" data-action="Rename">Rename</li>
-        <li class="download" data-action="Download"><a href="#" >Download</a></li>
+        <li class="download" data-action="Download"><a href="#" download="#" target="_blank">Download</a></li>
+        <li class="share" data-action="Share">Share this file</li>
     </ul>
 </body>
 

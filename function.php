@@ -95,6 +95,15 @@
             return true;
         }
     }
+    function shareFile($path, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("UPDATE `file` SET `public`=1 WHERE link = ?");
+        $stmt->bind_param('s', $path);
+        $stmt->execute();
+    }
+
     
 
 ?>
