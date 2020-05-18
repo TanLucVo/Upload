@@ -8,15 +8,12 @@ $(document).ready(function(){
         var path = $(this).find('input').val();
         var name = '';
         if ($(this).hasClass('folder')){
-            console.log(1);
             name = '/'+$(this).find('a:first-child').text();
         }
         name = name.replace(/\s+/g, '');
         $('.custom-menu').data("link",path+''+name);
         $('.custom-menu').data("file", $(this));
         // Avoid the real one
-        console.log($('.custom-menu').data())
-        console.log(path);
         event.preventDefault();
 
         // Show contextmenu
@@ -46,7 +43,7 @@ $(document).ready(function(){
     $(".custom-menu li").click(function () {
         $(".custom-menu").hide(100);
     });
-    $('body').click(function(){
+    $(document).click(function(){
         $(".custom-menu").hide(100);
     })
 })

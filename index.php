@@ -107,33 +107,39 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             });
 
             $(".rename").click(function() {
-                var allName = $(".link").text();
+                var path = $('.custom-menu').data()['link'];
+                name = path.substring(path.lastIndexOf("/") + 1, path.length)
+                path = path.substring(0, path.lastIndexOf("/"));
+                $('#newname').val(name)
 
-                var newName;
-                var item = this.parentNode.parentNode;
-                var a = $(this).attr("href");
-                var parent = $("tr").has(this)[0].querySelector(".link");
-                var Name = $("tr").find($("tr").find(parent))[0]["text"];
-
+                var nameItem = $('.card-title').map(function() {
+                    return $.trim($(this).text());
+                }).get();
+                var nameFolder = $('.folder').map(function() {
+                    return $.trim($(this).text());
+                }).get();
                 $("#save").click(function() {
                     newName = $("#newname").val();
-                    if (allName.search(newName) != -1) {
-                        $(".message").text("Name exist");
+                    if (nameItem.includes(newName) || nameFolder.includes(newName)) {
+                        alert('name esitsx');
                         return;
                     }
 
                     $.post(
                         "http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
-                            name: Name,
+                            name: name,
                             path: "<?= $dir_path ?>",
                             newname: newName,
                         },
                         function(data, status) {
                             console.log(status);
                             if (status) {
-                                $("tr").find($("tr").find(parent))[0]["text"] = newName;
-                                $(".newName").val("");
-                                $(".message").text("");
+                                var path = $('.custom-menu').data()['file'];
+                                path.find('a').text(newName);
+                                location.reload();
+                                // $("tr").find($("tr").find(parent))[0]["text"] = newName;
+                                // $(".newName").val("");
+                                // $(".message").text("");
                             }
                         }
                     );
@@ -219,7 +225,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     </div>
     <ul class='custom-menu'>
         <li class="delete" data-action="Delete">Delete</li>
-        <li data-action="Rename">Rename</li>
+        <li class="rename" data-action="Rename">Rename</li>
         <li data-action="third">Third thing</li>
     </ul>
 </body>
