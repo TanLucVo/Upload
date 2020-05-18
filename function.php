@@ -35,6 +35,17 @@
         $stmt->bind_param('s', $link);
         $stmt->execute();
     }
+    function deleteDir($path, $conn)
+    {
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("DELETE FROM `file` WHERE link LIKE '?/%'");
+        $stmt->bind_param('s', $path);
+        $stmt->execute();
+        exit();
+
+    }
     function idByLink($link, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -84,5 +95,6 @@
             return true;
         }
     }
+    
 
 ?>

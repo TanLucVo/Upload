@@ -21,8 +21,8 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" ></script>
-    <script src="./Content/Scripts/main1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="./Content/Scripts/userpage.js"></script>
     <link rel="stylesheet" href="./Content/Styles/main.css">
 </head>
 
@@ -141,11 +141,8 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             });
 
             $(".delete").click(function() {
-                console.log('<?= $dir_path ?>');
-                var item = this.parentNode.parentNode;
-                var a = $(this).attr("href");
-                var parent = $("tr").has(this)[0].querySelector(".link");
-                var Name = $("tr").find($("tr").find(parent))[0]["text"];
+
+                var item = $('.custom-menu').data()['file'];
                 $("#myModal1").modal({
                     backdrop: "static",
                     keyboard: false,
@@ -153,8 +150,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 $("#delete").click(function() {
                     $.post(
                         "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
-                            name: Name,
-                            path: "<?= $dir_path ?>",
+                            path: $('.custom-menu').data()['link'],
                         },
                         function(data, status) {
                             if (status) {
@@ -217,69 +213,15 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 </div>
             </div>
             <div class="col-lg-9 col-sm-7 right" id="right">
-                <hr>
-                <h3>File</h3>
-                <hr>
-                <h4>Folader</h4>
-                <div class="row">
-                    <?php
-                    foreach ($files as $file) {
-                        if (substr($file, 0, 1) === '.') {
-                            continue;
-                        }
-                        $path = $dir_path . '/' . $file;
-                        $isDir = is_dir($path);
-                        $ext = pathinfo($path, PATHINFO_EXTENSION);
-                        $time = date('d/m/yy', filemtime($path));
-                        $size = '-';
-                        $dirLink = str_replace($root, '', $path);
-                        $dirLink = substr($dirLink, 1);
-                        $dirLink = "?dir=$dirLink";
-                        $type = 'Directory';
-                        if (!$isDir) {
-                            continue;
-                        }
-
-                    ?>
-                        <!-- <tr>
-                            <td><img src=<?= $icon ?>></td>
-                            <td><a href="<?= $dirLink ?>" class="link"><?= $file ?></a></td>
-                            <td><?= $type ?></td>
-                            <td><?= $time ?></td>
-                            <td><?= $size ?></td>
-                            <td><a href="#" class="rename">Rename</a> | <a href="#" class="delete">Delete</a></td> 
-                        </tr>-->
-                        <div class="folder col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex align-items-center">
-                            <svg x="0px" y="0px" focusable="false" viewBox="0 0 24 24" height="24px" width="24px" fill="#5f6368">
-                                <g>
-                                    <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"></path>
-                                    <path d="M0 0h24v24H0z" fill="none"></path>
-                                </g>
-                            </svg>
-                            <p><a href="<?= $dirLink ?>" class="linkfile"><?= $file ?></a></p>
-                        </div>
-                    <?php
-
-                    }
-                    ?>
-
-                </div>
-                <hr>
-                <h4>File</h4>
-                <div class="row">
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item">
-                        <div class="card" style="width: 8rem;">
-                            <img class="card-img-top" src="./Content/Images/avatar.png" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-title card-text mb-0 text-center">Ten File</p>
-                                <p class="card-text text-center"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                <?php require_once './views/userpage.php' ?>
             </div>
         </div>
+    </div>
+    <ul class='custom-menu'>
+        <li class="delete" data-action="Delete">Delete</li>
+        <li data-action="Rename">Rename</li>
+        <li data-action="third">Third thing</li>
+    </ul>
 </body>
 
 </html>
