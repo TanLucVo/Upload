@@ -9,10 +9,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     $user = $_SESSION['user'];
     $name = $_SESSION['name'];
 }
-if(isset($_SESSION['filedownload'])){
-    readfile($_SESSION['filedownload']);
-    unset($_SESSION['filedownload']);
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -140,7 +137,6 @@ if(isset($_SESSION['filedownload'])){
         <li class="download" data-action="Download"><a href="#">Download</a></li>
         <li class="share" data-action="Share">Share this file</li>
     </ul>
-    <?php print_r($_SESSION) ?>
 </body>
 
 </html>

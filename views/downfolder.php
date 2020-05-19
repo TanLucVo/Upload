@@ -3,16 +3,29 @@ session_start();
 if(isset($_SESSION['folderPathDownload']) &&isset($_SESSION['folderNameDownload'])){
     $path = $_SESSION['folderPathDownload'];
     $name = $_SESSION['folderNameDownload'];
+    unset($_SESSION['folderPathDownload']);
+    unset($_SESSION['folderNameDownload']);
+
+}
+else if(isset($_POST['path']) && isset($_POST['name'])){
+    $path = $_POST['path'];
+    $name = $_POST['name'];
+    $_SESSION['folderPathDownload'] = $path;
+    $_SESSION['folderNameDownload']= $name;
+
 }
 else if (!isset($_POST['path']) || !isset($_POST['name'] )){
     die(json_encode(array('status' => false, 'data' => 'Parameters not valid')));
-}else{
-    $path = $_POST['path'];
-    $name = $_POST['name'];
 }
+// if(isset($_SESSION['folderPathDownload']) &&isset($_SESSION['folderNameDownload'])){
+//     $path = $_SESSION['folderPathDownload'];
+//     $name = $_SESSION['folderNameDownload'];
+
+// }
 
 
 try {
+
     $dir = 'dir';
     $zip_file = $name.'.zip';
 
@@ -54,8 +67,7 @@ try {
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
     header('Content-Length: ' . filesize($zip_file));
-
-    
+    readfile($zip_file);
 
 
      

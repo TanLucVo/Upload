@@ -97,7 +97,7 @@ $(document).ready(function(){
         if ($(this).hasClass('folder')){
             name = '/'+$(this).find('a:first-child').text();
         }
-        name = name.replace(/\s+/g, '');
+        name = name.trim();
         $('.custom-menu').data("link",path+''+name);
         $('.custom-menu').data("file", $(this));
         // Avoid the real one
@@ -116,11 +116,12 @@ $(document).ready(function(){
     
     $('.download').click(function () {
         var file = $('.custom-menu').data()['file'];
+        name=$('.custom-menu').data()['file'].text().trim();
         if(file.hasClass('folder')){
             $.post(
                 "http://localhost:8888/BuffaloDrive/Upload/views/downfolder.php", {
                     path: $('.custom-menu').data()['link'],
-                    name: 'qwe'
+                    name: name
                 },
                 function (data, status) {
                     if (status) {
@@ -130,13 +131,13 @@ $(document).ready(function(){
                 }
             );
         }
-        // else{
-        //     var link = $('.custom-menu').data()['link'];
-        //     link = link.replace('C:/xampp/htdocs', 'http://localhost:8888');
-        //     var name = $('.custom-menu').data()['file'].find('a').text();
-        //     $(this).find('a').attr('href', link);
-        //     $(this).find('a').attr('download', name);
-        // }
+        else{
+            var link = $('.custom-menu').data()['link'];
+            link = link.replace('C:/xampp/htdocs', 'http://localhost:8888');
+            var name = $('.custom-menu').data()['file'].find('a').text();
+            $(this).find('a').attr('href', link);
+            $(this).find('a').attr('download', name);
+        }
         
     })
     // If the document is clicked somewhere
