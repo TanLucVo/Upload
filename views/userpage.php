@@ -1,7 +1,7 @@
 <hr>
 <h3>File</h3>
 <hr>
-<h4>Folader</h4>
+<h4>Folder</h4>
 <div class="row">
     <?php
     foreach ($files as $file) {

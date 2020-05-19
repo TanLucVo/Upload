@@ -17,7 +17,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Buffalo Drive</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -34,7 +34,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="./index.php">Navbar</a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <form class="form-inline my-2 my-lg-0 search">
@@ -127,123 +127,123 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         <li class="download" data-action="Download"><a href="#">Download</a></li>
         <li class="share" data-action="Share">Share this file</li>
     </ul>
-    <!-- Model in jquery -->
+    <!-- Rename -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Đổi tên thư mục</h4>
+                    <h4 class="modal-title">Rename</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 </div>
                 <div class="modal-body">
-                    <p>Nhập tên mới.</p>
+                    <p>Enter a new name.</p>
                     <input type="text" id="newname">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" id='save'">Lưu</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='save'">Save</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Delete dialog -->
-<div class=" modal fade" id="myModal1" role="dialog">
-                        <div class="modal-dialog">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Đổi tên thư mục</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                                </div>
-                                <div class="modal-body">
-                                    <p>Bạn có chắc chắn muốn xóa ?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Xóa</button>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Delete dialog -->
+    <div class=" modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
                 </div>
             </div>
         </div>
-        <!-- Add file dialog -->
-        <div class="modal fade" id="addFile" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
+    </div>
 
-                        <h4 class="modal-title">New File</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data" id="uploadFile">
-                            <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
-                            <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
-                            <div class="progress mt-3">
-                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
-                            </div>
-                            <p id="status"></p>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                <input class='btn btn-success' type="submit" value="Upload" name="submit">
-                            </div>
+    <!-- Add file dialog -->
+    <div class="modal fade" id="addFile" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
 
-                        </form>
-
-                    </div>
+                    <h4 class="modal-title">New File</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-            </div>
-        </div>
-        <!-- Add folder dialog -->
-        <div class="modal fade" id="addFolder" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <h4 class="modal-title">New Folder</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <form method="post" id='newFolderForm'>
-                        <div class="modal-body">
-                            <input type="text" name="folderName" id='folderName'>
-                            <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
-
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" id="uploadFile">
+                        <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
+                        <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
+                        <div class="progress mt-3">
+                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                         </div>
+                        <p id="status"></p>
                         <div class="modal-footer">
-                            <p class="message"></p>
-                            <input class="btn btn-success" type="submit" value="New folder" name="create">
-
-                            <br>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <input class='btn btn-success' type="submit" value="Upload" name="submit">
                         </div>
+
                     </form>
+
                 </div>
             </div>
         </div>
-        <?php
+    </div>
 
-        if ($totalSize > 1000000) {
-            $totalSize = round($totalSize / 1000000.0, 1) . ' MB';
-        } else if ($totalSize > 1000) {
-            $totalSize = round($totalSize / 1000.0, 1) . ' KB';
-        } else {
-            $totalSize = $totalSize . ' Bytes';
-        }
+    <!-- Add folder dialog -->
+    <div class="modal fade" id="addFolder" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
 
-        ?>
-        <script>
-            $(document).ready(function() {
+                    <h4 class="modal-title">New Folder</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <form method="post" id='newFolderForm'>
+                    <div class="modal-body">
+                        <input type="text" name="folderName" id='folderName'>
+                        <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
 
-                $('.totalSize').text("<?= $totalSize . ' used' ?>");
-            })
-        </script>
+                    </div>
+                    <div class="modal-footer">
+                        <p class="message"></p>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <input class="btn btn-success" type="submit" value="New folder" name="create">
+
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php
+
+    if ($totalSize > 1000000) {
+        $totalSize = round($totalSize / 1000000.0, 1) . ' MB';
+    } else if ($totalSize > 1000) {
+        $totalSize = round($totalSize / 1000.0, 1) . ' KB';
+    } else {
+        $totalSize = $totalSize . ' Bytes';
+    }
+
+    ?>
+    <script>
+        $(document).ready(function() {
+
+            $('.totalSize').text("<?= $totalSize . ' used' ?>");
+        })
+    </script>
 </body>
 
 </html>
