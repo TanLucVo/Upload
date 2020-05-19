@@ -69,6 +69,7 @@ $(document).ready(function(){
                 function (data, status) {
                     if (status) {
                         item.remove();
+                        location.reload();
                     }
                 }
             );
