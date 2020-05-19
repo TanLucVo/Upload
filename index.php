@@ -197,7 +197,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                             <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
                             <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
                             <div class="progress mt-3">
-                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <p id="status"></p>
                             <div class="modal-footer">

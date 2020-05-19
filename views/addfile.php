@@ -10,8 +10,8 @@ try {
     $upload_dir = 'uploads' . DIRECTORY_SEPARATOR;
     $not_allowed_types = array('py');
 
-    // Define maxsize for files i.e 10MB 
-    $maxsize = 10 * 1024 * 1024;
+    // Define maxsize for files i.e 100MB 
+    $maxsize = 30 * 1024 * 1024;
     // Checks if user sent an empty form  
     if (!empty(array_filter($_FILES['fileToUpload']['name']))) {
 

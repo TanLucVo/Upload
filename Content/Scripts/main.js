@@ -81,7 +81,7 @@ $(document).ready(function(){
         },
             function (data, status) {
                 if (status) {
-                    console.log(1);
+                    
                 }
             }
         );
@@ -149,16 +149,13 @@ $(document).ready(function(){
             $(".custom-menu").hide(100);
         }
     });
-    $("[data-dismiss=modal]").click(function(){
-        $('#status').hide();
-    })
+    
     $('#uploadFile').submit(function(e){
 
         e.preventDefault(e);
         var form_data = new FormData();
         var path = $('#pathfile').val();
         var totalfiles = document.getElementById('fileToUpload').files.length;
-        console.log(totalfiles);
         for (var index = 0; index < totalfiles; index++) {
             form_data.append("fileToUpload[]", document.getElementById('fileToUpload').files[index]);
         }
@@ -169,23 +166,42 @@ $(document).ready(function(){
         // }
         // formdata.append("path", $('#pathfile').val());
         $.ajax({
+            xhr:function(){
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress",function(evt){
+                    if(evt.lengthComputable){
+                        var percentComplete = ((evt.loaded / evt.total) * 100).toFixed(2);
+                        $('.progress-bar').width(percentComplete + '%');
+                        $('.progress-bar').html(percentComplete + '%');
+                    }
+                }, false);
+                return xhr;
+            },
             url: 'http://localhost:8888/BuffaloDrive/Upload/views/addfile.php',
             type: "POST",
             contentType: false, // Not to set any content header  
             processData: false, // Not to process data  
+            cache : false,
             data: form_data,
-            async: false,
+            beforeSenf:function(){
+                $('.progress-bar').width('0%');
+            },
             success: function (result) {
                 if (result != "") {
                     result = result.replace('<br>', '<br/>').trim()
                     $('#status').html(result.replace(/"/g, ""));
                     $('#status').show();
                 }
+                $("[data-dismiss=modal]").click(function () {
+                    location.reload();
+                })
             },
             error: function (err) {
                 alert(err.statusText);
             }
-        }); 
+        });
+  
+
 
     })
 
