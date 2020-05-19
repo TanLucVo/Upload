@@ -149,6 +149,46 @@ $(document).ready(function(){
             $(".custom-menu").hide(100);
         }
     });
+    $("[data-dismiss=modal]").click(function(){
+        $('#status').hide();
+    })
+    $('#uploadFile').submit(function(e){
+
+        e.preventDefault(e);
+        var form_data = new FormData();
+        var path = $('#pathfile').val();
+        var totalfiles = document.getElementById('fileToUpload').files.length;
+        console.log(totalfiles);
+        for (var index = 0; index < totalfiles; index++) {
+            form_data.append("fileToUpload[]", document.getElementById('fileToUpload').files[index]);
+        }
+        form_data.append("path", path);
+        // if ($(this).prop('files').length > 0) {
+        //     file = $(this).prop('files')[0];
+        //     formdata.append("fileToUpload[]", file);
+        // }
+        // formdata.append("path", $('#pathfile').val());
+        $.ajax({
+            url: 'http://localhost:8888/BuffaloDrive/Upload/views/addfile.php',
+            type: "POST",
+            contentType: false, // Not to set any content header  
+            processData: false, // Not to process data  
+            data: form_data,
+            async: false,
+            success: function (result) {
+                if (result != "") {
+                    result = result.replace('<br>', '<br/>').trim()
+                    $('#status').html(result.replace(/"/g, ""));
+                    $('#status').show();
+                }
+            },
+            error: function (err) {
+                alert(err.statusText);
+            }
+        }); 
+
+    })
+
 
 
     // If the menu element is clicked
@@ -158,4 +198,5 @@ $(document).ready(function(){
     $(document).click(function(){
         $(".custom-menu").hide(100);
     })
+
 })

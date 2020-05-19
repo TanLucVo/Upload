@@ -1,0 +1,4 @@
+<br />
+<b>Warning</b>:  filesize(): stat failed for qwe.zip in <b>C:\xampp\htdocs\BuffaloDrive\Upload\views\downfolder.php</b> on line <b>69</b><br />
+<br />
+<b>Warning</b>:  readfile(qwe.zip): failed to open stream: No such file or directory in <b>C:\xampp\htdocs\BuffaloDrive\Upload\views\downfolder.php</b> on line <b>70</b><br />
