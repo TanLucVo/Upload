@@ -1,10 +1,26 @@
 $(document).ready(function(){
     $(".rename").click(function () {
+        
         $("#myModal").modal({
             backdrop: "static",
             keyboard: false,
         });
     });
+    $('#newFolderForm').submit(function(e){
+        e.preventDefault(e);
+        $.post(
+            "http://localhost:8888/BuffaloDrive/Upload/views/addFolder.php", {
+            folderName: $('#folderName').val(),
+            folderPath: $('#folderPath').val(),
+        },
+            function (status) {
+                $('.message').text(status.replace(/"/g, "").trim());
+                $("[data-dismiss=modal]").click(function () {
+                    location.reload();
+                })
+            }
+        );
+    })
     $("#newfile").click(function () {
         $("#addFile").modal({
             backdrop: "static",

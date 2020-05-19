@@ -64,16 +64,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     if (!file_exists($root)) {
         mkdir($root);
     }
-    if ($create && $folder) {
-
-        if (file_exists($dir_path . '/' . $folder)) {
-            $mess = 'ton tai';
-        } else {
-            mkdir($dir_path . '/' . $folder);
-            addFile($dir_path . '/' . $folder, $_SESSION['user'], $conn);
-            header('Location: ' . $_SERVER['REQUEST_URI']);
-        }
-    }
     $files = scandir($dir_path);
     ?>
     <div>
@@ -221,13 +211,16 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                         <h4 class="modal-title">New Folder</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <form method="post">
+                    <form method="post" id='newFolderForm'>
                         <div class="modal-body">
-                            <input type="text" name="folderName">
+                            <input type="text" name="folderName" id='folderName'>
+                            <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
+
                         </div>
                         <div class="modal-footer">
+                            <p class="message"></p>
                             <input class="btn btn-success" type="submit" value="New folder" name="create">
-                            <p class="message"><?= $mess ?></p>
+
                             <br>
                         </div>
                     </form>
