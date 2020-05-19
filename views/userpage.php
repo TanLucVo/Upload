@@ -42,6 +42,7 @@
 <h4>File</h4>
 <div class="row">
     <?php
+    $totalSize=0;
     foreach ($files as $file) {
         if (substr($file, 0, 1) === '.') {
             continue;
@@ -63,6 +64,7 @@
 
 
         $size = filesize($path);
+        $totalSize+= $size;
         if ($size > 1000000) {
             $size = round($size / 1000000.0, 1) . ' MB';
         } else if ($size > 1000) {

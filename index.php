@@ -122,7 +122,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                     </svg>
                     <div>
                         <p>Storage</p>
-                        <p>100 MB used</p>
+                        <p class="totalSize">0 MB used</p>
                     </div>
                 </div>
             </div>
@@ -137,6 +137,23 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         <li class="download" data-action="Download"><a href="#">Download</a></li>
         <li class="share" data-action="Share">Share this file</li>
     </ul>
+    <?php
+
+        if ($totalSize > 1000000) {
+            $totalSize = round($totalSize / 1000000.0, 1) . ' MB';
+        } else if ($totalSize > 1000) {
+            $totalSize = round($totalSize / 1000.0, 1) . ' KB';
+        } else {
+            $totalSize = $totalSize . ' Bytes';
+        }
+    
+    ?>
+    <script>
+        $(document).ready(function() {
+
+            $('.totalSize').text("<?= $totalSize.' used' ?>");
+        })
+    </script>
 </body>
 
 </html>
