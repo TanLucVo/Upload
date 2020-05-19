@@ -11,7 +11,7 @@ try {
     $not_allowed_types = array('py');
 
     // Define maxsize for files i.e 100MB 
-    $maxsize = 30 * 1024 * 1024;
+    $maxsize = 1024 * 1024 * 1024;
     // Checks if user sent an empty form  
     if (!empty(array_filter($_FILES['fileToUpload']['name']))) {
 
