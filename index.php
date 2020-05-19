@@ -29,21 +29,22 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 </head>
 
 <body>
-
+    
     <nav class="navbar navbar-expand-md navbar-light sticky-top" id="navbar">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="./index.php">Navbar</a>
-
+        <div>
+            <a class="navbar-brand" href="./index.php">Buffalo Drive</a>
+        </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <form class="form-inline my-2 my-lg-0 search">
                 <input class="form-control mr-auto p-3 mr-mb-0" type="search" placeholder="Search" aria-label="Search">
             </form>
             <div class="infor d-flex flex-row bd-highlight mb-3">
                 <img src="./Content/Images/avatar.png" alt="">
-                <p class="text-justify">admin</p>
-                <a href="./views/logout.php">Đăng xuất</a>
+                <p class="text-justify"><?= $name ?></p>
+                <a href="./views/logout.php">Logout</a>
             </div>
         </div>
     </nav>
@@ -122,12 +123,36 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         </div>
     </div>
     <ul class='custom-menu'>
-        <li class="delete" data-action="Delete">Delete</li>
-        <li class="rename" data-action="Rename">Rename</li>
-        <li class="download" data-action="Download"><a href="#">Download</a></li>
-        <li class="share" data-action="Share">Share this file</li>
+        <li class="delete" data-action="Delete">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
+                <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
+            </svg>
+            Delete
+        </li>
+        <li class="rename" data-action="Rename">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
+                <path d="M1,15.25V19h3.75L15.814,7.936l-3.75-3.75L1,15.25z M18.707,5.043c0.391-0.391,0.391-1.023,0-1.414l-2.336-2.336  c-0.391-0.391-1.024-0.391-1.414,0l-1.832,1.832l3.75,3.75L18.707,5.043z"></path>
+            </svg>
+             Rename
+        </li>
+        <li class="download" data-action="Download">
+            <a href="#">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+            </svg>
+                Download
+            </a>
+        </li>
+        <li class="share" data-action="Share">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
+                <path d="M3.9,12c0-1.7,1.4-3.1,3.1-3.1h4V7H7c-2.8,0-5,2.2-5,5s2.2,5,5,5h4v-1.9H7C5.3,15.1,3.9,13.7,3.9,12z M8,13h8v-2H8V13zM17,7h-4v1.9h4c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1h-4V17h4c2.8,0,5-2.2,5-5S19.8,7,17,7z"></path>
+            </svg>
+            Share this file
+        </li>
     </ul>
-    <!-- Rename -->
+    <!-- Rename dialog -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
