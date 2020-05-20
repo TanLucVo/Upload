@@ -103,8 +103,14 @@
         $stmt->bind_param('s', $path);
         $stmt->execute();
     }
-
-
+    function addFileIntoTrash($link, $user, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("INSERT INTO `trash`(`link`, `user`) VALUES (?,?)");
+        $stmt->bind_param('ss', $link, $user);
+        $stmt->execute();
+    }
     
 
 ?>
