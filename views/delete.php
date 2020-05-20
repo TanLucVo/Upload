@@ -1,6 +1,14 @@
 <?php
     require_once '../function.php';
     require_once '../config.php';
+    require_once './copydir.php';
+    session_start();
+    if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
+        header('Location: ./views/login.php');
+    } else {
+        $user = $_SESSION['user'];
+        $name = $_SESSION['name'];
+    }
     function delete_directory($dirname, $conn) {
         if (is_dir($dirname))
           $dir_handle = opendir($dirname);
@@ -29,14 +37,18 @@ if (!isset($_POST['path'])) {
     }
     
     $path = $_POST['path'];
-
+    $dest = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/trash/" . $user;
     try{
         if (!is_dir($path)){
             unlink($path);
+            addFileIntoTrash($path, $user, $conn);
             delFile($path, $conn);
+            
         }
         else if(delete_directory($path, $conn)){
             echo json_encode(array('status' => true, 'data' => 'delete success'));
+            addFileIntoTrash($path, $user, $conn);
+            copyDir($path, $dest, $user);
             delFile($path, $conn);
             
         }else{  

@@ -131,6 +131,4 @@
         $stmt->bind_param('ss', $link, $user);
         $stmt->execute();
     }
-    
-
 ?>

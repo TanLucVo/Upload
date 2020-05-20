@@ -35,7 +35,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
-            <a class="navbar-brand" href="./index.php">Buffalo Drive</a>
+            <a class="navbar-brand" href="../">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <form class="form-inline my-2 my-lg-0 search">
@@ -119,7 +119,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
             <div class="col-lg-9 col-sm-7 right" id="right">
                 <hr>
-                <h3>File</h3>
+                <h3>My Drive</h3>
                 <hr>
                 <h4>Folder</h4>
                 <div class="row">
@@ -193,18 +193,99 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                             $size = $size . ' Bytes';
                         }
 
-                        if ($ext == 'html') {
-                            $type = 'HTML Document';
-                            $icon = './Content/Images/text-x-tex-icon.png';
-                        } else if ($ext == 'gif') {
-                            $type = 'Dynamic Image';
-                            $icon = './Content/Images/document-compress-icon.png';
-                        } else if ($ext == 'png') {
-                            $type = 'PNG Image';
-                            $icon = './Content/Images/mp4-icon.png';
-                        } else {
-                            $type = 'Unknown File';
-                            $icon = './Content/Images/document-compress-icon.png';
+                        switch ($ext) {
+                            case 'apk':
+                                $type = 'apk';
+                                $icon = '../Content/Images/iconfile/apk.png';
+                                break;
+                            case 'app':
+                                $type = 'app';
+                                $icon = '../Content/Images/iconfile/app.png';
+                                break;
+                            case 'css':
+                                $type = 'css';
+                                $icon = '../Content/Images/iconfile/css.png';
+                                break;
+                            case 'dll':
+                                $type = 'dll';
+                                $icon = '../Content/Images/iconfile/dll.png';
+                                break;
+                            case 'doc':
+                                $type = 'doc';
+                                $icon = '../Content/Images/iconfile/doc.png';
+                                break;
+                            case 'docx':
+                                $type = 'docx';
+                                $icon = '../Content/Images/iconfile/docx.png';
+                                break;
+                            case 'exe':
+                                $type = 'exe';
+                                $icon = '../Content/Images/iconfile/exe.png';
+                                break;
+                            case 'gif':
+                                $type = 'gif';
+                                $icon = '../Content/Images/iconfile/gif.png';
+                                break;
+                            case 'html':
+                                $type = 'html';
+                                $icon = '../Content/Images/iconfile/html.png';
+                                break;
+                            case 'jpg':
+                                $type = 'jpg';
+                                $icon = '../Content/Images/iconfile/jpg.png';
+                                break;
+                            case 'js':
+                                $type = 'js';
+                                $icon = '../Content/Images/iconfile/js.png';
+                                break;
+                            case 'log':
+                                $type = 'log';
+                                $icon = '../Content/Images/iconfile/log.png';
+                                break;
+                            case 'mp3':
+                                $type = 'mp3';
+                                $icon = '../Content/Images/iconfile/mp3.png';
+                                break;
+                            case 'mp4':
+                                $type = 'mp4';
+                                $icon = '../Content/Images/iconfile/mp4.png';
+                                break;
+                            case 'pdf':
+                                $type = 'pdf';
+                                $icon = '../Content/Images/iconfile/pdf.png';
+                                break;
+                            case 'png':
+                                $type = 'png';
+                                $icon = '../Content/Images/iconfile/png.png';
+                                break;
+                            case 'ppt':
+                                $type = 'ppt';
+                                $icon = '../Content/Images/iconfile/ppt.png';
+                                break;
+                            case 'php':
+                                $type = 'php';
+                                $icon = '../Content/Images/iconfile/php.png';
+                                break;
+                            case 'rar':
+                                $type = 'rar';
+                                $icon = '../Content/Images/iconfile/rar.png';
+                                break;
+                            case 'sql':
+                                $type = 'sql';
+                                $icon = '../Content/Images/iconfile/sql.png';
+                                break;
+                            case 'txt':
+                                $type = 'txt';
+                                $icon = '../Content/Images/iconfile/txt.png';
+                                break;
+                            case 'zip':
+                                $type = 'zip';
+                                $icon = '../Content/Images/iconfile/zip.png';
+                                break;
+                            default:
+                                $type = 'undefined';
+                                $icon = '../Content/Images/iconfile/default.png';
+                                break;
                         }
                     ?>
                         <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item">
