@@ -1,3 +1,16 @@
+<?php
+    if (isset($usershare)) {
+        if($name != $usershare){
+            $isShare = true;
+        }
+        else{
+            $isShare = false;
+        }
+    }
+    else{
+        $isShare = false;
+    }
+?>
 <hr>
 <h3>My Drive</h3>
 <hr>
@@ -17,9 +30,13 @@
         $dirLink = substr($dirLink, 1);
         $dirLink = "?dir=$dirLink";
         $type = 'Directory';
+        if($isShare && in_array($dir_path.'/'.$file, $allLink) != 1){
+            continue;
+        }
         if (!$isDir) {
             continue;
         }
+
 
     ?>
         <div class="folder col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex align-items-center">
@@ -49,6 +66,9 @@
         }
         $path = $dir_path . '/' . $file;
         $isDir = is_dir($path);
+        if ($isShare && in_array($path, $allLink) != 1) {
+            continue;
+        }
         if ($isDir) {
             continue;
         }
