@@ -103,6 +103,26 @@
         $stmt->bind_param('s', $path);
         $stmt->execute();
     }
+
+    function GetAllLinkByUser($user, $conn)
+    {
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("SELECT link FROM `file` WHERE user = ?");
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                return  $row['link'];
+            }
+        } else {
+            return null;
+        }
+    }
+        
     function addFileIntoTrash($link, $user, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
