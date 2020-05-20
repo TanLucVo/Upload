@@ -1,6 +1,11 @@
 <?php
-function copyDir($src, $dest, $user) {
-    
+function copyDir($src, $user) {
+    $namedirfile = substr($src, -(strlen($src) - strrpos($src, '/') - 1) , strlen($src) - strrpos($src, '/'));
+    $usertrash = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/trash/" . $user;
+    $dest = $usertrash . '/' . $namedirfile;
+    if (!file_exists($usertrash)) {
+        mkdir($usertrash);
+    }
     if (!file_exists($dest)) {
         mkdir($dest);
     }
