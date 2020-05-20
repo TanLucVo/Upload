@@ -181,6 +181,3 @@ div.folder:hover, div.card:hover {
     background-color: #F5F5F5;
     border-bottom: 10px;
 }
-.collapse:active {
-    color: darkgray;
-}
