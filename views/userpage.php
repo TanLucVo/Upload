@@ -1,5 +1,5 @@
 <hr>
-<h3>File</h3>
+<h3>My Drive</h3>
 <hr>
 <h4>Folder</h4>
 <div class="row">
@@ -98,11 +98,8 @@
             </div>
         </div>
     <?php
-
     }
     ?>
-
-
 </div>
 
 

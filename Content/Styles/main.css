@@ -167,3 +167,20 @@ nav{
     color :black;
     text-decoration: none;
 }
+a{
+    color: black;  
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+div.folder:hover, div.card:hover {
+    cursor: pointer;
+}
+.recent:hover, .trash:hover, .my-drive:hover {
+    background-color: #F5F5F5;
+    border-bottom: 10px;
+}
+.collapse:active {
+    color: darkgray;
+}
