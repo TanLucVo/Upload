@@ -9,6 +9,7 @@ nav{
 }
 .row{
     width: 100%;
+    overflow: hidden;
 }
 .infor{
     right: 10px;
@@ -37,10 +38,10 @@ nav{
     margin: auto;
 }
 /* .left{
-    min-width: 250px;
+    min-width: 100px;
 } */
 .right{
-    min-width: 300px;
+    min-width: 100px;
 }
 .new svg{
     font-size: 30px;
