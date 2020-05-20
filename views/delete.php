@@ -37,6 +37,7 @@ if (!isset($_POST['path'])) {
     }
     
     $path = $_POST['path'];
+
     try{
         if (!is_dir($path)){
             unlink($path);
@@ -46,8 +47,20 @@ if (!isset($_POST['path'])) {
         }
         else if(delete_directory($path, $conn)){
             echo json_encode(array('status' => true, 'data' => 'delete success'));
+
+            $namedirfile = substr($path, -(strlen($path) - strrpos($path, '/') - 1) , strlen($path) - strrpos($path, '/'));
+            $usertrash = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/trash/" . $user;
+            $dest = $usertrash . '/' . $namedirfile;
+            //Create folder trash for user
+            if (!file_exists($usertrash)) {
+                mkdir($usertrash);
+            }
+            if (!file_exists($dest)) {
+                mkdir($dest);
+            }
+
             addFileIntoTrash($path, $user, $conn);
-            copyDir($path, $user);
+            xcopy($path, $dest);
             delFile($path, $conn);
             
         }else{  

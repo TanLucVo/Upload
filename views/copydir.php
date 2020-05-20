@@ -1,30 +1,57 @@
 <?php
-function copyDir($src, $user) {
-    $namedirfile = substr($src, -(strlen($src) - strrpos($src, '/') - 1) , strlen($src) - strrpos($src, '/'));
-    $usertrash = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/trash/" . $user;
-    $dest = $usertrash . '/' . $namedirfile;
-    if (!file_exists($usertrash)) {
-        mkdir($usertrash);
+function xcopy($source, $dest, $permissions = 0755) {
+    $sourceHash = hashDirectory($source);
+    // Check for symlinks
+    if (is_link($source)) {
+        return symlink(readlink($source), $dest);
     }
-    if (!file_exists($dest)) {
-        mkdir($dest);
+
+    // Simple copy for a file
+    if (is_file($source)) {
+        return copy($source, $dest);
     }
-    foreach (scandir($src) as $file) { 
-        $srcfile = rtrim($src, '/') .'/'. $file; $destfile = rtrim($dest, '/') .'/'. $file; 
-        if (!is_readable($srcfile)) { 
-            continue; 
-        } 
-        if ($file != '.' && $file != '..') { 
-            if (is_dir($srcfile)) { 
-                if (!file_exists($destfile)) { 
-                    mkdir($destfile); 
-                } 
-                copyDir($srcfile, $destfile); 
-            } 
-            else { 
-                copy($srcfile, $destfile); 
-            } 
-        } 
-    } 
+
+    // Make destination directory
+    if (!is_dir($dest)) {
+        mkdir($dest, $permissions);
+    }
+
+    // Loop through the folder
+    $dir = dir($source);
+    while (false !== $entry = $dir->read()) {
+        // Skip pointers
+        if ($entry == '.' || $entry == '..') {
+            continue;
+        }
+
+        // Deep copy directories
+        if($sourceHash != hashDirectory($source."/".$entry)){
+             xcopy("$source/$entry", "$dest/$entry", $permissions);
+        }
+    }
+
+    // Clean up
+    $dir->close();
+    return true;
+}
+
+// In case of coping a directory inside itself, there is a need to hash check the directory otherwise and infinite loop of coping is generated
+
+function hashDirectory($directory){
+    if (! is_dir($directory)){ return false; }
+
+    $files = array();
+    $dir = dir($directory);
+
+    while (false !== ($file = $dir->read())){
+        if ($file != '.' and $file != '..') {
+            if (is_dir($directory . '/' . $file)) { $files[] = hashDirectory($directory . '/' . $file); }
+            else { $files[] = md5_file($directory . '/' . $file); }
+        }
+    }
+
+    $dir->close();
+
+    return md5(implode('', $files));
 }
 ?>
