@@ -153,7 +153,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                             <input type="hidden" name="asd" value="<?= $dir_path ?>">
                         </div>
                     <?php
-
                     }
                     ?>
 
