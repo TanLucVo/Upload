@@ -112,7 +112,7 @@ $(document).ready(function(){
             );
         });
     });
-    $(".hashdelete").click(function () {
+    $(".harddelete").click(function () {
 
         var item = $('.custom-menu').data()['file'];
         $("#myModal1").modal({
@@ -121,7 +121,7 @@ $(document).ready(function(){
         });
         $("#delete").click(function () {
             $.post(
-                "http://localhost:8888/BuffaloDrive/Upload/views/hasddelete.php", {
+                "http://localhost:8888/BuffaloDrive/Upload/views/harddelete.php", {
                 path: $('.custom-menu').data()['link'],
             },
                 function (data, status) {
