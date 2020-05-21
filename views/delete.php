@@ -40,29 +40,36 @@ if (!isset($_POST['path'])) {
 
     try{
         if (!is_dir($path)){
-            unlink($path);
-            addFileIntoTrash($path, $user, $conn);
-            delFile($path, $conn);
-            
-        }
-        else if(delete_directory($path, $conn)){
-            echo json_encode(array('status' => true, 'data' => 'delete success'));
 
-            $namedirfile = substr($path, -(strlen($path) - strrpos($path, '/') - 1) , strlen($path) - strrpos($path, '/'));
+            $namedirfile = substr($path, -(strlen($path) - strrpos($path, '/') - 1));
             $usertrash = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/trash/" . $user;
             $dest = $usertrash . '/' . $namedirfile;
+
+            addFileIntoTrash($dest, $user, $conn);
+            xcopy($path, $dest);
+
+            //Remove file in user
+            unlink($path);
+            delFile($path, $conn);
+        }
+        else if(is_dir($path)){
+            echo json_encode(array('status' => true, 'data' => 'delete success'));
+
+            $namedirfile = substr($path, -(strlen($path) - strrpos($path, '/') - 1));
+            $usertrash = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/trash/" . $user;
+            $dest = $usertrash . '/' . $namedirfile;
+
             //Create folder trash for user
-            if (!file_exists($usertrash)) {
-                mkdir($usertrash);
-            }
             if (!file_exists($dest)) {
                 mkdir($dest);
             }
 
-            addFileIntoTrash($path, $user, $conn);
+            addFileIntoTrash($dest, $user, $conn);
             xcopy($path, $dest);
+
+            //Remove folder in user
+            delete_directory($path, $conn);
             delFile($path, $conn);
-            
         }else{  
             echo json_encode(array('status' => true, 'data' => "Can't delete"));
         }

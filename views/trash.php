@@ -119,7 +119,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
             <div class="col-lg-9 col-sm-7 right" id="right">
                 <hr>
-                <h3>My Drive</h3>
+                <h3>Trash can</h3>
                 <hr>
                 <h4>Folder</h4>
                 <div class="row">
@@ -322,7 +322,26 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             Hard delete
         </li>
     </ul>
+    <!-- Restore dialog -->
+    <div class=" modal fade" id="restoremodal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Restore</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to restore?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='restore'>Restore</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Delete dialog -->
     <div class=" modal fade" id="myModal1" role="dialog">
         <div class="modal-dialog">

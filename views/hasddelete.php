@@ -41,12 +41,12 @@ if (!isset($_POST['path'])) {
     try{
         if (!is_dir($path)){
             unlink($path);
-            delFile($path, $conn);
+            delFileIntoTrash($path, $conn);
             
         }
         else if(delete_directory($path, $conn)){
             echo json_encode(array('status' => true, 'data' => 'delete success'));
-            delFile($path, $conn);
+            delFileIntoTrash($path, $conn);
             
         }else{  
             echo json_encode(array('status' => true, 'data' => "Can't delete"));

@@ -124,4 +124,13 @@
         $stmt->bind_param('ss', $link, $user);
         $stmt->execute();
     }
+    function delFileIntoTrash($link, $conn)
+    {
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("DELETE FROM `trash` WHERE link = ?");
+        $stmt->bind_param('s', $link);
+        $stmt->execute();
+    }
 ?>
