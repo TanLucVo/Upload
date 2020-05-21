@@ -3,9 +3,12 @@ require_once './function.php';
 require_once './config.php';
 
 session_start();
+
 if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     header('Location: ./views/login.php');
-} else {
+}else if($_SESSION['user'] == 'admin'){
+    header('Location: ./adminpage.php');
+}else {
     $user = $_SESSION['user'];
     $name = $_SESSION['name'];
 }
