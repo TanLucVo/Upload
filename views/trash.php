@@ -119,7 +119,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
             <div class="col-lg-9 col-sm-7 right" id="right">
                 <hr>
-                <h3>Trash can</h3>
+                <h3>Trash Can</h3>
                 <hr>
                 <h4>Folder</h4>
                 <div class="row">
