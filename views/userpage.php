@@ -39,7 +39,7 @@
 
 
     ?>
-        <div class="folder col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex align-items-center">
+        <div class="folder col-8 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex align-items-center">
             <svg x="0px" y="0px" focusable="false" viewBox="0 0 24 24" height="24px" width="24px" fill="#5f6368">
                 <g>
                     <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"></path>

@@ -5,10 +5,10 @@ require_once './config.php';
 session_start();
 if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     header('Location: ./views/login.php');
-} else if($_SESSION['user'] == 'admin'){
+} else if ($_SESSION['user'] == 'admin') {
     $user = $_SESSION['user'];
     $name = $_SESSION['name'];
-}else{
+} else {
     header('Location: ./');
 }
 
@@ -64,14 +64,14 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         $dir_path = $root;
     }
     $mess = '';
-    if (!file_exists($root)) {
+    if (!file_exists($root) && $user != "admin") {
         mkdir($root);
     }
     $files = scandir($dir_path);
     ?>
     <div>
         <div class="row">
-            <div class="sticky col-lg-3 col-sm-5 left" id="left">
+            <div class="sticky col-6 col-lg-3 col-sm-5 left" id="left">
                 <div class="new d-flex" data-toggle="collapse" href="#multiCollapse" role="button" aria-expanded="false" aria-controls="multiCollapse">
                     <svg class="bi bi-folder-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M9.828 4H2.19a1 1 0 00-.996 1.09l.637 7a1 1 0 00.995.91H9v1H2.826a2 2 0 01-1.991-1.819l-.637-7a1.99 1.99 0 01.342-1.31L.5 3a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 009.828 3h3.982a2 2 0 011.992 2.181L15.546 8H14.54l.265-2.91A1 1 0 0013.81 4H9.828zm-2.95-1.707L7.587 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 011-.98h3.672a1 1 0 01.707.293z" clip-rule="evenodd" />
@@ -119,7 +119,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-sm-7 right" id="right">
+            <div class="col-6 col-lg-9 col-sm-7 right" id="right">
                 <?php require_once './views/userpage.php' ?>
                 <p>asdasd</p>
             </div>
@@ -268,7 +268,8 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 ?>
                 <script>
                     $(document).ready(function() {
-
+                        $('h4:eq(1)').text('User Info');
+                        console.log($('h4:eq(1)').next().html('<p>123123</p>'))
                         $('.totalSize').text("<?= $totalSize . ' used' ?>");
                     })
                 </script>
