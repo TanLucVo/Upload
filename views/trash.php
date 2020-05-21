@@ -49,7 +49,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         </div>
     </nav>
     <?php
-    $root = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/" . $_SESSION['user'];
+    $root = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/trash/" . $_SESSION['user'];
     // echo $_SERVER['HTTP_HOST'];
     $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
@@ -95,7 +95,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                     <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
                         <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5v-1h14v1zm0-3H5V4h14v13zm-9.35-2h5.83l1.39-2.77h-5.81zm7.22-3.47L13.65 6h-2.9L14 11.53zm-5.26-2.04l-1.45-2.52-3.03 5.51L8.6 15z"></path>
                     </svg>
-                    <p class="d-inline">My Drive</p>
+                    <p class="d-inline"><a href="../">My Drive</a></p>
                 </div>
                 <div class="trash d-flex">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined ">
@@ -103,7 +103,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                         <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
                         <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
                     </svg>
-                    <p>Trash</p>
+                    <p><a href="./trash.php">Trash</a></p>
                 </div>
                 <hr>
                 <div class="stored d-flex ">
@@ -306,56 +306,22 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         </div>
     </div>
     <ul class='custom-menu'>
+        <li class="restore" data-action="Restore">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"></path>
+        </svg>
+            Restore
+        </li>
         <li class="delete" data-action="Delete">
             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
                 <path d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
                 <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
             </svg>
-            Delete
-        </li>
-        <li class="rename" data-action="Rename">
-            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
-                <path d="M1,15.25V19h3.75L15.814,7.936l-3.75-3.75L1,15.25z M18.707,5.043c0.391-0.391,0.391-1.023,0-1.414l-2.336-2.336  c-0.391-0.391-1.024-0.391-1.414,0l-1.832,1.832l3.75,3.75L18.707,5.043z"></path>
-            </svg>
-            Rename
-        </li>
-        <li class="download" data-action="Download">
-            <a href="#">
-                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
-                </svg>
-                Download
-            </a>
-        </li>
-        <li class="share" data-action="Share">
-            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
-                <path d="M3.9,12c0-1.7,1.4-3.1,3.1-3.1h4V7H7c-2.8,0-5,2.2-5,5s2.2,5,5,5h4v-1.9H7C5.3,15.1,3.9,13.7,3.9,12z M8,13h8v-2H8V13zM17,7h-4v1.9h4c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1h-4V17h4c2.8,0,5-2.2,5-5S19.8,7,17,7z"></path>
-            </svg>
-            Share this file
+            Hard delete
         </li>
     </ul>
-    <!-- Rename dialog -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Rename</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                </div>
-                <div class="modal-body">
-                    <p>Enter a new name.</p>
-                    <input type="text" id="newname">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" id='save'">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Delete dialog -->
     <div class=" modal fade" id="myModal1" role="dialog">
