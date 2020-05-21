@@ -121,7 +121,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
             <div class="col-6 col-lg-9 col-sm-7 right" id="right">
                 <?php require_once './views/userpage.php' ?>
-                <p>asdasd</p>
             </div>
         </div>
     </div>
@@ -268,8 +267,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 ?>
                 <script>
                     $(document).ready(function() {
-                        $('h4:eq(1)').text('User Info');
-                        console.log($('h4:eq(1)').next().html('<p>123123</p>'))
                         $('.totalSize').text("<?= $totalSize . ' used' ?>");
                     })
                 </script>
