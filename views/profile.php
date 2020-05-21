@@ -1,12 +1,47 @@
+<?php
+require_once '../function.php';
+require_once '../config.php';
+
+session_start();
+if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
+    header('Location: ./views/login.php');
+} else {
+    $user = $_SESSION['user'];
+    $name = $_SESSION['name'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Buffalo Drive</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../Content/Styles/main.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-md navbar-light sticky-top" id="navbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div>
+            <a class="navbar-brand" href="../">Buffalo Drive</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <form class="form-inline my-2 my-lg-0 search">
+                <input class="form-control mr-auto p-3 mr-mb-0" type="search" placeholder="Search" aria-label="Search">
+            </form>
+            <div class="infor d-flex flex-row bd-highlight mb-3">
+                <img src="../Content/Images/avatar.png" alt="">
+                <p class="text-justify"><?= $name ?></p>
+                <a href="../views/logout.php">Logout</a>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <h1>Edit Profile</h1>
         <hr>
