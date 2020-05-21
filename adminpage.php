@@ -1,8 +1,13 @@
 <?php
 require_once './function.php';
 require_once './config.php';
-
 session_start();
+$path123 = ($_SERVER['REQUEST_URI']);
+if (strpos($path123, '?dir=')) {
+    $userpagelink = substr($path123, strpos($path123, '?') + 5, strlen($path123));
+    $_SESSION['userpagelink']= $userpagelink;
+}
+
 if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     header('Location: ./views/login.php');
 } else if ($_SESSION['user'] == 'admin') {
@@ -11,7 +16,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 } else {
     header('Location: ./');
 }
-
+    
 ?>
 
 <!DOCTYPE html>
@@ -268,6 +273,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 <script>
                     $(document).ready(function() {
                         $('.totalSize').text("<?= $totalSize . ' used' ?>");
+                        $('.delete, .rename, .share').remove();
                     })
                 </script>
 </body>

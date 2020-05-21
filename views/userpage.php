@@ -10,6 +10,7 @@
     else{
         $isShare = false;
     }
+    
 ?>
 <hr>
 <h3>My Drive</h3>
@@ -66,7 +67,7 @@
         }
         $path = $dir_path . '/' . $file;
         $isDir = is_dir($path);
-        if ($isShare && in_array($path, $allLink) != 1) {
+        if($isShare && in_array($dir_path.'/'.$file, $allLink) != 1){
             continue;
         }
         if ($isDir) {

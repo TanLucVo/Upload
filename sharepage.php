@@ -10,8 +10,8 @@ if (isset($_SESSION['user']) || !isset($_SESSION['user'])) {
         header('Location: ./');
     }
 }
-$name = $_SESSION['name'];
 
+$name = $_SESSION['name'];
 $link = GetShareLinkByUser($usershare, $conn);
 if ($link->num_rows > 0) {
     // output data of each row
@@ -61,12 +61,11 @@ if ($link->num_rows > 0) {
     </nav>
     <?php
     $root = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/" . $usershare;
-    // echo $_SERVER['HTTP_HOST'];
     $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
     $url = $_SERVER['REQUEST_URI'];
-    $back = 'http://localhost:8888' . '' . substr($url, 0, strrpos($url, '/'));
+    // $back = 'http://localhost:8888' . '' . substr($url, 0, strrpos($url, '/'));
     if ($dirName) {
         $dir_path = $root . '/' . $dirName;
     } else {
@@ -278,7 +277,7 @@ if ($link->num_rows > 0) {
                     $(document).ready(function() {
 
                         $('.totalSize').text("<?= $totalSize . ' used' ?>");
-                        
+                        $('.folder a').attr('href','#');
                     })
                 </script>
 </body>
