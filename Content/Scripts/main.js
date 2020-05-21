@@ -91,6 +91,27 @@ $(document).ready(function(){
             );
         });
     });
+    $(".hashdelete").click(function () {
+
+        var item = $('.custom-menu').data()['file'];
+        $("#myModal1").modal({
+            backdrop: "static",
+            keyboard: false,
+        });
+        $("#delete").click(function () {
+            $.post(
+                "http://localhost:8888/BuffaloDrive/Upload/views/hasddelete.php", {
+                path: $('.custom-menu').data()['link'],
+            },
+                function (data, status) {
+                    if (status) {
+                        item.remove();
+                        location.reload();
+                    }
+                }
+            );
+        });
+    });
     $('.share').click(function () {
         $.post(
             "http://localhost:8888/BuffaloDrive/Upload/views/sharefile.php", {

@@ -313,7 +313,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         </svg>
             Restore
         </li>
-        <li class="delete" data-action="Delete">
+        <li class="hashdelete" data-action="Delete">
             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
                 <path d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
