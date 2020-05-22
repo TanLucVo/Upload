@@ -4,10 +4,26 @@ require_once './config.php';
 
 session_start();
 $link = ($_SERVER['REQUEST_URI']);
-$usershare = substr($link, strpos($link, '?') + 1, strlen($link));
+$usershare = filter_input(INPUT_GET, 'user', FILTER_SANITIZE_STRING);
+$dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
+if (!isset($dirName) && !isset($usershare)) {
+    header('Location: ./error.html');
+}
+if (!file_exists("C:/xampp/htdocs/BuffaloDrive/Upload/files/" . $usershare)) {
+    header('Location: ./error.html');
+}
+if (isset($_SESSION['usershare']) && file_exists("C:/xampp/htdocs/BuffaloDrive/Upload/files/" . $usershare) && isset($usershare)) {
+    $_SESSION['usershare'] = $usershare;
+} else if (file_exists("C:/xampp/htdocs/BuffaloDrive/Upload/files" . $usershare) && !isset($_SESSION['usershare'])) {
+    $_SESSION['usershare'] = $usershare;
+    header('Location: http://localhost:8888/BuffaloDrive/Upload/sharepage.php?user=' . $usershare);
+} else if (isset($_SESSION['usershare'])) {
+    $usershare = $_SESSION['usershare'];
+}
+
 if (isset($_SESSION['user']) || !isset($_SESSION['user'])) {
     if ($usershare == $_SESSION['user']) {
-        header('Location: ./');
+        header('Location: http://localhost:8888/BuffaloDrive/Upload');
     }
 }
 
@@ -54,28 +70,35 @@ if ($link->num_rows > 0) {
             </form>
             <div class="infor d-flex flex-row bd-highlight mb-3">
                 <img src="./Content/Images/avatar.png" alt="">
-                <p class="text-justify"><?= $name ?></p>
+                <a href="./views/profile.php"><?= $name ?></a>
                 <a href="./views/logout.php">Logout</a>
             </div>
         </div>
     </nav>
     <?php
-    $root = $_SERVER['DOCUMENT_ROOT'] . "/BuffaloDrive/Upload/files/" . $usershare;
-    $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
+    $root = "C:/xampp/htdocs/BuffaloDrive/Upload/files/" . $usershare;
+
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
+
     $url = $_SERVER['REQUEST_URI'];
     // $back = 'http://localhost:8888' . '' . substr($url, 0, strrpos($url, '/'));
     if ($dirName) {
+
         $dir_path = $root . '/' . $dirName;
     } else {
         $dir_path = $root;
     }
     $mess = '';
+    // $dir_path=str_replace("dir=1", '123123', $dir_path);
     if (!file_exists($root) && $user != 'admin') {
         mkdir($root);
     }
-    $files = scandir($dir_path);
+    if (file_exists($dir_path)) {
+        $files = scandir($dir_path);
+    } else {
+        header('Location: ./error.html');
+    }
     ?>
     <div>
         <div class="row">
@@ -248,7 +271,7 @@ if ($link->num_rows > 0) {
                             <form method="post" id='newFolderForm'>
                                 <div class="modal-body">
                                     <input type="text" name="folderName" id='folderName'>
-                                    <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
+                                    <input type="hidden" name="folderPath" value="C:/xampp/htdocs/BuffaloDrive/Upload/files/<?= $_SESSION['user'] ?>" id='folderPath'>
 
                                 </div>
                                 <div class="modal-footer">
@@ -277,7 +300,9 @@ if ($link->num_rows > 0) {
                     $(document).ready(function() {
 
                         $('.totalSize').text("<?= $totalSize . ' used' ?>");
-                        $('.folder a').attr('href','#');
+                        // $('.folder a').attr('href', '#');
+                        $('.custom-menu .delete, .custom-menu .rename, .custom-menu .share').remove();
+                        $('.custom-menu').append()
                     })
                 </script>
 </body>

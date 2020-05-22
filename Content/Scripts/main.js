@@ -59,7 +59,6 @@ $(document).ready(function(){
                 newname: newName,
             },
                 function (data, status) {
-                    console.log(status);
                     if (status) {
                         var path = $('.custom-menu').data()['file'];
                         path.find('a').text(newName);
@@ -140,14 +139,13 @@ $(document).ready(function(){
         },
             function (data, status) {
                 if (status) {
-                    
+                
                 }
             }
         );
     })
     $('.folder').click(function(){
         var link = $(this).find('a').attr("href");
-        console.log(link)
         location.href = link;
     })
     $('.folder, .file-item').bind("contextmenu", function (event) {

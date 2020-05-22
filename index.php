@@ -46,7 +46,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </form>
             <div class="infor d-flex flex-row bd-highlight mb-3">
                 <a href="./views/profile.php"><img src="./Content/Images/avatar.png" alt="<?= $name ?>"></a>
-                <a href="./views/profile.php"><p class="text-justify"><?= $name ?></p></a>
+                <a href="./views/profile.php"><?= $name ?></a>
                 <a href="./views/logout.php">Logout</a>
             </div>
         </div>
