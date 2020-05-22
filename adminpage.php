@@ -273,7 +273,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 <script>
                     $(document).ready(function() {
                         $('.totalSize').text("<?= $totalSize . ' used' ?>");
-                        $('.delete, .rename, .share').remove();
                     })
                 </script>
 </body>
