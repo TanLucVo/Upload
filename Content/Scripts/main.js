@@ -217,6 +217,7 @@ $(document).ready(function(){
             form_data.append("fileToUpload[]", document.getElementById('fileToUpload').files[index]);
         }
         form_data.append("path", path);
+        form_data.append("totalSize", $('#totalSize').val());
         // if ($(this).prop('files').length > 0) {
         //     file = $(this).prop('files')[0];
         //     formdata.append("fileToUpload[]", file);

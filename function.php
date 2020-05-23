@@ -137,4 +137,20 @@
         $stmt->bind_param('s', $link);
         $stmt->execute();
     }
+    function getLimit($conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("SELECT * FROM `limitupload`");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                return  array($row['data'], $row['numfile'], $row['filedata'], $row['typeNotAceppt']);
+            }
+        } else {
+            return null;
+        }
+    }
 ?>

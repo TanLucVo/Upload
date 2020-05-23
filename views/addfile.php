@@ -2,19 +2,30 @@
 require_once '../function.php';
 require_once '../config.php';
 session_start();
+$limit = getLimit($conn);
+$maxDataUser = $limit[0];
+$maxfileupload = $limit[1];
+$maxDataFile = $limit[2];
+$notAcept = $limit[3];
+
+$notAcept = explode(" ", $notAcept);  
+
 try {
     $status = "";
-    if (!isset($_FILES['fileToUpload']) || !isset($_POST['path'])) {
+    if (!isset($_FILES['fileToUpload']) || !isset($_POST['path']) || !isset($_POST['totalSize'])) {
         die(json_encode("No files selected"));
     }
     $upload_dir = 'uploads' . DIRECTORY_SEPARATOR;
-    $not_allowed_types = array('py');
-
-    // Define maxsize for files i.e 100MB 
-    $maxsize = 1024 * 1024 * 1024;
+    $not_allowed_types = $notAcept;
+    $totalSize = (int) $_POST['totalSize'];
+    // Define maxsize for files i.e 1gB 
+    $maxsize = $maxDataFile;
     // Checks if user sent an empty form  
+    if(count($_FILES['fileToUpload']['name']) > $maxfileupload){
+        die(json_encode("over number uploadfile max"));
+    }
     if (!empty(array_filter($_FILES['fileToUpload']['name']))) {
-
+        
         // Loop through each file in files[] array 
         foreach ($_FILES['fileToUpload']['tmp_name'] as $key => $value) {
 
@@ -39,6 +50,9 @@ try {
                     
                 else if (move_uploaded_file($file_tmpname, $filepath)) {
                     $status = $status . "{$file_name} successfully uploaded <br>";
+                    if($totalSize + $file_size > $maxsize){
+                        die(json_encode("Used all data"));
+                    }
                     addFile($filepath, $_SESSION['user'], $conn);
                 } else {
                     $status = $status . "Error uploading {$file_name} <br>";
