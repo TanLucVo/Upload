@@ -241,7 +241,7 @@ if ($link->num_rows > 0) {
                             <div class="modal-body">
                                 <form method="post" enctype="multipart/form-data" id="uploadFile">
                                     <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
-                                    <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
+                                    <input type="hidden" name="path" value="C:/xampp/htdocs/BuffaloDrive/Upload/files/<?= $_SESSION['user'] ?>/" id='pathfile'>
                                     <div class="progress mt-3">
                                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                                     </div>
