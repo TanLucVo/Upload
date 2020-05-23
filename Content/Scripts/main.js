@@ -272,5 +272,7 @@ $(document).ready(function(){
     $(document).click(function(){
         $(".custom-menu").hide(100);
     })
-
+    $('#uploadFile #fileToUpload').change(function () {
+        $('#uploadFile p').first().text(this.files.length + " file(s) selected");
+    });
 })

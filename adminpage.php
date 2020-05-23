@@ -5,7 +5,7 @@ session_start();
 $path123 = ($_SERVER['REQUEST_URI']);
 if (strpos($path123, '?dir=')) {
     $userpagelink = substr($path123, strpos($path123, '?') + 5, strlen($path123));
-    $_SESSION['userpagelink']= $userpagelink;
+    $_SESSION['userpagelink'] = $userpagelink;
 }
 
 if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
@@ -16,7 +16,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 } else {
     header('Location: ./');
 }
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -216,6 +216,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                                 <form method="post" enctype="multipart/form-data" id="uploadFile">
                                     <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
                                     <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
+                                    <p>Drag your files here or click in this area.</p>
                                     <div class="progress mt-3">
                                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                                     </div>

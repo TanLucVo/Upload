@@ -242,6 +242,7 @@ if ($link->num_rows > 0) {
                                 <form method="post" enctype="multipart/form-data" id="uploadFile">
                                     <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
                                     <input type="hidden" name="path" value="C:/xampp/htdocs/BuffaloDrive/Upload/files/<?= $_SESSION['user'] ?>/" id='pathfile'>
+                                    <p>Drag your files here or click in this area.</p>
                                     <div class="progress mt-3">
                                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                                     </div>
