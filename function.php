@@ -153,4 +153,13 @@
             return null;
         }
     }
+    function addSettings($data, $numfile, $filedata, $typeNotAceppt, $conn)
+    {
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("UPDATE `limitupload` SET `data`= ?,`numfile`=?,`filedata`=?,`typeNotAceppt`=? WHERE 1");
+        $stmt->bind_param('iiis', $data, $numfile, $filedata, $typeNotAceppt);
+        $stmt->execute();
+    }
 ?>
