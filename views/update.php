@@ -34,14 +34,12 @@ session_start();
             header('Location: ./profile.php');
         }
     }
-    if(isset($_SESSION['mess'])){
-        $mess = $_SESSION['mess'];
-    }else{
-        $mess = '';
-    }
-    unset($_SESSION['mess']);
-
-
+    // if(isset($_SESSION['mess'])){
+    //     $mess = $_SESSION['mess'];
+    // }else{
+    //     $mess = '';
+    // }
+    // unset($_SESSION['mess']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,7 +93,7 @@ session_start();
                 <div class="alert alert-info alert-dismissable">
                 <a class="panel-close close" data-dismiss="alert">×</a> 
                 <i class="fa fa-coffee"></i>
-                This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                <!-- <?= $mess ?> -->
                 </div>
                 <h3>Personal info</h3>
                 
@@ -103,37 +101,37 @@ session_start();
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
                     <div class="col-lg-8">
-                    <input class="form-control" type="text" name="firstname" value="<?= $myName[1] ?>">
+                    <input class="form-control" type="text" id="firstname" name="firstname" placeholder="First Name" title="Please enter your First Name" required="" value="<?= $myName[1] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Last name:</label>
                     <div class="col-lg-8">
-                    <input class="form-control" type="text" name="lastname" value="<?= $myName[0] ?>">
+                    <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Last Name" title="Please enter your Last Name" required="" value="<?= $myName[0] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                    <input class="form-control" type="text" name="email" value="<?= $infor["email"] ?>">
+                    <input class="form-control" type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="" value="<?= $infor["email"] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Username:</label>
                     <div class="col-md-8">
-                    <input class="form-control" type="text" name="username" value="<?= $infor["username"] ?>">
+                    <input class="form-control" type="text" id="username" name="username" placeholder="User Name" title="Please enter your User Name" required="" value="<?= $infor["username"] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Password:</label>
                     <div class="col-md-8">
-                    <input class="form-control" id="password_edit" name="password" type="password" value="">
+                    <input class="form-control" type="password" class="lock" name="password" placeholder="Password" id="password_edit" required="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Confirm password:</label>
                     <div class="col-md-8">
-                    <input class="form-control" name="confirm-password" id="confirmpassword_edit" type="password" value="">
+                    <input class="form-control" type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="confirmpassword_edit" required="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -144,18 +142,30 @@ session_start();
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                    <input type="button" class="btn btn-primary" name="saveprofile" value="Save Changes">
+                    <input type="submit" class="btn btn-primary" name="saveprofile" value="Save Changes">
                     <span></span>
                     <a href="./profile.php" class="btn btn-default">Cancel</a>
                     </div>
                 </div>
                 </form>
+                <script type="text/javascript">
+                    window.onload = function () {
+                        document.getElementById("password_edit").onchange = validatePassword;
+                        document.getElementById("confirmpassword_edit").onchange = validatePassword;
+                    }
+                    function validatePassword(){
+                        var pass2=document.getElementById("confirmpassword_edit").value;
+                        var pass1=document.getElementById("password_edit").value;
+                        if(pass1!=pass2)
+                            document.getElementById("confirmpassword_edit").setCustomValidity("Passwords Don't Match");
+                        else
+                            document.getElementById("confirmpassword_edit").setCustomValidity('');	 
+                            //empty string means no validation error
+                    }
+                </script>
             </div>
         </div>
     </div>
     <hr>
 </body>
-<script>
-
-</script>
 </html>
