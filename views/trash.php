@@ -362,7 +362,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
         </div>
     </div>
-
     <!-- Add file dialog -->
     <div class="modal fade" id="addFile" role="dialog">
         <div class="modal-dialog">
@@ -377,6 +376,8 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                     <form method="post" enctype="multipart/form-data" id="uploadFile">
                         <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
                         <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
+                        <input type="hidden" name="totalSize" value=<?= $totalSize ?> id="totalSize">
+                        <p>Drag your files here or click in this area.</p>
                         <div class="progress mt-3">
                             <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                         </div>

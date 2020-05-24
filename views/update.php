@@ -1,8 +1,8 @@
 <?php
 require_once '../function.php';
 require_once '../config.php';
+session_start();
 
-    session_start();
     if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         header('Location: ./views/login.php');
     } else {
@@ -12,6 +12,36 @@ require_once '../config.php';
 
     $infor = getInforByUser($user,$conn);
     $myName = explode(" ", $infor["name"]);
+    if (isset($_POST["saveprofile"])) {
+        $mess ='';
+        
+        //lấy thông tin từ các form bằng phương thức POST
+        $name = $_POST["firstname"]." ".$_POST["lastname"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $email = $_POST["email"];
+        if (!checkUser($username, $conn)) {
+            $mess =  "Username already exists, please enter it again.";
+            $_SESSION['mess'] = $mess;
+            unset($_POST);
+            header('Location: ./update.php');
+        }else{
+            $mess =  "You have successfully edited my account.";
+            $_SESSION['mess'] = $mess;
+            unset($_POST);
+            editProfile($username,$password,$name,$email,$conn,$infor["name"]);
+            
+            header('Location: ./profile.php');
+        }
+    }
+    if(isset($_SESSION['mess'])){
+        $mess = $_SESSION['mess'];
+    }else{
+        $mess = '';
+    }
+    unset($_SESSION['mess']);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,20 +75,22 @@ require_once '../config.php';
             </div>
         </div>
     </nav>
-
-    <!-- View profile -->
-    <div class="viewprofile">
+    <!-- Edit profile -->
+    <div class="editprofile">
         <div class="container">
-            <h1>Profile</h1>
+            <h1>Edit Profile</h1>
             <hr>
             <div class="row">
             <!-- left column -->
             <div class="col-md-3">
                 <div class="text-center">
                 <img src="../Content/Images/avatar.png" class="avatar img-circle" alt="avatar" width="150px">
+                
+                <input type="file" class="form-control">
                 </div>
             </div>
             
+            <!-- edit form column -->
             <div class="col-md-9 personal-info">
                 <div class="alert alert-info alert-dismissable">
                 <a class="panel-close close" data-dismiss="alert">×</a> 
@@ -67,53 +99,54 @@ require_once '../config.php';
                 </div>
                 <h3>Personal info</h3>
                 
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" action="./update.php" method="post">
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
                     <div class="col-lg-8">
-                    <p><?= $myName[1] ?></p>
+                    <input class="form-control" type="text" name="firstname" value="<?= $myName[1] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Last name:</label>
                     <div class="col-lg-8">
-                    <p><?= $myName[0] ?></p>
+                    <input class="form-control" type="text" name="lastname" value="<?= $myName[0] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
-                    <p><?= $infor["email"] ?></p>
+                    <input class="form-control" type="text" name="email" value="<?= $infor["email"] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Username:</label>
                     <div class="col-md-8">
-                    <p><?= $user ?></p>
+                    <input class="form-control" type="text" name="username" value="<?= $infor["username"] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Password:</label>
                     <div class="col-md-8">
-                    <input class="form-control" id="password1" type="password" value="<?= $infor["pass"] ?>">
+                    <input class="form-control" id="password_edit" name="password" type="password" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label">Confirm password:</label>
                     <div class="col-md-8">
-                    <input class="form-control" id="password2" type="password" value="<?= $infor["pass"] ?>">
+                    <input class="form-control" name="confirm-password" id="confirmpassword_edit" type="password" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-8">
-                    <input type="checkbox" onclick="myShowPassword()">Show Password
+                    <input type="checkbox" onclick="editShowPassword()">Show Password
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
-                    <a href="./update.php" class="btn btn-primary">Edit Profile</a>
+                    <input type="button" class="btn btn-primary" name="saveprofile" value="Save Changes">
                     <span></span>
+                    <a href="./profile.php" class="btn btn-default">Cancel</a>
                     </div>
                 </div>
                 </form>
@@ -122,4 +155,7 @@ require_once '../config.php';
     </div>
     <hr>
 </body>
+<script>
+
+</script>
 </html>

@@ -35,8 +35,7 @@
         $stmt->bind_param('s', $link);
         $stmt->execute();
     }
-    function deleteDir($path, $conn)
-    {
+    function deleteDir($path, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -64,8 +63,7 @@
         }
 
     }
-    function renameFile($link, $id, $conn)
-    {
+    function renameFile($link, $id, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -108,8 +106,7 @@
         $stmt->execute();
     }
 
-    function GetShareLinkByUser($user, $conn)
-    {
+    function GetShareLinkByUser($user, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -128,8 +125,7 @@
         $stmt->bind_param('ss', $link, $user);
         $stmt->execute();
     }
-    function delFileIntoTrash($link, $conn)
-    {
+    function delFileIntoTrash($link, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -153,13 +149,36 @@
             return null;
         }
     }
-    function addSettings($data, $numfile, $filedata, $typeNotAceppt, $conn)
-    {
+    function addSettings($data, $numfile, $filedata, $typeNotAceppt, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         $stmt = $conn->prepare("UPDATE `limitupload` SET `data`= ?,`numfile`=?,`filedata`=?,`typeNotAceppt`=? WHERE 1");
         $stmt->bind_param('iiis', $data, $numfile, $filedata, $typeNotAceppt);
+        $stmt->execute();
+    }
+    function getInforByUser($user, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("SELECT * FROM `user` WHERE username LIKE ?");
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($result);
+            return $row;
+        }
+        else {
+            return null;
+        }
+    }
+    function editProfile($username,$password,$name,$email,$conn,$oldUser){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("UPDATE `user` SET `username`= ?,`pass`=?,`name`=?,`email`=? WHERE `username`=?");
+        $stmt->bind_param('sssss', $username, $password, $name, $email, $oldUser);
         $stmt->execute();
     }
 ?>

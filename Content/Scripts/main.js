@@ -275,4 +275,33 @@ $(document).ready(function(){
     $('#uploadFile #fileToUpload').change(function () {
         $('#uploadFile p').first().text(this.files.length + " file(s) selected");
     });
+
 })
+
+//Profile
+function editShowPassword() {
+    var x = document.getElementById("password_edit");
+    var y = document.getElementById("confirmpassword_edit");
+    if (x.type === "password" || y.type === "password") {
+        x.type = "text";
+        y.type = "text";
+    }
+    else {
+        x.type = "password";
+        y.type = "password";
+
+    }
+}
+function myShowPassword() {
+    var x = document.getElementById("password1");
+    var y = document.getElementById("password2");
+    if (x.type === "password" || y.type === "password") {
+        x.type = "text";
+        y.type = "text";
+    }
+    else {
+        x.type = "password";
+        y.type = "password";
+
+    }
+}
