@@ -127,6 +127,12 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                         <p class="totalSize">0 MB used</p>
                     </div>
                 </div>
+                <hr>
+                <div class="settings-user">
+                    <div>
+                        <h5 class="text-center" style="cursor:pointer" id='settings-btn'>Setting</h5>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-lg-9 col-sm-7 right" id="right">
                 <?php require_once './views/userpage.php' ?>
@@ -184,26 +190,56 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
         </div>
     </div>
-
-    <!-- Delete dialog -->
-    <div class=" modal fade" id="myModal1" role="dialog">
+     <div class=" modal fade" id="setting-modal" role="dialog">
                         <div class="modal-dialog">
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Delete</h4>
+                                    <h4 class="modal-title">Settings</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                                 </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
-                                </div>
+                                <form method="post" id='setting-form'>
+                                    <div class="modal-body ">
+                                        <p class="mb-1">Enter total data each user.</p>
+                                        <input type="text" class='form-control' placeholder="Bytes" id="totalData">
+                                        <p class="mb-1">Enter number of file in upload.</p>
+                                        <input type="text" class='form-control' placeholder="Number" id="numFile">
+                                        <p class="mb-1">Enter maximum data of file.</p>
+                                        <input type="text" class='form-control' placeholder="Bytes" id="filedata">
+                                        <p class="mb-1">Enter file extension not accept (separated by spaces).</p>
+                                        <input type="text" class='form-control' placeholder="Text" id="typeNotAccept">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p class="message"></p>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <input class='btn btn-success' type="submit" value="Save" name="submit">
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                </div>
+
+
+                <!-- Delete dialog -->
+                <div class=" modal fade" id="myModal1" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Add file dialog -->

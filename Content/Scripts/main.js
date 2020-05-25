@@ -27,6 +27,38 @@ $(document).ready(function(){
             keyboard: false,
         });
     });
+    $("#settings-btn").click(function (e) {
+        
+        $("#setting-modal").modal({
+            backdrop: "static",
+            keyboard: false,
+        });
+        e.preventDefault(e);
+        
+    });
+    $('#setting-form').submit(function (e) {
+        e.preventDefault(e);
+        var data = $('#totalData').val();
+        var numfile = $('#numFile').val();
+        var filedata = $('#filedata').val();
+        var typeNotAceppt = $('#typeNotAccept').val();
+
+        $.post(
+            "http://localhost:8888/BuffaloDrive/Upload/views/settings.php", {
+            data: data,
+            numfile: numfile,
+            filedata: filedata,
+            typeNotAceppt: typeNotAceppt,
+
+        },
+            function (status) {
+                $('.message').text(status);
+                $("[data-dismiss=modal]").click(function () {
+                    location.reload();
+                })
+            }
+        );
+    })
     $("#newfolder").click(function () {
         $("#addFolder").modal({
             backdrop: "static",

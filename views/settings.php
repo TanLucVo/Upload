@@ -6,10 +6,16 @@ require_once '../config.php';
 session_start();
 
 if (isset($_POST['data']) && isset($_POST['numfile']) && isset($_POST['filedata']) && isset($_POST['typeNotAceppt'])) {
-    $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
-    $dir_path = filter_input(INPUT_POST, 'folderPath', FILTER_SANITIZE_STRING);
+    if($_POST['data']=='' || $_POST['numfile'] == '' || $_POST['filedata'] == '' || $_POST['typeNotAceppt'] == ''){
+        echo json_encode('Parameters not valid');
+        return;
+    }
+    $data = $_POST['data'];
+    $numfile = $_POST['numfile'];
+    $filedata = $_POST['filedata'];
+    $typeNotAceppt = $_POST['typeNotAceppt'];
     addSettings($data, $numfile, $filedata, $typeNotAceppt, $conn);
-    echo json_encode("Folder created");
+    echo json_encode("Settings Changed");
 } else {
     echo json_encode('Parameters not valid');
 }
