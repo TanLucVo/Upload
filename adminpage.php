@@ -2,6 +2,10 @@
 require_once './function.php';
 require_once './config.php';
 session_start();
+
+// Creating a variable with an URL 
+// to be checked 
+
 $path123 = ($_SERVER['REQUEST_URI']);
 if (strpos($path123, '?dir=')) {
     $userpagelink = substr($path123, strpos($path123, '?') + 5, strlen($path123));
