@@ -5,7 +5,8 @@
             die("Connection failed: " . $conn->connect_error);
         }
         $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? and pass = ?");
-        $stmt->bind_param('ss', $username, $password);
+        $passhash = hash('sha1', $password);
+        $stmt->bind_param('ss', $username, $passhash);
         $stmt->execute();
         $result = $stmt->get_result(); // get the mysqli result
         if ($result->num_rows > 0) {

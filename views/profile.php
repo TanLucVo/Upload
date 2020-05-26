@@ -35,6 +35,7 @@ $email = $infor['email'];
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
+            <a href="../"><img src="../Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
             <a class="navbar-brand" href="../">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
