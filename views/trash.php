@@ -35,6 +35,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
+            <a href="../"><img src="../Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
             <a class="navbar-brand" href="../">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -89,13 +90,13 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                         <path d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
                     </svg>
-                    <p>Recent</p>
+                    <a>Recent</a>
                 </div>
                 <div class="my-drive d-flex">
                     <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
                         <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5v-1h14v1zm0-3H5V4h14v13zm-9.35-2h5.83l1.39-2.77h-5.81zm7.22-3.47L13.65 6h-2.9L14 11.53zm-5.26-2.04l-1.45-2.52-3.03 5.51L8.6 15z"></path>
                     </svg>
-                    <p class="d-inline"><a href="../">My Drive</a></p>
+                    <a class="d-inline" href="../">My Drive</a>
                 </div>
                 <div class="trash d-flex">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined ">
@@ -103,7 +104,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                         <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
                         <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
                     </svg>
-                    <p><a href="./trash.php">Trash</a></p>
+                    <a href="./trash.php">Trash</a>
                 </div>
                 <hr>
                 <div class="stored d-flex ">

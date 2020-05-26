@@ -79,7 +79,7 @@ nav{
         margin: auto;
     }
 }
-.recent,.my-drive, .trash, .stored, .limit{
+.recent,.my-drive, .trash, .stored, .limit, .settings-user{
     font-family:"Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     cursor: pointer;
     width: 240px;
@@ -91,13 +91,13 @@ nav{
     line-height: 22px;
     margin: 10px;
 }
-.recent svg, .my-drive svg, .trash svg, .stored svg , .limit svg{
+.recent svg, .my-drive svg, .trash svg, .stored svg , .limit svg, .settings-user svg{
     font-size: 30px;
     margin-bottom: 0;
     margin: auto 10px;
     width: 30%;
 }
-.recent p, .my-drive p, .trash p, .stored>p, .limit p{
+.recent a, .my-drive a, .trash a, .stored a, .limit a, .settings-user a{
     width: 70%;
     margin-bottom: 0;
     margin: auto 10px;
@@ -176,7 +176,7 @@ a:hover{
 div.folder:hover, div.card:hover {
     cursor: pointer;
 }
-.recent:hover, .trash:hover, .my-drive:hover, .limit:hover {
+.recent:hover, .trash:hover, .my-drive:hover, .limit:hover, .settings-user:hover {
     background-color: #F5F5F5;
     border-bottom: 10px;
 }

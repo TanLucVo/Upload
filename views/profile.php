@@ -32,6 +32,7 @@ require_once '../config.php';
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
+            <a href="../"><img src="../Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
             <a class="navbar-brand" href="../">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -60,11 +61,11 @@ require_once '../config.php';
             </div>
             
             <div class="col-md-9 personal-info">
-                <div class="alert alert-info alert-dismissable">
-                <a class="panel-close close" data-dismiss="alert">×</a> 
-                <i class="fa fa-coffee"></i>
-                This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                </div>
+                <!-- <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">×</a> 
+                    <i class="fa fa-coffee"></i>
+                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div> -->
                 <h3>Personal info</h3>
                 
                 <form class="form-horizontal" role="form">

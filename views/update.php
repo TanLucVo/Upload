@@ -59,6 +59,7 @@ session_start();
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
+            <a href="../"><img src="../Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
             <a class="navbar-brand" href="../">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -89,11 +90,10 @@ session_start();
             
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
-                <div class="alert alert-info alert-dismissable">
-                <a class="panel-close close" data-dismiss="alert">×</a> 
-                <i class="fa fa-coffee"></i>
-                <!-- <?= $mess ?> -->
-                </div>
+                <!-- <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert">×</a> 
+                    <i class="fa fa-coffee"></i>
+                </div> -->
                 <h3>Personal info</h3>
                 
                 <form class="form-horizontal" role="form" action="./update.php" method="post">

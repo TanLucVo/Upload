@@ -46,6 +46,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
+            <a href="./"><img src="./Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
             <a class="navbar-brand" href="./">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -53,8 +54,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 <input class="form-control mr-auto p-3 mr-mb-0" type="search" placeholder="Search" aria-label="Search">
             </form>
             <div class="infor d-flex flex-row bd-highlight mb-3">
-                <img src="./Content/Images/avatar.png" alt="">
-                <p class="text-justify"><?= $name ?></p>
                 <a href="./views/logout.php">Logout</a>
             </div>
         </div>
@@ -81,61 +80,80 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     <div>
         <div class="row">
             <div class="sticky col-6 col-lg-3 col-sm-5 left" id="left">
-                <div class="new d-flex" data-toggle="collapse" href="#multiCollapse" role="button" aria-expanded="false" aria-controls="multiCollapse">
-                    <svg class="bi bi-folder-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M9.828 4H2.19a1 1 0 00-.996 1.09l.637 7a1 1 0 00.995.91H9v1H2.826a2 2 0 01-1.991-1.819l-.637-7a1.99 1.99 0 01.342-1.31L.5 3a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 009.828 3h3.982a2 2 0 011.992 2.181L15.546 8H14.54l.265-2.91A1 1 0 0013.81 4H9.828zm-2.95-1.707L7.587 3H2.19c-.24 0-.47.042-.684.12L1.5 2.98a1 1 0 011-.98h3.672a1 1 0 01.707.293z" clip-rule="evenodd" />
-                        <path fill-rule="evenodd" d="M13.5 10a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-2a.5.5 0 010-1H13v-1.5a.5.5 0 01.5-.5z" clip-rule="evenodd" />
-                        <path fill-rule="evenodd" d="M13 12.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd" />
-                    </svg>
-                    <p>New</p>
-                </div>
-                <div class="collapse multi-collapse" id='multiCollapse'>
-                    <a class="dropdown-item" href="#" id='newfile'>New File</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" id='newfolder'>New Folder</a>
-                </div>
-                <div class="recent d-flex">
-                    <svg class="a-s-fa-Ha-pa" width="1em" height="1em" viewBox="0 0 24 24" fill="#000000" focusable="false">
-                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
-                        <path d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
-                    </svg>
-                    <p>Recent</p>
-                </div>
                 <div class="my-drive d-flex">
                     <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
                         <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5v-1h14v1zm0-3H5V4h14v13zm-9.35-2h5.83l1.39-2.77h-5.81zm7.22-3.47L13.65 6h-2.9L14 11.53zm-5.26-2.04l-1.45-2.52-3.03 5.51L8.6 15z"></path>
                     </svg>
-                    <p class="d-inline"><a href="./">My Drive</a></p>
-                </div>
-                <div class="trash d-flex">
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined ">
-                        <path d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
-                        <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
-                    </svg>
-                    <p><a href="./views/trash.php">Trash</a></p>
+                    <a class="d-inline" href="./">Account</a>
                 </div>
                 <hr>
-                <div class="stored d-flex ">
-                    <svg class="a-s-fa-Ha-pa" width="24px" height="24px" viewBox="0 0 24 24" focusable="false" fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M3 20h18v-4H3v4zm2-3h2v2H5v-2zM3 4v4h18V4H3zm4 3H5V5h2v2zm-4 7h18v-4H3v4zm2-3h2v2H5v-2z"></path>
+                <div class="settings-user d-flex">
+                    <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
+                        <path d="M13.85 22.25h-3.7c-.74 0-1.36-.54-1.45-1.27l-.27-1.89c-.27-.14-.53-.29-.79-.46l-1.8.72c-.7.26-1.47-.03-1.81-.65L2.2 15.53c-.35-.66-.2-1.44.36-1.88l1.53-1.19c-.01-.15-.02-.3-.02-.46 0-.15.01-.31.02-.46l-1.52-1.19c-.59-.45-.74-1.26-.37-1.88l1.85-3.19c.34-.62 1.11-.9 1.79-.63l1.81.73c.26-.17.52-.32.78-.46l.27-1.91c.09-.7.71-1.25 1.44-1.25h3.7c.74 0 1.36.54 1.45 1.27l.27 1.89c.27.14.53.29.79.46l1.8-.72c.71-.26 1.48.03 1.82.65l1.84 3.18c.36.66.2 1.44-.36 1.88l-1.52 1.19c.01.15.02.3.02.46s-.01.31-.02.46l1.52 1.19c.56.45.72 1.23.37 1.86l-1.86 3.22c-.34.62-1.11.9-1.8.63l-1.8-.72c-.26.17-.52.32-.78.46l-.27 1.91c-.1.68-.72 1.22-1.46 1.22zm-3.23-2h2.76l.37-2.55.53-.22c.44-.18.88-.44 1.34-.78l.45-.34 2.38.96 1.38-2.4-2.03-1.58.07-.56c.03-.26.06-.51.06-.78s-.03-.53-.06-.78l-.07-.56 2.03-1.58-1.39-2.4-2.39.96-.45-.35c-.42-.32-.87-.58-1.33-.77l-.52-.22-.37-2.55h-2.76l-.37 2.55-.53.21c-.44.19-.88.44-1.34.79l-.45.33-2.38-.95-1.39 2.39 2.03 1.58-.07.56a7 7 0 0 0-.06.79c0 .26.02.53.06.78l.07.56-2.03 1.58 1.38 2.4 2.39-.96.45.35c.43.33.86.58 1.33.77l.53.22.38 2.55z"></path>
+                        <circle cx="12" cy="12" r="3.5"></circle>
                     </svg>
-                    <div>
-                        <p>Storage</p>
-                        <p class="totalSize">0 MB used</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="settings-user">
-                    <div>
-                        <h5 class="text-center" style="cursor:pointer" id='settings-btn'>Setting</h5>
-                    </div>
+                    <a class="d-inline" style="cursor:pointer" id='settings-btn'>Setting</a>
                 </div>
             </div>
             <div class="col-6 col-lg-9 col-sm-7 right" id="right">
-                <?php require_once './views/userpage.php' ?>
+                <?php
+                    if (isset($usershare)) {
+                        if($name != $usershare){
+                            $isShare = true;
+                        }
+                        else{
+                            $isShare = false;
+                        }
+                    }
+                    else{
+                        $isShare = false;
+                    }
+                    
+                ?>
+                <hr>
+                <h3>Manager Account</h3>
+                <hr>
+                <h4>Account</h4>
+                <div class="row">
+                    <?php
+                    foreach ($files as $file) {
+                        if (substr($file, 0, 1) === '.') {
+                            continue;
+                        }
+                        $path = $dir_path . '/' . $file;
+                        $isDir = is_dir($path);
+                        $ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $time = date('d/m/yy', filemtime($path));
+                        $size = '-';
+                        $dirLink = str_replace($root, '', $path);
+                        $dirLink = substr($dirLink, 1);
+                        $dirLink = "?dir=$dirLink";
+                        $type = 'Directory';
+                        if($isShare && in_array($dir_path.'/'.$file, $allLink) != 1){
+                            continue;
+                        }
+                        if (!$isDir) {
+                            continue;
+                        }
+
+
+                    ?>
+                        <div class="folder col-8 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex align-items-center">
+                            <svg x="0px" y="0px" focusable="false" viewBox="0 0 24 24" height="24px" width="24px" fill="#5f6368">
+                                <g>
+                                    <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"></path>
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                </g>
+                            </svg>
+                            <p><a href="<?= $dirLink ?>" class="linkfile"><?= $file ?></a></p>
+                            <input type="hidden" name="asd" value="<?= $dir_path ?>">
+                        </div>
+                    <?php
+
+                    }
+                    ?>
+
+                </div>
             </div>
         </div>
     </div>
@@ -190,132 +208,114 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
         </div>
     </div>
-     <div class=" modal fade" id="setting-modal" role="dialog">
-                        <div class="modal-dialog">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Settings</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class=" modal fade" id="setting-modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Settings</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                                </div>
-                                <form method="post" id='setting-form'>
-                                    <div class="modal-body ">
-                                        <p class="mb-1">Enter total data each user.</p>
-                                        <input type="text" class='form-control' placeholder="Bytes" id="totalData">
-                                        <p class="mb-1">Enter number of file in upload.</p>
-                                        <input type="text" class='form-control' placeholder="Number" id="numFile">
-                                        <p class="mb-1">Enter maximum data of file.</p>
-                                        <input type="text" class='form-control' placeholder="Bytes" id="filedata">
-                                        <p class="mb-1">Enter file extension not accept (separated by spaces).</p>
-                                        <input type="text" class='form-control' placeholder="Text" id="typeNotAccept">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <p class="message"></p>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        <input class='btn btn-success' type="submit" value="Save" name="submit">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                 </div>
-
-
-                <!-- Delete dialog -->
-                <div class=" modal fade" id="myModal1" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Delete</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
-                            </div>
-                        </div>
+                <form method="post" id='setting-form'>
+                    <div class="modal-body ">
+                        <p class="mb-1">Enter total data each user.</p>
+                        <input type="text" class='form-control' placeholder="Bytes" id="totalData">
+                        <p class="mb-1">Enter number of file in upload.</p>
+                        <input type="text" class='form-control' placeholder="Number" id="numFile">
+                        <p class="mb-1">Enter maximum data of file.</p>
+                        <input type="text" class='form-control' placeholder="Bytes" id="filedata">
+                        <p class="mb-1">Enter file extension not accept (separated by spaces).</p>
+                        <input type="text" class='form-control' placeholder="Text" id="typeNotAccept">
                     </div>
-                </div>
-
-                <!-- Add file dialog -->
-                <div class="modal fade" id="addFile" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <h4 class="modal-title">New File</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" enctype="multipart/form-data" id="uploadFile">
-                                    <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
-                                    <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
-                                    <p>Drag your files here or click in this area.</p>
-                                    <div class="progress mt-3">
-                                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
-                                    </div>
-                                    <p id="status"></p>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        <input class='btn btn-success' type="submit" value="Upload" name="submit">
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <p class="message"></p>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <input class='btn btn-success' type="submit" value="Save" name="submit">
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Delete dialog -->
+    <div class=" modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
                 </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Add folder dialog -->
-                <div class="modal fade" id="addFolder" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
+    <!-- Add file dialog -->
+    <div class="modal fade" id="addFile" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
 
-                                <h4 class="modal-title">New Folder</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <form method="post" id='newFolderForm'>
-                                <div class="modal-body">
-                                    <input type="text" name="folderName" id='folderName'>
-                                    <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <p class="message"></p>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                    <input class="btn btn-success" type="submit" value="New folder" name="create">
-
-                                    <br>
-                                </div>
-                            </form>
+                    <h4 class="modal-title">New File</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" id="uploadFile">
+                        <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
+                        <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
+                        <p>Drag your files here or click in this area.</p>
+                        <div class="progress mt-3">
+                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                         </div>
-                    </div>
+                        <p id="status"></p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <input class='btn btn-success' type="submit" value="Upload" name="submit">
+                        </div>
+
+                    </form>
+
                 </div>
-                <?php
+            </div>
+        </div>
+    </div>
 
-                if ($totalSize > 1000000) {
-                    $totalSize = round($totalSize / 1000000.0, 1) . ' MB';
-                } else if ($totalSize > 1000) {
-                    $totalSize = round($totalSize / 1000.0, 1) . ' KB';
-                } else {
-                    $totalSize = $totalSize . ' Bytes';
-                }
+    <!-- Add folder dialog -->
+    <div class="modal fade" id="addFolder" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
 
-                ?>
-                <script>
-                    $(document).ready(function() {
-                        $('.totalSize').text("<?= $totalSize . ' used' ?>");
-                    })
-                </script>
+                    <h4 class="modal-title">New Folder</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <form method="post" id='newFolderForm'>
+                    <div class="modal-body">
+                        <input type="text" name="folderName" id='folderName'>
+                        <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
+
+                    </div>
+                    <div class="modal-footer">
+                        <p class="message"></p>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <input class="btn btn-success" type="submit" value="New folder" name="create">
+
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
