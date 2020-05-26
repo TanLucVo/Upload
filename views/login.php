@@ -13,7 +13,8 @@
 		} else {
 			$_SESSION['pass_default'] = $_POST['pass'];
 			$_SESSION['user'] = $result['username'];
-			$_SESSION['name'] = $result['lastname']." ".$result['firstname'];
+			$_SESSION['name'] = $result['name'];
+			// $_SESSION['name'] = $result['lastname']." ".$result['firstname'];
 			header('Location: ../');
 		}
 	}

@@ -72,12 +72,20 @@
         $stmt->bind_param('si', $link, $id);
         $stmt->execute();
     }
-    function register($username,$password,$firstname,$lastname,$email, $conn){
+    // function register($username,$password,$firstname,$lastname,$email, $conn){
+    //     if ($conn->connect_error) {
+    //         die("Connection failed: " . $conn->connect_error);
+    //     }
+    //     $stmt = $conn->prepare("INSERT INTO user(username,pass,firstname,lastname,email) VALUES (?,?,?,?,?)");
+    //     $stmt->bind_param('sssss', $username, $password, $firstname, $lastname, $email);
+    //     $stmt->execute();
+    // }
+    function register($username,$password,$name,$email, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $stmt = $conn->prepare("INSERT INTO user(username,pass,firstname,lastname,email) VALUES (?,?,?,?,?)");
-        $stmt->bind_param('sssss', $username, $password, $firstname, $lastname, $email);
+        $stmt = $conn->prepare("INSERT INTO user(username,pass,name,email) VALUES (?,?,?,?)");
+        $stmt->bind_param('ssss', $username, $password, $name, $email);
         $stmt->execute();
     }
     function checkUser($username, $conn){
@@ -174,13 +182,22 @@
             return null;
         }
     }
-    function editProfile($username,$password,$firstname,$lastname,$email, $conn){
+    // function editProfile($username,$password,$firstname,$lastname,$email, $conn){
+    //     if ($conn->connect_error) {
+    //         die("Connection failed: " . $conn->connect_error);
+    //     }
+    //     $passhash = hash('sha1',$password);
+    //     $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`firstname`=?,`lastname`=?,`email`=? WHERE `username`=?");
+    //     $stmt->bind_param('sssss', $passhash, $firstname, $lastname, $email, $username);
+    //     $stmt->execute();
+    // }
+    function editProfile($username,$password,$name,$email, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         $passhash = hash('sha1',$password);
-        $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`firstname`=?,`lastname`=?,`email`=? WHERE `username`=?");
-        $stmt->bind_param('sssss', $passhash, $firstname, $lastname, $email, $username);
+        $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`name`=?,`email`=? WHERE `username`=?");
+        $stmt->bind_param('ssss', $passhash, $name, $email, $username);
         $stmt->execute();
     }
 ?>
