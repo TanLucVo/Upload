@@ -8,7 +8,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 } else {
     $user = $_SESSION['user'];
     $name = $_SESSION['name'];
-    $pass_default = $_SESSION['pass_default'];
 }
 
 $infor = getInforByUser($user, $conn);
