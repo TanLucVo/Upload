@@ -6,7 +6,7 @@
 		$mess ='';
 		
         //lấy thông tin từ các form bằng phương thức POST
-		$name = $_POST["firstname"]." ".$_POST["lastname"];
+		$name = $_POST["lastname"]." ".$_POST["firstname"];
 		$username = $_POST["username"];
 		$password =  hash('sha1',$_POST["password"]);
 		$email = $_POST["email"];
