@@ -17,7 +17,6 @@ session_start();
         
         //lấy thông tin từ các form bằng phương thức POST
         $name = $_POST["firstname"]." ".$_POST["lastname"];
-        $username = $_POST["username"];
         $password = $_POST["password"];
         $email = $_POST["email"];
         if (!checkUser($username, $conn)) {
@@ -29,7 +28,7 @@ session_start();
             $mess =  "You have successfully edited my account.";
             $_SESSION['mess'] = $mess;
             unset($_POST);
-            editProfile($username,$password,$name,$email,$conn,$infor["name"]);
+            editProfile($password,$name,$email,$conn,$infor["name"]);
             
             header('Location: ./profile.php');
         }
@@ -114,12 +113,6 @@ session_start();
                     <label class="col-lg-3 control-label">Email:</label>
                     <div class="col-lg-8">
                     <input class="form-control" type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="" value="<?= $infor["email"] ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Username:</label>
-                    <div class="col-md-8">
-                    <input class="form-control" type="text" id="username" name="username" placeholder="User Name" title="Please enter your User Name" required="" value="<?= $infor["username"] ?>">
                     </div>
                 </div>
                 <div class="form-group">
