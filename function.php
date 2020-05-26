@@ -174,13 +174,13 @@
             return null;
         }
     }
-    function editProfile($username,$password,$name,$email, $conn){
+    function editProfile($username,$password,$firstname,$lastname,$email, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         $passhash = hash('sha1',$password);
-        $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`name`=?,`email`=? WHERE `username`=?");
-        $stmt->bind_param('ssss', $passhash, $name, $email, $username);
+        $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`firstname`=?,`lastname`=?,`email`=? WHERE `username`=?");
+        $stmt->bind_param('sssss', $passhash, $firstname, $lastname, $email, $username);
         $stmt->execute();
     }
 ?>

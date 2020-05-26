@@ -129,13 +129,15 @@ $email = $infor['email'];
                     }
                     var username = "<?= $user ?>";
                     var pass = $('#password1').val();
-                    var name = $('#first-name').val() + ' ' + $('#last-name').val();
+                    var firstname = $('#first-name').val();
+                    var lastname = $('#last-name').val();
                     var email = $('#email').val();
                     $.post(
                         "http://localhost:8888/BuffaloDrive/Upload/views/update.php", {
                             username: username,
                             pass: pass,
-                            name: name,
+                            firstname: firstname,
+                            lastname: lastname,
                             email: email,
 
                         },
