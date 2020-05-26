@@ -311,9 +311,9 @@ $(document).ready(function(){
 })
 
 //Profile
-function editShowPassword() {
-    var x = document.getElementById("password_edit");
-    var y = document.getElementById("confirmpassword_edit");
+function myShowPassword() {
+    var x = document.getElementById("password1");
+    var y = document.getElementById("password2");
     if (x.type === "password" || y.type === "password") {
         x.type = "text";
         y.type = "text";
@@ -321,15 +321,5 @@ function editShowPassword() {
     else {
         x.type = "password";
         y.type = "password";
-
-    }
-}
-function myShowPassword() {
-    var x = document.getElementById("password1");
-    if (x.type === "password") {
-        x.type = "text";
-    }
-    else {
-        x.type = "password";
     }
 }

@@ -73,7 +73,7 @@ $email = $infor['email'];
                         <div class="form-group">
                             <label class="col-lg-3 control-label">First name:</label>
                             <div class="col-lg-8">
-                                <input type="text" value="<?= $myName[1] . ' ' . $myName[2] ?>" id='first-name' class="form-control" required>
+                                <input type="text" value="<?= $myName[0] . ' ' . $myName[1] ?>" id='first-name' class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
