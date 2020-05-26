@@ -63,7 +63,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         $dir_path = $root;
     }
     $mess = '';
-    if (!file_exists($root)) {
+    if (!file_exists($root) && $user != 'admin') {
         mkdir($root);
     }
     $files = scandir($dir_path);

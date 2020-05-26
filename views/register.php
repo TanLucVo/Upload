@@ -8,7 +8,7 @@
         //lấy thông tin từ các form bằng phương thức POST
 		$name = $_POST["firstname"]." ".$_POST["lastname"];
 		$username = $_POST["username"];
-		$password = $_POST["password"];
+		$password =  hash('sha1',$_POST["password"]);
 		$email = $_POST["email"];
 		if (!checkUser($username, $conn)) {
 			$mess =  "Username already exists, please enter it again.";
