@@ -100,12 +100,6 @@ require_once '../config.php';
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Confirm password:</label>
-                    <div class="col-md-8">
-                    <input class="form-control" id="password2" type="password" value="<?= $infor["pass"] ?>">
-                    </div>
-                </div>
-                <div class="form-group">
                     <div class="col-md-8">
                     <input type="checkbox" onclick="myShowPassword()">Show Password
                     </div>
