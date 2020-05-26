@@ -8,6 +8,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 } else {
     $user = $_SESSION['user'];
     $name = $_SESSION['name'];
+    $pass_default = $_SESSION['pass_default'];
 }
 
 $infor = getInforByUser($user, $conn);
@@ -99,7 +100,7 @@ $email = $infor['email'];
                 <div class="form-group">
                     <label class="col-md-3 control-label">Password:</label>
                     <div class="col-md-8">
-                    <input class="form-control" id="password1" type="password" value="<?= $infor["pass"] ?>">
+                    <input class="form-control" id="password1" type="password" value="<?= $pass_default ?>">
                     </div>
                 </div>
                 <div class="form-group">

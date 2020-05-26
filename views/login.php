@@ -11,6 +11,7 @@
 		if ($result == null) {
 			$mess = 'Sai mk';
 		} else {
+			$_SESSION['pass_default'] = $_POST['pass'];
 			$_SESSION['user'] = $result['username'];
 			$_SESSION['name'] = $result['name'];
 			header('Location: ../');
