@@ -174,12 +174,12 @@
             return null;
         }
     }
-    // function editProfile($username,$password,$name,$email,$conn,$oldUser){
-    //     if ($conn->connect_error) {
-    //         die("Connection failed: " . $conn->connect_error);
-    //     }
-    //     $stmt = $conn->prepare("UPDATE `user` SET `username`= ?,`pass`=?,`name`=?,`email`=? WHERE `username`=?");
-    //     $stmt->bind_param('sssss', $username, $password, $name, $email, $oldUser);
-    //     $stmt->execute();
-    // }
+    function editProfile($username,$password,$name,$email, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`name`=?,`email`=? WHERE `username`=?");
+        $stmt->bind_param('ssss', $password, $name, $email, $username);
+        $stmt->execute();
+    }
 ?>
