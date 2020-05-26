@@ -57,65 +57,18 @@ $email = $infor['email'];
             <h1>Profile</h1>
             <hr>
             <div class="row">
-            <!-- left column -->
-            <div class="col-md-3">
-                <div class="text-center">
-                <img src="../Content/Images/avatar.png" class="avatar img-circle" alt="avatar" width="150px">
-                </div>
-            </div>
-            
-            <div class="col-md-9 personal-info">
-                <!-- <div class="alert alert-info alert-dismissable">
-                    <a class="panel-close close" data-dismiss="alert">×</a> 
-                    <i class="fa fa-coffee"></i>
-                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                </div> -->
-                <h3>Personal info</h3>
-                
-                <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">First name:</label>
-                    <div class="col-lg-8">
-                    <p><?= $myName[1] ?></p>
+                <!-- left column -->
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <img src="../Content/Images/avatar.png" class="avatar img-circle" alt="avatar" width="150px">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name:</label>
-                    <div class="col-lg-8">
-                    <p><?= $myName[0] ?></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Email:</label>
-                    <div class="col-lg-8">
-                    <p><?= $infor["email"] ?></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Username:</label>
-                    <div class="col-md-8">
-                    <p><?= $user ?></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Password:</label>
-                    <div class="col-md-8">
-                    <input class="form-control" id="password1" type="password" value="<?= $pass_default ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-8">
-                    <input type="checkbox" onclick="myShowPassword()">Show Password
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                    <a href="./update.php" class="btn btn-primary">Edit Profile</a>
-                    <span></span>
-                    </div>
-                    <h3>Personal info</h3>
 
+                <div class="col-md-9 personal-info">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p class="text-center mb-0"></p>
+                    </div>
                     <form class="form-horizontal" role="form" id='edit'>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">First name:</label>
@@ -169,6 +122,7 @@ $email = $infor['email'];
 
                 $(".alert").hide();
                 $('#edit').submit(function(e) {
+                    console.log(1);
                     e.preventDefault(e);
                     if ($('#password1').val() !== $('#password2').val()) {
                         $(".alert p").text('Password must be same');
