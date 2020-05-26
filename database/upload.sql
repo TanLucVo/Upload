@@ -135,25 +135,10 @@ INSERT INTO `trash` (`id`, `link`, `user`) VALUES
 CREATE TABLE `user` (
   `username` varchar(20) NOT NULL,
   `pass` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `user`
---
-
-INSERT INTO `user` (`username`, `pass`, `name`, `email`) VALUES
-('admin', '123456', 'Chủ tịch', ''),
-('user1', '123456', 'Trần Đức Bo', ''),
-('user10', '123456', 'Vo Tan Luc', 'asdasd@gmail.com'),
-('user2', '123456', 'yassuo', ''),
-('user3', '123456', 'Vo Tan Luc', 'asdasd@gmail.com'),
-('user4', '123456', 'Vo Tan Luc', 'lucpk12@gmail.com'),
-('user5', '123456', 'Vo Tan Luc', 'lucpk12@gmail.com'),
-('user6', '123456', 'Vo Tan Luc', 'lucpk12@gmail.com'),
-('user7', '123456', 'Vo Tan Luc', 'lucpk12@gmail.com'),
-('user8', '456789', 'Vo Tan Luc', 'lucpk12@gmail.com');
 
 --
 -- Chỉ mục cho các bảng đã đổ
