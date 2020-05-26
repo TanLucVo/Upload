@@ -117,14 +117,14 @@ if ($link->num_rows > 0) {
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" id='newfolder'>New Folder</a>
                 </div>
-                <div class="recent d-flex">
+                <!-- <div class="recent d-flex">
                     <svg class="a-s-fa-Ha-pa" width="1em" height="1em" viewBox="0 0 24 24" fill="#000000" focusable="false">
                         <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
                         <path d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
                     </svg>
                     <a>Recent</a>
-                </div>
+                </div> -->
                 <div class="my-drive d-flex">
                     <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
                         <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5v-1h14v1zm0-3H5V4h14v13zm-9.35-2h5.83l1.39-2.77h-5.81zm7.22-3.47L13.65 6h-2.9L14 11.53zm-5.26-2.04l-1.45-2.52-3.03 5.51L8.6 15z"></path>

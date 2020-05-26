@@ -22,10 +22,4 @@
     else{
         echo json_encode(array('status' => false, 'data' => 'Parameters not valid'));
     }
-    // if(isset($_SESSION['mess'])){
-    //     $mess = $_SESSION['mess'];
-    // }else{
-    //     $mess = '';
-    // }
-    // unset($_SESSION['mess']);
 ?>
