@@ -70,7 +70,7 @@ if ($link->num_rows > 0) {
                 <input class="form-control mr-auto p-3 mr-mb-0" type="search" placeholder="Search" aria-label="Search">
             </form>
             <div class="infor d-flex flex-row bd-highlight mb-3">
-                <img src="./Content/Images/avatar.png" alt="">
+                <a href="./views/profile.php"><img src="./Content/Images/avatar.png" alt="<?= $name ?>"></a>
                 <a href="./views/profile.php"><?= $name ?></a>
                 <a href="./views/logout.php">Logout</a>
             </div>
