@@ -11,7 +11,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 }
 
 $infor = getInforByUser($user, $conn);
-$myName = explode(" ", $infor["name"]);
 $email = $infor['email'];
 ?>
 <!DOCTYPE html>
@@ -72,19 +71,19 @@ $email = $infor['email'];
                         <div class="form-group">
                             <label class="col-lg-3 control-label">First name:</label>
                             <div class="col-lg-8">
-                                <input type="text" value="<?= $myName[1] ?>" id='first-name' class="form-control" required>
+                                <input type="text" value="<?= $infor['firstname'] ?>" id='first-name' class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Last name:</label>
                             <div class="col-lg-8">
-                                <input type="text" value="<?= $myName[0] ?>" id='last-name' class="form-control" required>
+                                <input type="text" value="<?= $infor['lastname'] ?>" id='last-name' class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Email:</label>
                             <div class="col-lg-8">
-                                <input type="email" value="<?= $email ?>" id='email' class="form-control" required>
+                                <input type="email" value="<?= $infor['email'] ?>" id='email' class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">

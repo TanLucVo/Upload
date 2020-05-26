@@ -6,7 +6,8 @@
 		$mess ='';
 		
         //lấy thông tin từ các form bằng phương thức POST
-		$name = $_POST["lastname"]." ".$_POST["firstname"];
+		$firstname = $_POST["firstname"];
+		$lastname = $_POST["lastname"];
 		$username = $_POST["username"];
 		$password =  hash('sha1',$_POST["password"]);
 		$email = $_POST["email"];
@@ -19,7 +20,7 @@
 			$mess =  "You have successfully registered an account.";
 			$_SESSION['mess'] = $mess;
 			unset($_POST);
-			register($username,$password,$name,$email, $conn);
+			register($username,$password,$firstname,$lastname,$email, $conn);
 			
 			header('Location: ./login.php');
 		}
