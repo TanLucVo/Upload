@@ -2,7 +2,7 @@
     require_once '../function.php';
     require_once '../config.php';
     session_start();
-    function custom_copy($src, $dst) {  
+    function custom_copy($src, $dst, $conn) {  
     
         // open the source directory 
         $dir = opendir($src);  
@@ -19,11 +19,12 @@
     
                     // Recursively calling custom copy function 
                     // for sub directory  
-                    custom_copy($src . '/' . $file, $dst . '/' . $file);  
+                    custom_copy($src . '/' . $file, $dst . '/' . $file,$conn);  
     
                 }  
                 else {  
-                    copy($src . '/' . $file, $dst . '/' . $file);  
+                    copy($src . '/' . $file, $dst . '/' . $file);
+                    addFile($dst . '/' . $file,$_SESSION['user'],$conn);
                 }  
             }  
         }  
@@ -48,7 +49,7 @@
                 echo json_encode(array('status' => false, 'data' => "Can't share 123"));
             }
         }else{
-            custom_copy($link, $newpath);
+            custom_copy($link, $newpath, $conn);
             addFile($newpath, $user, $conn);
             echo json_encode(array('status' => true, 'data' => 'Shared'));
         }  
