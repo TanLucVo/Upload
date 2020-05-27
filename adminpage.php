@@ -51,7 +51,7 @@ if (!isset($_SESSION['account_admin'])) {
                 <input class="form-control mr-auto p-3 mr-mb-0" type="search" placeholder="Search" aria-label="Search">
             </form>
             <div class="infor d-flex flex-row bd-highlight mb-3">
-                <a href="./views/logout.php">Logout</a>
+                <a href="./views/admin.php">Logout</a>
             </div>
         </div>
     </nav>
