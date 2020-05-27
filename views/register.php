@@ -17,6 +17,11 @@
 			$_SESSION['mess'] = $mess;
 			unset($_POST);
 			header('Location: ./register.php');
+		}elseif ($username == "admin"){
+			$mess =  "Unable to create this username.";
+			$_SESSION['mess'] = $mess;
+			unset($_POST);
+			header('Location: ./register.php');
 		}else{
 			$mess =  "You have successfully registered an account.";
 			$_SESSION['mess'] = $mess;
