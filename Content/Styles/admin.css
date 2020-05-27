@@ -11,7 +11,7 @@
     margin: 0;
 }
 body {
-    margin-top: 250px;
+    margin-top: 150px;
     background:url(../Images/banner.jpg) no-repeat;
 }
 .clearfix:after {
@@ -201,6 +201,10 @@ body {
     display: none;
 }
 .copyright {
+    color: white;
+    text-align: center;
+}
+.login_admin {
     color: white;
     text-align: center;
 }
