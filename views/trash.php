@@ -194,7 +194,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                             $size = $size . ' Bytes';
                         }
 
-                        switch ($ext) {
+                        switch (strtolower($ext)) {
                             case 'apk':
                                 $type = 'apk';
                                 $icon = '../Content/Images/iconfile/apk.png';

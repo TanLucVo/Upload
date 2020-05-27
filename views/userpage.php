@@ -94,7 +94,7 @@
             $size = $size . ' Bytes';
         }
 
-        switch ($ext) {
+        switch (strtolower($ext)) {
             case 'apk':
                 $type = 'apk';
                 $icon = './Content/Images/iconfile/apk.png';
