@@ -15,7 +15,7 @@ if (strpos($path123, '?dir=')) {
 if (!isset($_SESSION['account_admin'])) {
     header('Location: ./views/admin.php');
 } else {
-    header('Location: ./adminpage.php');
+    $user = $_SESSION['account_admin'];
 }
 
 ?>
