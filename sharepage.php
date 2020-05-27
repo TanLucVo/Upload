@@ -3,6 +3,9 @@ require_once './function.php';
 require_once './config.php';
 
 session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: http://localhost:8888/BuffaloDrive/Upload');
+}
 $link = ($_SERVER['REQUEST_URI']);
 $usershare = filter_input(INPUT_GET, 'user', FILTER_SANITIZE_STRING);
 $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
@@ -287,6 +290,7 @@ if ($link->num_rows > 0) {
                         </div>
                     </div>
                 </div>
+
                 <?php
 
                 if ($totalSize > 1000000) {
@@ -303,8 +307,31 @@ if ($link->num_rows > 0) {
 
                         $('.totalSize').text("<?= $totalSize . ' used' ?>");
                         // $('.folder a').attr('href', '#');
+
                         $('.custom-menu .delete, .custom-menu .rename, .custom-menu .share').remove();
-                        $('.custom-menu').append()
+                        $('.custom-menu').append("<li><a class='share-to-mydrive'>Copy this file to my drive</a></li>");
+                        $('.share-to-mydrive').click(function() {
+                            var path = $('.custom-menu').data()['link'];
+                            var name = $('.custom-menu').data()['file'].find('a').text();
+                            if ($('.custom-menu').data()['file'].hasClass('folder')) {
+                                name = $('.custom-menu').data()['file'].text().trim();
+                            }
+
+                            $.post(
+                                "http://localhost:8888/BuffaloDrive/Upload/views/shareToMyDrive.php", {
+                                    path: path,
+                                    name: name
+                                },
+                                function(data, status) {
+
+                                    if (status) {
+                                        alert('Success')
+                                    } else {
+                                        alert("Cant share to my drive")
+                                    }
+                                }
+                            );
+                        })
                     })
                 </script>
 </body>
