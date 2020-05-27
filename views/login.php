@@ -9,7 +9,7 @@
 	if (isset($_POST['user']) && $_POST['pass']) {
 		$result = login($_POST['user'], $_POST['pass'], $conn);
 		if ($result == null) {
-			$mess = 'Sai mk';
+			$mess = 'Wrong password';
 		} else {
 			$_SESSION['pass_default'] = $_POST['pass'];
 			$_SESSION['user'] = $result['username'];

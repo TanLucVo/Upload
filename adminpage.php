@@ -12,13 +12,10 @@ if (strpos($path123, '?dir=')) {
     $_SESSION['userpagelink'] = $userpagelink;
 }
 
-if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
-    header('Location: ./views/login.php');
-} else if ($_SESSION['user'] == 'admin') {
-    $user = $_SESSION['user'];
-    $name = $_SESSION['name'];
+if (!isset($_SESSION['account_admin'])) {
+    header('Location: ./views/admin.php');
 } else {
-    header('Location: ./');
+    header('Location: ./adminpage.php');
 }
 
 ?>

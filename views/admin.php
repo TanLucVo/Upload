@@ -3,16 +3,13 @@
 	session_start();
 	require_once('../config.php');
 	$mess = '';
-	if (isset($_SESSION['user'])) {
-		header('Location: ../');
-	}
 	if (isset($_POST['login']) && $_POST['password']) {
-		$result = login($_POST['login'], $_POST['password'], $conn);
+		$result = adminlogin($_POST['login'], $_POST['password'], $conn);
 		if ($result == null) {
-			$mess = 'Sai mk';
+			$mess = 'Wrong password';
 		} else {
 			$_SESSION['account_admin'] = $result['username'];
-			header('Location: ../');
+			header('Location: ../adminpage.php');
 		}
 	}
 	if(isset($_SESSION['mess'])){
@@ -31,7 +28,7 @@
     <title>Buffalo Drive - Admin Login</title>
 </head>
 <body>
-<form class="form-3">
+<form class="form-3" form action="" method="post">
     <p class="clearfix">
         <label for="login">Username</label>
         <input type="text" name="login" id="login" placeholder="Username">
