@@ -18,6 +18,24 @@
             return null;
         }
     }
+    function adminlogin($username, $password, $conn) {
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ? and password = ?");
+        $passhash = hash('sha1', $password);
+        $stmt->bind_param('ss', $username, $passhash);
+        $stmt->execute();
+        $result = $stmt->get_result(); // get the mysqli result
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                return  $row;
+            }
+        } else {
+            return null;
+        }
+    }
     function addFile($link, $user,$conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);

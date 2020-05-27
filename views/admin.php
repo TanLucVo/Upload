@@ -1,3 +1,27 @@
+<?php
+	include('../function.php');
+	session_start();
+	require_once('../config.php');
+	$mess = '';
+	if (isset($_SESSION['user'])) {
+		header('Location: ../');
+	}
+	if (isset($_POST['login']) && $_POST['password']) {
+		$result = login($_POST['login'], $_POST['password'], $conn);
+		if ($result == null) {
+			$mess = 'Sai mk';
+		} else {
+			$_SESSION['account_admin'] = $result['username'];
+			header('Location: ../');
+		}
+	}
+	if(isset($_SESSION['mess'])){
+		$mess = $_SESSION['mess'];
+	}else{
+		$mess = '';
+	}
+	unset($_SESSION['mess']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
