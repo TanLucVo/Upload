@@ -3,17 +3,21 @@ require_once './function.php';
 require_once './config.php';
 
 session_start();
+
 if (!isset($_SESSION['user'])) {
+    header('Location: http://localhost:8888/BuffaloDrive/Upload');
+}
+if ($_SESSION['user'] == 'admin') {
     header('Location: http://localhost:8888/BuffaloDrive/Upload');
 }
 $link = ($_SERVER['REQUEST_URI']);
 $usershare = filter_input(INPUT_GET, 'user', FILTER_SANITIZE_STRING);
 $dirName = filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_STRING);
 if (!isset($dirName) && !isset($usershare)) {
-    header('Location: ./error.html');
+    header('Location: ./views/error.php');
 }
 if (!file_exists("C:/xampp/htdocs/BuffaloDrive/Upload/files/" . $usershare)) {
-    header('Location: ./error.html');
+    header('Location: ./views/error.php');
 }
 if (isset($_SESSION['usershare']) && file_exists("C:/xampp/htdocs/BuffaloDrive/Upload/files/" . $usershare) && isset($usershare)) {
     $_SESSION['usershare'] = $usershare;
@@ -101,7 +105,7 @@ if ($link->num_rows > 0) {
     if (file_exists($dir_path)) {
         $files = scandir($dir_path);
     } else {
-        header('Location: ./error.html');
+        header('Location: ./views/error.php');
     }
     ?>
     <div>
