@@ -43,8 +43,8 @@ if (!isset($_SESSION['account_admin'])) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
-            <a href="./"><img src="./Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
-            <a class="navbar-brand" href="./">Buffalo Drive</a>
+            <a href="./adminpage.php"><img src="./Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
+            <a class="navbar-brand" href="./adminpage.php">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <form class="form-inline my-2 my-lg-0 search">
@@ -81,7 +81,7 @@ if (!isset($_SESSION['account_admin'])) {
                     <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
                         <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5v-1h14v1zm0-3H5V4h14v13zm-9.35-2h5.83l1.39-2.77h-5.81zm7.22-3.47L13.65 6h-2.9L14 11.53zm-5.26-2.04l-1.45-2.52-3.03 5.51L8.6 15z"></path>
                     </svg>
-                    <a class="d-inline" href="./">Account</a>
+                    <a class="d-inline" href="./adminpage.php">Account</a>
                 </div>
                 <hr>
                 <div class="settings-user d-flex">
@@ -161,13 +161,13 @@ if (!isset($_SESSION['account_admin'])) {
                 <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
                 <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
             </svg>
-            Delete
+            Delete Account
         </li>
         <li class="rename" data-action="Rename">
             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
                 <path d="M1,15.25V19h3.75L15.814,7.936l-3.75-3.75L1,15.25z M18.707,5.043c0.391-0.391,0.391-1.023,0-1.414l-2.336-2.336  c-0.391-0.391-1.024-0.391-1.414,0l-1.832,1.832l3.75,3.75L18.707,5.043z"></path>
             </svg>
-            Rename
+            Rename Account
         </li>
         <li class="download" data-action="Download">
             <a href="#">
@@ -176,12 +176,6 @@ if (!isset($_SESSION['account_admin'])) {
                 </svg>
                 Download
             </a>
-        </li>
-        <li class="share" data-action="Share">
-            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
-                <path d="M3.9,12c0-1.7,1.4-3.1,3.1-3.1h4V7H7c-2.8,0-5,2.2-5,5s2.2,5,5,5h4v-1.9H7C5.3,15.1,3.9,13.7,3.9,12z M8,13h8v-2H8V13zM17,7h-4v1.9h4c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1h-4V17h4c2.8,0,5-2.2,5-5S19.8,7,17,7z"></path>
-            </svg>
-            Share this file
         </li>
     </ul>
     <!-- Rename dialog -->
