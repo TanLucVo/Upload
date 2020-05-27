@@ -22,7 +22,7 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ? and password = ?");
+        $stmt = $conn->prepare("SELECT * FROM `admin` WHERE username = ? and password = ?");
         $passhash = hash('sha1', $password);
         $stmt->bind_param('ss', $username, $passhash);
         $stmt->execute();
