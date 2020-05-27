@@ -28,6 +28,7 @@
     <title>Buffalo Drive - Admin Login</title>
 </head>
 <body>
+<h1 class="login_admin">Admin Login</h1>
 <form class="form-3" form action="" method="post">
     <p class="clearfix">
         <label for="login">Username</label>
