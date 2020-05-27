@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 27, 2020 lúc 04:48 AM
+-- Thời gian đã tạo: Th5 27, 2020 lúc 06:26 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -100,14 +100,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
---
-
-INSERT INTO `user` (`username`, `pass`, `firstname`, `lastname`, `email`) VALUES
-('admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com'),
-('caoboiloi1', '1c6637a8f2e1f75e06ff9984894d6bd16a3a36a9', 'tấn lợi', 'huỳnh', 'caoboiloi4@gmail.com');
-
---
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -133,7 +125,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
