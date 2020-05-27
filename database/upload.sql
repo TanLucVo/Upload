@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 27, 2020 lúc 06:26 AM
+-- Thời gian đã tạo: Th5 27, 2020 lúc 07:24 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -71,7 +71,7 @@ CREATE TABLE `limitupload` (
 --
 
 INSERT INTO `limitupload` (`data`, `numfile`, `filedata`, `typeNotAceppt`) VALUES
-(100000, 2, 1000000, 'py');
+(2147483647, 111111111, 2147483647, 'txt');
 
 -- --------------------------------------------------------
 
@@ -84,6 +84,14 @@ CREATE TABLE `trash` (
   `link` varchar(255) NOT NULL,
   `user` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `trash`
+--
+
+INSERT INTO `trash` (`id`, `link`, `user`) VALUES
+(0, 'C:/xampp/htdocs/BuffaloDrive/Upload/files/trash/caoboiloi/1_KqNnfYtaVshGXbuGUCTOQw.png', 'caoboiloi'),
+(0, 'C:/xampp/htdocs/BuffaloDrive/Upload/files/trash/caoboiloi/loihuynh', 'caoboiloi');
 
 -- --------------------------------------------------------
 
@@ -98,6 +106,13 @@ CREATE TABLE `user` (
   `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `user`
+--
+
+INSERT INTO `user` (`username`, `pass`, `firstname`, `lastname`, `email`) VALUES
+('caoboiloi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -125,7 +140,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
