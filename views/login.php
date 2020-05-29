@@ -37,7 +37,7 @@
 <link href="../Content/Styles/register.css" rel='stylesheet' type='text/css' media="all" />
 </head>
 <body>
-<h1 class="w3ls">Login Form</h1>
+<h1 class="w3ls">Login</h1>
 <div class="content-w3ls">
 	<div class="content-agile1">
 		<h2 class="agileits1">Buffalo-Drive</h2>
