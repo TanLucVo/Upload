@@ -54,8 +54,8 @@
 			
             <input type="submit" class="register" name="login" value="Login">
 			<div class="form-check">
-				<input type="checkbox" id="remember_me" name="_remember_me"/>
-				<label for="remember_me" class="remember_me">Remember me</label>
+				<input type="checkbox" id="remember_me" name="_remember_me" onclick="myShowPassword()"/>
+				<label for="remember_me" class="remember_me">Show password</label>
 				<a href="" class="forgot">Forgot password?</a>
             </div>
             <div class="form-register-check">

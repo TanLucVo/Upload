@@ -4,3 +4,12 @@ addEventListener("load", function(){
 function hideURLbar(){
     window.scrollTo(0,1); 
 }
+function myShowPassword() {
+    var x = document.getElementById("pass");
+    if (x.type === "password") {
+        x.type = "text";
+    }
+    else {
+        x.type = "password";
+    }
+}
