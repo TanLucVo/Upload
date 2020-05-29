@@ -56,7 +56,7 @@
 			<div class="form-check">
 				<input type="checkbox" id="remember_me" name="_remember_me" onclick="myShowPassword()"/>
 				<label for="remember_me" class="remember_me">Show password</label>
-				<a href="" class="forgot">Forgot password?</a>
+				<a href="./reset.php" class="forgot">Forgot password?</a>
             </div>
             <div class="form-register-check">
                 <a class="check-register" href="./register.php" >You don't have account?</a>

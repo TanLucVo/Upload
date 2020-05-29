@@ -13,7 +13,7 @@
 <link href="../Content/Styles/register.css" rel='stylesheet' type='text/css' media="all" />
 </head>
 <body>
-<h1 class="w3ls">Forgot Password Form</h1>
+<h1 class="w3ls">Reset Password Form</h1>
 <div class="content-w3ls">
 	<div class="content-agile1">
 		<h2 class="agileits1">Buffalo-Drive</h2>
@@ -21,14 +21,14 @@
 	<div class="content-agile2">
 		<form action="" method="post">
 			<div class="form-control"> 
-				<input type="text" id="username" name="user" placeholder="User Name" title="Please enter your User Name" required="">
+				<input type="text" id="username" name="user" placeholder="Enter the user name" title="Please enter your User Name" required="">
 			</div>
 
 			<div class="form-control agileinfo">	
 				<input type="password" class="lock" name="pass" placeholder="Enter the email" id="pass" required="">
 			</div>			
 			
-            <input type="submit" class="register" name="login" value="Login">
+            <input type="submit" class="register" name="login" value="Reset password">
             <a class="cancel" href="./login.php">Cancel</a>
 		</form>
 		
