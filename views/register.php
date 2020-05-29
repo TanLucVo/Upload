@@ -80,7 +80,8 @@
 
 			<div class="form-control agileinfo">	
 				<input type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="password2" required="">
-			</div>			
+			</div>
+
 			<input type="submit" class="register" name="register" value="Register">
 			<a class="cancel" href="./login.php">Cancel</a>
 			<p class="notification"><?= $mess ?></p>
