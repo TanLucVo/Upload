@@ -13,3 +13,10 @@ function myShowPassword() {
         x.type = "password";
     }
 }
+$(document).ready(function () {
+
+    $('.notification-login').fadeOut(1500);
+
+    
+
+})
