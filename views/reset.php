@@ -28,7 +28,7 @@
 				<input type="email" id="email" name="email" placeholder="Enter the mail" title="Please enter a valid email" required="">
 			</div>		
 			
-            <input type="submit" class="register" name="login" value="Reset password">
+            <input type="submit" class="register" name="login" value="Submit">
             <a class="cancel" href="./login.php">Cancel</a>
 		</form>
 		
