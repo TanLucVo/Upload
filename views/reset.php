@@ -20,9 +20,9 @@
 	</div>
 	<div class="content-agile2">
 		<form action="" method="post">
-			<div class="form-control"> 
+			<!-- <div class="form-control"> 
 				<input type="text" id="username" name="user" placeholder="Enter the user name" title="Please enter your User Name" required="">
-			</div>
+			</div> -->
 
 			<div class="form-control">	
 				<input type="email" id="email" name="email" placeholder="Enter the mail" title="Please enter a valid email" required="">
