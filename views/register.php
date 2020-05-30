@@ -2,41 +2,24 @@
 	require_once '../function.php';
 	require_once '../config.php';
 	session_start();
+	$mess ='';
 	if (isset($_POST["register"])) {
-		$mess ='';
-		
         //lấy thông tin từ các form bằng phương thức POST
 		$firstname = $_POST["firstname"];
 		$lastname = $_POST["lastname"];
-		// $name = $_POST["lastname"]." ".$_POST["firstname"];
 		$username = $_POST["username"];
 		$password =  hash('sha1',$_POST["password"]);
 		$email = $_POST["email"];
 		if (!checkUser($username, $conn)) {
-			$mess =  "Username already exists, please enter it again.";
-			$_SESSION['mess'] = $mess;
-			unset($_POST);
-			header('Location: ./register.php');
+			$mess =  "Username already exists, please enter it again";
 		}elseif ($username == "admin"){
-			$mess =  "Unable to create this username.";
-			$_SESSION['mess'] = $mess;
-			unset($_POST);
-			header('Location: ./register.php');
+			$mess =  "Unable to create this username";
 		}else{
-			$mess =  "You have successfully registered an account.";
-			$_SESSION['mess'] = $mess;
-			unset($_POST);
-			register($username,$password,$firstname,$lastname,$email, $conn);
+			register($username,$password,$firstname,$lastname,$email,$conn);
 			
 			header('Location: ./login.php');
 		}
 	}
-	if(isset($_SESSION['mess'])){
-		$mess = $_SESSION['mess'];
-	}else{
-		$mess = '';
-	}
-	unset($_SESSION['mess']);
 ?>
 <!doctype html>
 <html>
@@ -44,7 +27,9 @@
 <title>Buffalo Drive</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script src="Content/Scripts/login_register.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="../Content/Scripts/login_register.js"></script>
 <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 <link href="../Content/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -81,10 +66,10 @@
 			<div class="form-control agileinfo">	
 				<input type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="password2" required="">
 			</div>
-
 			<input type="submit" class="register" name="register" value="Register">
 			<a class="cancel" href="./login.php">Cancel</a>
-			<p class="notification"><?= $mess ?></p>
+			<p class="notification-register"><?= $mess ?></p>
+			
 		</form>
 		<script type="text/javascript">
 			window.onload = function () {

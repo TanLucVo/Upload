@@ -29,6 +29,14 @@ table {
 
 /* start editing from here */
 /* Login */
+p.notification-login {
+    text-align: center;
+    color: white;
+}
+p.notification-register {
+    text-align: center;
+    color: white;
+}
 .form-check {
     margin-left: 36px;
     color: white;
@@ -129,7 +137,7 @@ h1.w3ls {
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
-    height: 727px;
+    height: 760px;
 }
 h2.agileits1 {
     font-size: 40px;

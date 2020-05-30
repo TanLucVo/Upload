@@ -6,22 +6,24 @@ $mess = '';
 if (isset($_SESSION['user'])) {
 	header('Location: ../');
 }
-
 if (isset($_POST['user']) && isset($_POST['pass'])) {
+
 	$result = login($_POST['user'], $_POST['pass'], $conn);
 	if ($result == null) {
-		$mess = 'Wrong password';
-		
-	} else {
+		if (checkUser($_POST['user'], $conn)) {
+			$mess = 'Username does not exist';
+		}
+		else {
+			$mess = 'Wrong password';
+		}
+	}
+	else {
 		$_SESSION['pass_default'] = $_POST['pass'];
 		$_SESSION['user'] = $result['username'];
 		$_SESSION['name'] = $result['lastname'] . " " . $result['firstname'];
 		header('Location: ../');
 	}
-	
-}
-
-	
+}	
 ?>
 <!doctype html>
 <html>
@@ -37,14 +39,6 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
 	<link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 	<link href="../Content/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="../Content/Styles/register.css" rel='stylesheet' type='text/css' media="all" />
-
-	<style>
-		.notification-login {
-			text-align: center;
-			color: red;
-		}
-	</style>
-
 </head>
 
 <body>
@@ -62,8 +56,8 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
 				<div class="form-control agileinfo">
 					<input type="password" class="lock" name="pass" placeholder="Password" id="pass" required="">
 				</div>
-				<p class="notification-login"><?= $mess ?></p>
 				<input type="submit" class="register" name="login" value="Login">
+				<p class="notification-login"><?= $mess ?></p>
 				<div class="form-check">
 					<input type="checkbox" id="remember_me" name="_remember_me" onclick="myShowPassword()" />
 					<label for="remember_me" class="remember_me">Show password</label>

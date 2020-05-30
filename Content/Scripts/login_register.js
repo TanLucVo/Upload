@@ -14,9 +14,7 @@ function myShowPassword() {
     }
 }
 $(document).ready(function () {
+    $('.notification-login').fadeOut(4000);
 
-    $('.notification-login').fadeOut(1500);
-
-    
-
+    $('.notification-register').fadeOut(4000);
 })
