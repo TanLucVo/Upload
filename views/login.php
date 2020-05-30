@@ -23,7 +23,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
 		$_SESSION['name'] = $result['lastname'] . " " . $result['firstname'];
 		header('Location: ../');
 	}
-}	
+}
 ?>
 <!doctype html>
 <html>

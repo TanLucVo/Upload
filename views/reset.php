@@ -20,8 +20,8 @@
 			}
 			else {
 				$token = $result['token'];
+				header('Location: ./newpass.php?token=' . $token);
 			}
-			header('Location: ./newpass.php?token=' . $token);
 		}
 	}
 ?>
@@ -31,9 +31,9 @@
 <title>Buffalo Drive</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script src="../Content/Scripts/login_register.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="../Content/Scripts/login_register.js"></script>
 <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 <link href="../Content/Styles/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
