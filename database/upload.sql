@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 30, 2020 lúc 11:31 AM
+-- Thời gian đã tạo: Th5 30, 2020 lúc 01:43 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -81,15 +81,16 @@ INSERT INTO `limitupload` (`data`, `numfile`, `filedata`, `typeNotAceppt`) VALUE
 
 CREATE TABLE `passwordlv2` (
   `username` varchar(400) NOT NULL,
-  `passwordlv2` varchar(400) NOT NULL
+  `passwordlv2` varchar(400) NOT NULL,
+  `token` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `passwordlv2`
 --
 
-INSERT INTO `passwordlv2` (`username`, `passwordlv2`) VALUES
-('caoboiloi', '$2y$10$1DnU1BeyHU83GUhj22tv2uysk6hivVRXa3mXPE1VqVZya2S3KLZRe');
+INSERT INTO `passwordlv2` (`username`, `passwordlv2`, `token`) VALUES
+('caoboiloi', '$2y$10$Kgb07DzOhd4WIHPIrZMG0.OQ8pCkT7Nqod0DKRqNpFH3BgI0JQaoi', 'zxrg65fax8e1120petzrwvt407g6od');
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `pass`, `firstname`, `lastname`, `email`) VALUES
-('caoboiloi', '$2y$10$1DnU1BeyHU83GUhj22tv2uFyeA4ny.kd55cMjDQq9z9qVU0xhjVCi', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com');
+('caoboiloi', '$2y$10$OMvglzd64Csjg6EN8wmZ5OdQwGYIW.Opd27itr3sjaYv9D5DjQpau', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -135,6 +136,12 @@ ALTER TABLE `file`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD UNIQUE KEY `link` (`link`);
+
+--
+-- Chỉ mục cho bảng `passwordlv2`
+--
+ALTER TABLE `passwordlv2`
+  ADD PRIMARY KEY (`passwordlv2`);
 
 --
 -- Chỉ mục cho bảng `user`
