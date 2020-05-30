@@ -1,4 +1,27 @@
 <?php
+	require_once '../function.php';
+	require_once '../config.php';
+	session_start();
+	//bcrypt
+	$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+	$salt = sprintf("$2y$%02d$", 10) . $salt; //$2y$ là thuật toán BlowFish, 10 là độ dài của key mã hóa.
+	$token = filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING);
+	$mess ='';
+	if (isset($_POST["change-password"])) {
+		//lấy thông tin từ các form bằng phương thức POST
+
+		$password = crypt($_POST["password"], $salt);
+		$username_token = getUserbyToken($token,$conn);
+		if (!checkUser($username_token, $conn)){
+			updatePassByUser($password,$username_token,$conn);
+			$mess = 'Password change successfully';
+			header('Location: ./login.php');
+		}
+		else{
+			$mess = 'Password change failed';
+			header('Location: ./newpass.php?token=' . $token);
+		}
+	}
 ?>
 <!doctype html>
 <html>
@@ -28,10 +51,25 @@
 				<input type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="password2" required="">
 			</div>	
 			
-            <input type="submit" class="register" name="login" value="Change password">
-            <a class="cancel" href="./login.php">Cancel</a>
+            <input type="submit" class="register" name="change-password" value="Change password">
+			<a class="cancel" href="./login.php">Cancel</a>
+			<p class="notification-newpass"><?= $mess ?></p>
 		</form>
-		
+		<script type="text/javascript">
+			window.onload = function () {
+				document.getElementById("password1").onchange = validatePassword;
+				document.getElementById("password2").onchange = validatePassword;
+			}
+			function validatePassword(){
+				var pass2=document.getElementById("password2").value;
+				var pass1=document.getElementById("password1").value;
+				if(pass1!=pass2)
+					document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+				else
+					document.getElementById("password2").setCustomValidity('');
+					//empty string means no validation error
+			}
+		</script>
     </div>
 	<div class="clear"></div>
 </div>

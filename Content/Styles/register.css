@@ -37,6 +37,14 @@ p.notification-register {
     text-align: center;
     color: white;
 }
+p.notification-reset {
+    text-align: center;
+    color: white;
+}
+p.notification-newpass {
+    text-align: center;
+    color: white;
+}
 .form-check {
     margin-left: 36px;
     color: white;

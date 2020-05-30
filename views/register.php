@@ -3,12 +3,21 @@
 	require_once '../config.php';
 	session_start();
 	$mess ='';
+	function random_string($length) {
+		$key = '';
+		$keys = array_merge(range(0, 9), range('a', 'z'));
+	
+		for ($i = 0; $i < $length; $i++) {
+			$key .= $keys[array_rand($keys)];
+		}
+	
+		return $key;
+	}
 	if (isset($_POST["register"])) {
 		//lấy thông tin từ các form bằng phương thức POST
 		//bcrypt
 		$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
 		$salt = sprintf("$2y$%02d$", 10) . $salt; //$2y$ là thuật toán BlowFish, 10 là độ dài của key mã hóa.
-
 
 		$firstname = $_POST["firstname"];
 		$lastname = $_POST["lastname"];
@@ -24,7 +33,7 @@
 			$mess =  "Unable to create this username";
 		}else{
 			register($username,$password,$firstname,$lastname,$email,$conn);
-			addPasslv2($username,$passwordlv2,$conn);
+			addPasslv2($username,$passwordlv2,random_string(30),$conn);
 			$_SESSION['passlv2_default'] = $_POST["passwordlv2"];
 			header('Location: ./login.php');
 		}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 27, 2020 lúc 07:24 AM
+-- Thời gian đã tạo: Th5 30, 2020 lúc 11:31 AM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -76,6 +76,24 @@ INSERT INTO `limitupload` (`data`, `numfile`, `filedata`, `typeNotAceppt`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `passwordlv2`
+--
+
+CREATE TABLE `passwordlv2` (
+  `username` varchar(400) NOT NULL,
+  `passwordlv2` varchar(400) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `passwordlv2`
+--
+
+INSERT INTO `passwordlv2` (`username`, `passwordlv2`) VALUES
+('caoboiloi', '$2y$10$1DnU1BeyHU83GUhj22tv2uysk6hivVRXa3mXPE1VqVZya2S3KLZRe');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `trash`
 --
 
@@ -84,14 +102,6 @@ CREATE TABLE `trash` (
   `link` varchar(255) NOT NULL,
   `user` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `trash`
---
-
-INSERT INTO `trash` (`id`, `link`, `user`) VALUES
-(0, 'C:/xampp/htdocs/BuffaloDrive/Upload/files/trash/caoboiloi/1_KqNnfYtaVshGXbuGUCTOQw.png', 'caoboiloi'),
-(0, 'C:/xampp/htdocs/BuffaloDrive/Upload/files/trash/caoboiloi/loihuynh', 'caoboiloi');
 
 -- --------------------------------------------------------
 
@@ -112,7 +122,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `pass`, `firstname`, `lastname`, `email`) VALUES
-('caoboiloi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com');
+('caoboiloi', '$2y$10$1DnU1BeyHU83GUhj22tv2uFyeA4ny.kd55cMjDQq9z9qVU0xhjVCi', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -140,7 +150,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

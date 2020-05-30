@@ -100,12 +100,12 @@
         $stmt->bind_param('sssss', $username, $password, $firstname, $lastname, $email);
         $stmt->execute();
     }
-    function addPasslv2($username,$passwordlv2, $conn){
+    function addPasslv2($username,$passwordlv2,$token, $conn){
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $stmt = $conn->prepare("INSERT INTO passwordlv2(username,passwordlv2) VALUES (?,?)");
-        $stmt->bind_param('ss', $username, $passwordlv2);
+        $stmt = $conn->prepare("INSERT INTO passwordlv2(username,passwordlv2,token) VALUES (?,?,?)");
+        $stmt->bind_param('sss', $username, $passwordlv2, $token);
         $stmt->execute();
     }
     function checkUser($username, $conn){
@@ -120,6 +120,26 @@
             return false;
         } else {
             return true;
+        }
+    }
+    function checkPasslv2($username, $passwordlv2, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("SELECT * FROM passwordlv2 WHERE username = ?");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result(); // get the mysqli result
+        if ($result->num_rows > 0) {
+            // output data of each row
+            $row = mysqli_fetch_assoc($result);
+            $check = crypt($passwordlv2, $row['passwordlv2']);
+            if (hash_equals($check, $row['passwordlv2'])) {
+                return $row;
+            }
+            else {
+                return null;
+            }
         }
     }
     function shareFile($path, $conn){
@@ -209,6 +229,30 @@
         $passhash = hash('sha1',$password);
         $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`firstname`=?,`lastname`=?,`email`=? WHERE `username`=?");
         $stmt->bind_param('sssss', $passhash, $firstname, $lastname, $email, $username);
+        $stmt->execute();
+    }
+    function getUserbyToken($token, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("SELECT * FROM `passwordlv2` WHERE token = ?");
+        $stmt->bind_param('s', $token);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['username'];
+        }
+        else {
+            return null;
+        }
+    }
+    function updatePassByUser($password,$username, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("UPDATE user SET pass = ? WHERE username = ?");
+        $stmt->bind_param('ss', $password, $username);
         $stmt->execute();
     }
 ?>
