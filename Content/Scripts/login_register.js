@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $('.notification-login').fadeOut(4000);
-
     $('.notification-register').fadeOut(4000);
+    $('.notification-reset').fadeOut(4000);
+    $('.notification-newpass').fadeOut(4000);
 });
 
 addEventListener("load", function(){
