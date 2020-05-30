@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 30, 2020 lúc 01:43 PM
+-- Thời gian đã tạo: Th5 30, 2020 lúc 03:02 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.3
 
@@ -71,7 +71,7 @@ CREATE TABLE `limitupload` (
 --
 
 INSERT INTO `limitupload` (`data`, `numfile`, `filedata`, `typeNotAceppt`) VALUES
-(2147483647, 111111111, 2147483647, 'txt');
+(100000, 2, 2147483647, 'txt');
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE `passwordlv2` (
 --
 
 INSERT INTO `passwordlv2` (`username`, `passwordlv2`, `token`) VALUES
-('caoboiloi', '$2y$10$Kgb07DzOhd4WIHPIrZMG0.OQ8pCkT7Nqod0DKRqNpFH3BgI0JQaoi', 'zxrg65fax8e1120petzrwvt407g6od');
+('caoboiloi', '$2y$10$/nh6D5OyhO57FsgxPsdbzeL27aBv6etT8/JJL73R4E7yW50H7ASZu', '9h6q2p1uvky7z03wjbn03rrca6ju8o');
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `pass`, `firstname`, `lastname`, `email`) VALUES
-('caoboiloi', '$2y$10$OMvglzd64Csjg6EN8wmZ5OdQwGYIW.Opd27itr3sjaYv9D5DjQpau', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com');
+('caoboiloi', '$2y$10$/nh6D5OyhO57FsgxPsdbze28gH83RgF0L/2hz23XYHPmEPCsFFSAC', 'Huỳnh', 'Lợi', 'caoboiloi4@gmail.com');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -157,7 +157,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
