@@ -109,7 +109,6 @@ $(document).ready(function(){
             keyboard: false,
         });
         $("#delete").click(function () {
-            location.reload();
             $.post(
                 "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
                 path: $('.custom-menu').data()['link'],
