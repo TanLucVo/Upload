@@ -4,11 +4,19 @@
 	session_start();
 	$mess ='';
 	if (isset($_POST["register"])) {
-        //lấy thông tin từ các form bằng phương thức POST
+		//lấy thông tin từ các form bằng phương thức POST
+		//bcrypt
+		$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+		$salt = sprintf("$2y$%02d$", 10) . $salt; //$2y$ là thuật toán BlowFish, 10 là độ dài của key mã hóa.
+
+
 		$firstname = $_POST["firstname"];
 		$lastname = $_POST["lastname"];
 		$username = $_POST["username"];
-		$password =  hash('sha1',$_POST["password"]);
+		
+		$password = crypt($_POST["password"], $salt);
+		$passwordlv2 = crypt($_POST["passwordlv2"], $salt);
+
 		$email = $_POST["email"];
 		if (!checkUser($username, $conn)) {
 			$mess =  "Username already exists, please enter it again";
@@ -16,7 +24,8 @@
 			$mess =  "Unable to create this username";
 		}else{
 			register($username,$password,$firstname,$lastname,$email,$conn);
-			
+			addPasslv2($username,$passwordlv2,$conn);
+			$_SESSION['passlv2_default'] = $_POST["passwordlv2"];
 			header('Location: ./login.php');
 		}
 	}
@@ -66,6 +75,11 @@
 			<div class="form-control agileinfo">	
 				<input type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="password2" required="">
 			</div>
+
+			<div class="form-control agileinfo">	
+				<input type="password" class="lock" name="passwordlv2" placeholder="Password Level 2" id="pass" required="">
+			</div>	
+
 			<input type="submit" class="register" name="register" value="Register">
 			<a class="cancel" href="./login.php">Cancel</a>
 			<p class="notification-register"><?= $mess ?></p>
@@ -75,15 +89,21 @@
 			window.onload = function () {
 				document.getElementById("password1").onchange = validatePassword;
 				document.getElementById("password2").onchange = validatePassword;
+				document.getElementById("pass").onchange = validatePassword;
 			}
 			function validatePassword(){
 				var pass2=document.getElementById("password2").value;
 				var pass1=document.getElementById("password1").value;
+				var pass=document.getElementById("pass").value;
 				if(pass1!=pass2)
 					document.getElementById("password2").setCustomValidity("Passwords Don't Match");
 				else
 					document.getElementById("password2").setCustomValidity('');
 					//empty string means no validation error
+				if(pass1==pass)
+					document.getElementById("pass").setCustomValidity(`Password level 2 isn't same Password login`);
+				else
+					document.getElementById("pass").setCustomValidity('');
 			}
 		</script>
 	</div>
