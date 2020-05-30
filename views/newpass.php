@@ -74,6 +74,6 @@
 	<div class="clear"></div>
 </div>
 
-<p class="copyright w3l">© 2020 Official Login Form. All Rights Reserved.</p>
+<p class="copyright w3l">© 2020 Official Change Password Form. All Rights Reserved.</p>
 </body>
 </html>

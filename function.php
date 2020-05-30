@@ -226,9 +226,8 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $passhash = hash('sha1',$password);
         $stmt = $conn->prepare("UPDATE `user` SET `pass`=?,`firstname`=?,`lastname`=?,`email`=? WHERE `username`=?");
-        $stmt->bind_param('sssss', $passhash, $firstname, $lastname, $email, $username);
+        $stmt->bind_param('sssss', $password, $firstname, $lastname, $email, $username);
         $stmt->execute();
     }
     function getUserbyToken($token, $conn){
