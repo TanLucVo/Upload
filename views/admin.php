@@ -42,6 +42,6 @@
         <input type="submit" name="submit" value="Sign in">
     </p>
 </form>
-<p class="copyright">© 2020 Official Signup Form. All Rights Reserved.</p>
+<p class="copyright">© 2020 Official Admin Login Form. All Rights Reserved.</p>
 </body>
 </html>
