@@ -8,6 +8,9 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
 }else {
     $user = $_SESSION['user'];
     $name = $_SESSION['name'];
+    if(isset($_SESSION['account_admin'])){
+        header('Location: ./adminpage.php');
+    }
 }
 
 ?>

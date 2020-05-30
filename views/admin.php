@@ -7,17 +7,16 @@
 		$result = adminlogin($_POST['login'], $_POST['password'], $conn);
 		if ($result == null) {
 			$mess = 'Wrong password';
+			unset($_POST);
 		} else {
 			$_SESSION['account_admin'] = $result['username'];
+			$_SESSION['user']='admin';
+			$_SESSION['name'] = 'admin';
 			header('Location: ../adminpage.php');
 		}
 	}
-	if(isset($_SESSION['mess'])){
-		$mess = $_SESSION['mess'];
-	}else{
-		$mess = '';
-	}
-	unset($_SESSION['mess']);
+
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,12 +31,13 @@
 <form class="form-3" form action="" method="post">
     <p class="clearfix">
         <label for="login">Username</label>
-        <input type="text" name="login" id="login" placeholder="Username">
+        <input type="text" name="login" id="login" placeholder="Username" required>
     </p>
     <p class="clearfix">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
-    </p>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+	</p>
+	<p style="color: red;"><?=$mess ?></p>
     <p class="clearfix">
         <input type="submit" name="submit" value="Sign in">
     </p>
