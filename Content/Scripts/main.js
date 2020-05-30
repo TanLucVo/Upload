@@ -9,7 +9,7 @@ $(document).ready(function(){
     $('#newFolderForm').submit(function(e){
         e.preventDefault(e);
         $.post(
-            "http://localhost:8888/BuffaloDrive/Upload/views/addFolder.php", {
+            "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/addFolder.php", {
             folderName: $('#folderName').val(),
             folderPath: $('#folderPath').val(),
         },
@@ -44,7 +44,7 @@ $(document).ready(function(){
         var typeNotAceppt = $('#typeNotAccept').val();
 
         $.post(
-            "http://localhost:8888/BuffaloDrive/Upload/views/settings.php", {
+            "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/settings.php", {
             data: data,
             numfile: numfile,
             filedata: filedata,
@@ -85,7 +85,7 @@ $(document).ready(function(){
             }
 
             $.post(
-                "http://localhost:8888/BuffaloDrive/Upload/views/rename.php", {
+                "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/rename.php", {
                 name: name,
                 path: path,
                 newname: newName,
@@ -109,8 +109,9 @@ $(document).ready(function(){
             keyboard: false,
         });
         $("#delete").click(function () {
+            location.reload();
             $.post(
-                "http://localhost:8888/BuffaloDrive/Upload/views/delete.php", {
+                "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/delete.php", {
                 path: $('.custom-menu').data()['link'],
             },
                 function (data, status) {
@@ -131,7 +132,7 @@ $(document).ready(function(){
         });
         $("#restore").click(function () {
             $.post(
-                "http://localhost:8888/BuffaloDrive/Upload/views/restore.php", {
+                "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/restore.php", {
                 path: $('.custom-menu').data()['link'],
             },
                 function (data, status) {
@@ -152,7 +153,7 @@ $(document).ready(function(){
         });
         $("#delete").click(function () {
             $.post(
-                "http://localhost:8888/BuffaloDrive/Upload/views/harddelete.php", {
+                "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/harddelete.php", {
                 path: $('.custom-menu').data()['link'],
             },
                 function (data, status) {
@@ -166,7 +167,7 @@ $(document).ready(function(){
     });
     $('.share').click(function () {
         $.post(
-            "http://localhost:8888/BuffaloDrive/Upload/views/sharefile.php", {
+            "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/sharefile.php", {
             path: $('.custom-menu').data()['link'],
         },
             function (data, status) {
@@ -208,21 +209,21 @@ $(document).ready(function(){
         name=$('.custom-menu').data()['file'].text().trim();
         if(file.hasClass('folder')){
             $.post(
-                "http://localhost:8888/BuffaloDrive/Upload/views/downfolder.php", {
+                "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/downfolder.php", {
                     path: $('.custom-menu').data()['link'],
                     name: name
                 },
                 function (data, status) {
                     if (status) {
                         location.reload();
-                        window.open("http://localhost:8888/BuffaloDrive/Upload/views/downfolder.php");
+                        window.open("http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/downfolder.php");
                     }
                 }
             );
         }
         else{
             var link = $('.custom-menu').data()['link'];
-            link = link.replace('C:/xampp/htdocs', 'http://localhost:8888');
+            link = link.replace('C:/xampp/htdocs', "http://" + "<?=$_SERVER['HTTP_HOST']?>");
             var name = $('.custom-menu').data()['file'].find('a').text();
             $(this).find('a').attr('href', link);
             $(this).find('a').attr('download', name);
@@ -267,7 +268,7 @@ $(document).ready(function(){
                 }, false);
                 return xhr;
             },
-            url: 'http://localhost:8888/BuffaloDrive/Upload/views/addfile.php',
+            url: "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/addfile.php",
             type: "POST",
             contentType: false, // Not to set any content header  
             processData: false, // Not to process data  
