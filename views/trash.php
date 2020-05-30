@@ -56,7 +56,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
     $url = $_SERVER['REQUEST_URI'];
-    $back = 'http://localhost:8888' . '' . substr($url, 0, strrpos($url, '/'));
+    $back = 'http://' . $_SERVER['HTTP_HOST'] . '' . substr($url, 0, strrpos($url, '/'));
     if ($dirName) {
         $dir_path = $root . '/' . $dirName;
     } else {
@@ -180,7 +180,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                         $dirLink = substr($dirLink, 1);
 
                         $dirLink = $dir_path . '/' . $file;
-                        $dirLink = str_replace('C:/xampp/htdocs/', 'http://localhost:8888/', $dirLink);
+                        $dirLink = str_replace('C:/xampp/htdocs/', 'http://' . $_SERVER['HTTP_HOST'] . '/', $dirLink);
 
 
 

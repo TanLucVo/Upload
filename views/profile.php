@@ -157,7 +157,7 @@ if (isset($usershare)) {
                 var lastname = $('#last-name').val();
                 var email = $('#email').val();
                 $.post(
-                    "http://localhost:8888/BuffaloDrive/Upload/views/update.php", {
+                    "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/update.php", {
                         username: username,
                         pass: pass,
                         firstname: firstname,

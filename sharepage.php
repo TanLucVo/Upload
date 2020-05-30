@@ -5,10 +5,10 @@ require_once './config.php';
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header('Location: http://localhost:8888/BuffaloDrive/Upload');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/BuffaloDrive/Upload');
 }
 if ($_SESSION['user'] == 'admin') {
-    header('Location: http://localhost:8888/BuffaloDrive/Upload');
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/BuffaloDrive/Upload');
 }
 $link = ($_SERVER['REQUEST_URI']);
 $usershare = filter_input(INPUT_GET, 'user', FILTER_SANITIZE_STRING);
@@ -23,14 +23,14 @@ if (isset($_SESSION['usershare']) && file_exists("C:/xampp/htdocs/BuffaloDrive/U
     $_SESSION['usershare'] = $usershare;
 } else if (file_exists("C:/xampp/htdocs/BuffaloDrive/Upload/files" . $usershare) && !isset($_SESSION['usershare'])) {
     $_SESSION['usershare'] = $usershare;
-    header('Location: http://localhost:8888/BuffaloDrive/Upload/sharepage.php?user=' . $usershare);
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . '/BuffaloDrive/Upload/sharepage.php?user=' . $usershare);
 } else if (isset($_SESSION['usershare'])) {
     $usershare = $_SESSION['usershare'];
 }
 
 if (isset($_SESSION['user']) || !isset($_SESSION['user'])) {
     if ($usershare == $_SESSION['user']) {
-        header('Location: http://localhost:8888/BuffaloDrive/Upload');
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/BuffaloDrive/Upload');
     }
 }
 
@@ -90,7 +90,7 @@ if ($link->num_rows > 0) {
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
 
     $url = $_SERVER['REQUEST_URI'];
-    // $back = 'http://localhost:8888' . '' . substr($url, 0, strrpos($url, '/'));
+    $back = 'http://' . $_SERVER['HTTP_HOST'] . '' . substr($url, 0, strrpos($url, '/'));
     if ($dirName) {
 
         $dir_path = $root . '/' . $dirName;
@@ -320,9 +320,9 @@ if ($link->num_rows > 0) {
                             if ($('.custom-menu').data()['file'].hasClass('folder')) {
                                 name = $('.custom-menu').data()['file'].text().trim();
                             }
-
+                            var url = "http://" + "<?=$_SERVER['HTTP_HOST']?>" + "/BuffaloDrive/Upload/views/shareToMyDrive.php";
                             $.post(
-                                "http://localhost:8888/BuffaloDrive/Upload/views/shareToMyDrive.php", {
+                                url, {
                                     path: path,
                                     name: name
                                 },

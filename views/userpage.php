@@ -80,7 +80,7 @@
         $dirLink = substr($dirLink, 1);
 
         $dirLink = $dir_path . '/' . $file;
-        $dirLink = str_replace('C:/xampp/htdocs/', 'http://localhost:8888/', $dirLink);
+        $dirLink = str_replace('C:/xampp/htdocs/', 'http://' . $_SERVER['HTTP_HOST'] . '/', $dirLink);
 
 
 
