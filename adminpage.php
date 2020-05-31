@@ -108,7 +108,7 @@ if (!isset($_SESSION['account_admin'])) {
                 <hr>
                 <h3>Manager Account</h3>
                 <hr>
-                <h4>Account</h4>
+                <h4>Folder</h4>
                 <div class="row">
                     <?php
                     foreach ($files as $file) {
@@ -309,13 +309,13 @@ if (!isset($_SESSION['account_admin'])) {
                 <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
                 <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
             </svg>
-            Delete Account
+            Delete
         </li>
         <li class="rename" data-action="Rename">
             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false" class="undefined">
                 <path d="M1,15.25V19h3.75L15.814,7.936l-3.75-3.75L1,15.25z M18.707,5.043c0.391-0.391,0.391-1.023,0-1.414l-2.336-2.336  c-0.391-0.391-1.024-0.391-1.414,0l-1.832,1.832l3.75,3.75L18.707,5.043z"></path>
             </svg>
-            Rename Account
+            Rename
         </li>
         <li class="download" data-action="Download">
             <a href="#">
