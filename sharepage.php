@@ -313,7 +313,8 @@ if ($link->num_rows > 0) {
                         // $('.folder a').attr('href', '#');
 
                         $('.custom-menu .delete, .custom-menu .rename, .custom-menu .share').remove();
-                        $('.custom-menu').append("<li><a class='share-to-mydrive'>Copy this file to my drive</a></li>");
+                        $('.custom-menu').append("<li><svg width='24px' height='24px' viewBox='0 0 24 24' fill='#000000' focusable='false' class='undefined'><path d='M3.9,12c0-1.7,1.4-3.1,3.1-3.1h4V7H7c-2.8,0-5,2.2-5,5s2.2,5,5,5h4v-1.9H7C5.3,15.1,3.9,13.7,3.9,12z M8,13h8v-2H8V13zM17,7h-4v1.9h4c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1h-4V17h4c2.8,0,5-2.2,5-5S19.8,7,17,7z'></path></svg><a class='share-to-mydrive'> Copy this file to my drive</a></li>"
+                            );
                         $('.share-to-mydrive').click(function() {
                             var path = $('.custom-menu').data()['link'];
                             var name = $('.custom-menu').data()['file'].find('a').text();
