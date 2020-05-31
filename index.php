@@ -178,6 +178,46 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         </div>
     </div>
 
+    <!-- Link share - copy to clipboard -->
+    <div class="modal fade" id="Modal-sharelink" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Copy link shared to clipboard</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <textarea class="js-copytextarea" style=""><?='http://' . $_SERVER['HTTP_HOST'] . '/BuffaloDrive/Upload/sharepage.php?user=' . $user?></textarea>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success js-textareacopybtn" data-dismiss="modal" id='copy-clipboard'">Copy to clipboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+    copyTextareaBtn.addEventListener('click', function(event) {
+    var copyTextarea = document.querySelector('.js-copytextarea');
+    copyTextarea.focus();
+    copyTextarea.select();
+
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copying text command was ' + msg);
+    } catch (err) {
+        console.log('Oops, unable to copy');
+    }
+    });
+    </script>
+
     <!-- Delete dialog -->
     <div class=" modal fade" id="myModal1" role="dialog">
         <div class="modal-dialog">

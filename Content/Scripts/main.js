@@ -122,6 +122,13 @@ $(document).ready(function(){
             );
         });
     });
+    $(".share").click(function () {
+
+        $("#Modal-sharelink").modal({
+            backdrop: "static",
+            keyboard: false,
+        });
+    });
     $(".restore").click(function () {
 
         var item = $('.custom-menu').data()['file'];
