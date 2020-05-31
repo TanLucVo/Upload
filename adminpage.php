@@ -62,7 +62,7 @@ if (!isset($_SESSION['account_admin'])) {
     $create = filter_input(INPUT_POST, 'create', FILTER_SANITIZE_STRING);
     $folder = filter_input(INPUT_POST, 'folderName', FILTER_SANITIZE_STRING);
     $url = $_SERVER['REQUEST_URI'];
-    $back = 'http://'. $_SERVER['HTTP_HOST'] . '' . substr($url, 0, strrpos($url, '/'));
+    $back = 'http://' . $_SERVER['HTTP_HOST'] . '' . substr($url, 0, strrpos($url, '/'));
     if ($dirName) {
         $dir_path = $root . '/' . $dirName;
     } else {
@@ -94,18 +94,16 @@ if (!isset($_SESSION['account_admin'])) {
             </div>
             <div class="col-6 col-lg-9 col-sm-7 right" id="right">
                 <?php
-                    if (isset($usershare)) {
-                        if($name != $usershare){
-                            $isShare = true;
-                        }
-                        else{
-                            $isShare = false;
-                        }
-                    }
-                    else{
+                if (isset($usershare)) {
+                    if ($name != $usershare) {
+                        $isShare = true;
+                    } else {
                         $isShare = false;
                     }
-                    
+                } else {
+                    $isShare = false;
+                }
+
                 ?>
                 <hr>
                 <h3>Manager Account</h3>
@@ -126,7 +124,7 @@ if (!isset($_SESSION['account_admin'])) {
                         $dirLink = substr($dirLink, 1);
                         $dirLink = "?dir=$dirLink";
                         $type = 'Directory';
-                        if($isShare && in_array($dir_path.'/'.$file, $allLink) != 1){
+                        if ($isShare && in_array($dir_path . '/' . $file, $allLink) != 1) {
                             continue;
                         }
                         if (!$isDir) {
@@ -151,6 +149,156 @@ if (!isset($_SESSION['account_admin'])) {
                     ?>
 
                 </div>
+                <hr>
+                <h4>File</h4>
+                <div class="row">
+                    <?php
+                    $totalSize = 0;
+                    foreach ($files as $file) {
+                        if (substr($file, 0, 1) === '.') {
+                            continue;
+                        }
+                        $path = $dir_path . '/' . $file;
+                        $isDir = is_dir($path);
+                        if ($isShare && in_array($dir_path . '/' . $file, $allLink) != 1) {
+                            continue;
+                        }
+                        if ($isDir) {
+                            continue;
+                        }
+                        $ext = pathinfo($path, PATHINFO_EXTENSION);
+                        $time = date('d/m/yy', filemtime($path));
+                        $size = '-';
+                        $dirLink = str_replace($root, '', $path);
+                        $dirLink = substr($dirLink, 1);
+
+                        $dirLink = $dir_path . '/' . $file;
+                        $dirLink = str_replace('C:/xampp/htdocs/', 'http://' . $_SERVER['HTTP_HOST'] . '/', $dirLink);
+
+
+
+                        $size = filesize($path);
+                        $totalSize += $size;
+                        if ($size > 1000000) {
+                            $size = round($size / 1000000.0, 1) . ' MB';
+                        } else if ($size > 1000) {
+                            $size = round($size / 1000.0, 1) . ' KB';
+                        } else {
+                            $size = $size . ' Bytes';
+                        }
+
+                        switch (strtolower($ext)) {
+                            case 'apk':
+                                $type = 'apk';
+                                $icon = './Content/Images/iconfile/apk.png';
+                                break;
+                            case 'app':
+                                $type = 'app';
+                                $icon = './Content/Images/iconfile/app.png';
+                                break;
+                            case 'css':
+                                $type = 'css';
+                                $icon = './Content/Images/iconfile/css.png';
+                                break;
+                            case 'dll':
+                                $type = 'dll';
+                                $icon = './Content/Images/iconfile/dll.png';
+                                break;
+                            case 'doc':
+                                $type = 'doc';
+                                $icon = './Content/Images/iconfile/doc.png';
+                                break;
+                            case 'docx':
+                                $type = 'docx';
+                                $icon = './Content/Images/iconfile/docx.png';
+                                break;
+                            case 'exe':
+                                $type = 'exe';
+                                $icon = './Content/Images/iconfile/exe.png';
+                                break;
+                            case 'gif':
+                                $type = 'gif';
+                                $icon = './Content/Images/iconfile/gif.png';
+                                break;
+                            case 'html':
+                                $type = 'html';
+                                $icon = './Content/Images/iconfile/html.png';
+                                break;
+                            case 'jpg':
+                                $type = 'jpg';
+                                $icon = './Content/Images/iconfile/jpg.png';
+                                break;
+                            case 'js':
+                                $type = 'js';
+                                $icon = './Content/Images/iconfile/js.png';
+                                break;
+                            case 'log':
+                                $type = 'log';
+                                $icon = './Content/Images/iconfile/log.png';
+                                break;
+                            case 'mp3':
+                                $type = 'mp3';
+                                $icon = './Content/Images/iconfile/mp3.png';
+                                break;
+                            case 'mp4':
+                                $type = 'mp4';
+                                $icon = './Content/Images/iconfile/mp4.png';
+                                break;
+                            case 'pdf':
+                                $type = 'pdf';
+                                $icon = './Content/Images/iconfile/pdf.png';
+                                break;
+                            case 'png':
+                                $type = 'png';
+                                $icon = './Content/Images/iconfile/png.png';
+                                break;
+                            case 'ppt':
+                                $type = 'ppt';
+                                $icon = './Content/Images/iconfile/ppt.png';
+                                break;
+                            case 'php':
+                                $type = 'php';
+                                $icon = './Content/Images/iconfile/php.png';
+                                break;
+                            case 'rar':
+                                $type = 'rar';
+                                $icon = './Content/Images/iconfile/rar.png';
+                                break;
+                            case 'sql':
+                                $type = 'sql';
+                                $icon = './Content/Images/iconfile/sql.png';
+                                break;
+                            case 'txt':
+                                $type = 'txt';
+                                $icon = './Content/Images/iconfile/txt.png';
+                                break;
+                            case 'zip':
+                                $type = 'zip';
+                                $icon = './Content/Images/iconfile/zip.png';
+                                break;
+                            default:
+                                $type = 'undefined';
+                                $icon = './Content/Images/iconfile/default.png';
+                                break;
+                        }
+                    ?>
+                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item">
+                            <div class="card" style="width: 8rem;">
+                                <img class="card-img-top" src=<?= $icon ?> alt="Card image cap">
+                                <div class="card-body p-1">
+                                    <p class="card-title card-text mb-0 text-center"><a href="<?= $dirLink ?>"><?= $file ?></a></p>
+                                    <p class="card-text text-center"><small class="text-muted">Last updated <?= $time ?></small></p>
+                                </div>
+                                <input type="hidden" name="linkfile" value="<?= $dir_path . '/' . $file ?>">
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+
+
+
             </div>
         </div>
     </div>
@@ -200,113 +348,113 @@ if (!isset($_SESSION['account_admin'])) {
         </div>
     </div>
     <div class=" modal fade" id="setting-modal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Settings</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Settings</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                </div>
-                <form method="post" id='setting-form'>
-                    <div class="modal-body ">
-                        <p class="mb-1">Enter total data each user.</p>
-                        <input type="text" class='form-control' placeholder="Bytes" id="totalData">
-                        <p class="mb-1">Enter number of file in upload.</p>
-                        <input type="text" class='form-control' placeholder="Number" id="numFile">
-                        <p class="mb-1">Enter maximum data of file.</p>
-                        <input type="text" class='form-control' placeholder="Bytes" id="filedata">
-                        <p class="mb-1">Enter file extension not accept (separated by spaces).</p>
-                        <input type="text" class='form-control' placeholder="Text" id="typeNotAccept">
-                    </div>
-                    <div class="modal-footer">
-                        <p class="message"></p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <input class='btn btn-success' type="submit" value="Save" name="submit">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Delete dialog -->
-    <div class=" modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add file dialog -->
-    <div class="modal fade" id="addFile" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <h4 class="modal-title">New File</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" id="uploadFile">
-                        <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
-                        <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
-                        <p>Drag your files here or click in this area.</p>
-                        <div class="progress mt-3">
-                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                                <form method="post" id='setting-form'>
+                                    <div class="modal-body ">
+                                        <p class="mb-1">Enter total data each user.</p>
+                                        <input type="text" class='form-control' placeholder="Bytes" id="totalData">
+                                        <p class="mb-1">Enter number of file in upload.</p>
+                                        <input type="text" class='form-control' placeholder="Number" id="numFile">
+                                        <p class="mb-1">Enter maximum data of file.</p>
+                                        <input type="text" class='form-control' placeholder="Bytes" id="filedata">
+                                        <p class="mb-1">Enter file extension not accept (separated by spaces).</p>
+                                        <input type="text" class='form-control' placeholder="Text" id="typeNotAccept">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p class="message"></p>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <input class='btn btn-success' type="submit" value="Save" name="submit">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <p id="status"></p>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <input class='btn btn-success' type="submit" value="Upload" name="submit">
+                </div>
+                <!-- Delete dialog -->
+                <div class=" modal fade" id="myModal1" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal" id='delete'>Delete</button>
+                            </div>
                         </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add folder dialog -->
-    <div class="modal fade" id="addFolder" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <h4 class="modal-title">New Folder</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <form method="post" id='newFolderForm'>
-                    <div class="modal-body">
-                        <input type="text" name="folderName" id='folderName'>
-                        <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
-
                     </div>
-                    <div class="modal-footer">
-                        <p class="message"></p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <input class="btn btn-success" type="submit" value="New folder" name="create">
+                </div>
 
-                        <br>
+                <!-- Add file dialog -->
+                <div class="modal fade" id="addFile" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h4 class="modal-title">New File</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" enctype="multipart/form-data" id="uploadFile">
+                                    <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
+                                    <input type="hidden" name="path" value="<?= $dir_path . '/' ?>" id='pathfile'>
+                                    <p>Drag your files here or click in this area.</p>
+                                    <div class="progress mt-3">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                    </div>
+                                    <p id="status"></p>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <input class='btn btn-success' type="submit" value="Upload" name="submit">
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                </div>
+
+                <!-- Add folder dialog -->
+                <div class="modal fade" id="addFolder" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h4 class="modal-title">New Folder</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <form method="post" id='newFolderForm'>
+                                <div class="modal-body">
+                                    <input type="text" name="folderName" id='folderName'>
+                                    <input type="hidden" name="folderPath" value="<?= $dir_path ?>" id='folderPath'>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="message"></p>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    <input class="btn btn-success" type="submit" value="New folder" name="create">
+
+                                    <br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 </body>
 
 </html>
