@@ -190,7 +190,9 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                 </div>
                 <div class="modal-body">
                     <p>
-                        <textarea class="js-copytextarea" style=""><?='http://' . $_SERVER['HTTP_HOST'] . '/BuffaloDrive/Upload/sharepage.php?user=' . $user?></textarea>
+                        <textarea class="js-copytextarea" style="">
+                            <?='http://' . $_SERVER['HTTP_HOST'] . '/BuffaloDrive/Upload/sharepage.php?user=' . $user?>
+                        </textarea>
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -200,6 +202,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
             </div>
         </div>
     </div>
+    <!-- scripts for link share - copy to clipboard -->
     <script>
     var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
 

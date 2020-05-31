@@ -197,3 +197,9 @@ div.folder:hover, div.card:hover {
     outline: none;
     opacity: 0;
 }
+textarea.js-copytextarea {
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
+    border-width: 0;
+}
