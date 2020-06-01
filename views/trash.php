@@ -80,9 +80,20 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
                     <p>New</p>
                 </div>
                 <div class="collapse multi-collapse" id='multiCollapse'>
-                    <a class="dropdown-item" href="#" id='newfile'>New File</a>
+                    <a class="dropdown-item" href="#" id='newfile'>
+                    <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
+                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"></path>
+                        <path d="M8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z"></path>
+                    </svg>
+                        <span class="icon_newfile">New File</span>
+                    </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" id='newfolder'>New Folder</a>
+                    <a class="dropdown-item" href="#" id='newfolder'>
+                        <svg class="" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false">
+                            <path d="M12 12h2v-2h2v2h2v2h-2v2h-2v-2h-2v-2zm10-4v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2l.01-12c0-1.1.89-2 1.99-2h6l2 2h8c1.1 0 2 .9 2 2zm-2 0H4v10h16V8z"></path>
+                        </svg>
+                        <span class="icon_newfolder">New Folder</span>
+                    </a>
                 </div>
                 <!-- <div class="recent d-flex">
                     <svg class="a-s-fa-Ha-pa" width="1em" height="1em" viewBox="0 0 24 24" fill="#000000" focusable="false">

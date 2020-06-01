@@ -82,7 +82,7 @@ nav{
 .recent,.my-drive, .trash, .stored, .limit, .settings-user{
     font-family:"Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     cursor: pointer;
-    width: 240px;
+    width: 290px;
     height: 60px;
     color: #3c4043;
     font-weight: 550;
@@ -177,7 +177,7 @@ div.folder:hover, div.card:hover {
     cursor: pointer;
 }
 .recent:hover, .trash:hover, .my-drive:hover, .limit:hover, .settings-user:hover {
-    background-color: #F5F5F5;
+    background-color: #F8F9FA;
     border-bottom: 10px;
 }
 #uploadFile{
@@ -202,4 +202,15 @@ textarea.js-copytextarea {
     margin: 0; 
     padding: 0; 
     border-width: 0;
+}
+#newfile, #newfolder {
+    font-weight: bold;
+    padding-left: 52px;
+    padding-right: -20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+}
+.icon_newfile, .icon_newfolder {
+    margin-left: 45px;
 }
