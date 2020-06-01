@@ -2,8 +2,6 @@
     require_once '../function.php';
     require_once '../config.php';
     session_start();
-    $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
-    $salt = sprintf("$2y$%02d$", 10) . $salt; //$2y$ là thuật toán BlowFish, 10 là độ dài của key mã hóa.
     if (!isset($_SESSION['user']) || !isset($_SESSION['name'])) {
         header('Location: ./views/login.php');
     } else {
@@ -16,7 +14,7 @@
 
         
         $username = $_POST["username"];
-        $pass = crypt($_POST["pass"], $salt);
+        $pass = password_hash($_POST["pass"], PASSWORD_BCRYPT);
         $firstname = $_POST["firstname"];
         $lastname = $_POST["lastname"];
         $email = $_POST["email"];

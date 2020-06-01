@@ -7,16 +7,14 @@
 
 	if (isset($_POST["register"])) {
 		//lấy thông tin từ các form bằng phương thức POST
-		//bcrypt
-		$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
-		$salt = sprintf("$2y$%02d$", 10) . $salt; //$2y$ là thuật toán BlowFish, 10 là độ dài của key mã hóa.
-
+		
 		$firstname = $_POST["firstname"];
 		$lastname = $_POST["lastname"];
 		$username = $_POST["username"];
-		
-		$password = crypt($_POST["password"], $salt);
-		$passwordlv2 = crypt($_POST["passwordlv2"], $salt);
+		//bcrypt
+		$passwordlv2 = password_hash($_POST["passwordlv2"], PASSWORD_BCRYPT);
+		$password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+
 
 		$email = $_POST["email"];
 		if (!checkUser($username, $conn)) {

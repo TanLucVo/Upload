@@ -11,8 +11,7 @@
         if ($result->num_rows > 0) {
             // output data of each row
             $row = mysqli_fetch_assoc($result);
-            $check = crypt($password, $row['pass']);
-            if (hash_equals($check, $row['pass'])) {
+            if (password_verify($password, $row['pass'])) {
                 return $row;
             }
             else {
@@ -133,8 +132,7 @@
         if ($result->num_rows > 0) {
             // output data of each row
             $row = mysqli_fetch_assoc($result);
-            $check = crypt($passwordlv2, $row['passwordlv2']);
-            if (hash_equals($check, $row['passwordlv2'])) {
+            if (password_verify($passwordlv2, $row['passwordlv2'])) {
                 return $row;
             }
             else {
