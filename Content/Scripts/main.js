@@ -314,7 +314,6 @@ $(document).ready(function(){
     $('#uploadFile #fileToUpload').change(function () {
         $('#uploadFile p').first().text(this.files.length + " file(s) selected");
     });
-
 })
 
 //Profile
