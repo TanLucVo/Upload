@@ -55,7 +55,7 @@ if (isset($usershare)) {
         </button>
         <div>
             <a href="../"><img src="../Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
-            <a class="navbar-brand" href="../">Buffalo Drive</a>
+            <a class="navbar-brand" href="../" style="font-family: 'Monoton', cursive;">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <form class="form-inline my-2 my-lg-0 search">

@@ -44,7 +44,7 @@ if (!isset($_SESSION['account_admin'])) {
         </button>
         <div>
             <a href="./adminpage.php"><img src="./Content/Images/logo.png" alt="Buffalo Drive" class="navbar-brand" width=70px></a>
-            <a class="navbar-brand" href="./adminpage.php">Buffalo Drive</a>
+            <a class="navbar-brand" href="./adminpage.php" style="font-family: 'Monoton', cursive;">Buffalo Drive</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <form class="form-inline my-2 my-lg-0 search">
