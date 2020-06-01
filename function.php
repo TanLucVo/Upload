@@ -254,4 +254,12 @@
         $stmt->bind_param('ss', $password, $username);
         $stmt->execute();
     }
+    function updateTokenByUser($token,$username, $conn){
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $stmt = $conn->prepare("UPDATE passwordlv2 SET token = ? WHERE username = ?");
+        $stmt->bind_param('ss', $token, $username);
+        $stmt->execute();
+    }
 ?>

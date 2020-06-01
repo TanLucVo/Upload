@@ -1,6 +1,7 @@
 <?php
 	require_once '../function.php';
 	require_once '../config.php';
+	require_once './random_token.php';
 	session_start();
 	//bcrypt
 	$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
@@ -14,6 +15,7 @@
 		$username_token = getUserbyToken($token,$conn);
 		if (!checkUser($username_token, $conn)){
 			updatePassByUser($password,$username_token,$conn);
+			updateTokenByUser(random_string(30),$username_token,$conn);
 			$mess = 'Password change successfully';
 			header('Location: ./login.php');
 		}

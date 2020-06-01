@@ -1,18 +1,10 @@
 <?php
 	require_once '../function.php';
 	require_once '../config.php';
+	require_once './random_token.php';
 	session_start();
 	$mess ='';
-	function random_string($length) {
-		$key = '';
-		$keys = array_merge(range(0, 9), range('a', 'z'));
-	
-		for ($i = 0; $i < $length; $i++) {
-			$key .= $keys[array_rand($keys)];
-		}
-	
-		return $key;
-	}
+
 	if (isset($_POST["register"])) {
 		//lấy thông tin từ các form bằng phương thức POST
 		//bcrypt
